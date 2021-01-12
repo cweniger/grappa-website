@@ -3,19 +3,20 @@
 // TODO: Refactor
 
 .cta__primary {
-   background-color: $chroma-yellow;
+   background: $chroma-yellow;
    border: .125rem solid transparent;
    border-radius: $space--large;
    display: inline-block;
    margin: $space--large auto;
    padding: $space--medium $space--large;
-   transition: $transition--smooth--medium;
+   transition: background-image $transition--smooth--medium;
    &:hover {
-       background: $chroma-gradient;
+       background-image: $chroma-gradient;
+       border: .125rem solid $chroma-purple;
    }
 
    &:focus-within {
-       background: $chroma-gradient;
+       background-image: $chroma-gradient;
        border: .125rem solid $chroma-purple;
        outline: none;
    }

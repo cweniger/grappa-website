@@ -7,9 +7,8 @@ export function PrimaryCTA({}) {
       <a
         href="#"
       >
-        Link name
+        Explore GRAPPA
       </a>
-      
     </div>
   );
 }

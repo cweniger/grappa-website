@@ -2,6 +2,7 @@ import Head from "next/head";
 import Navigation from "./Navigation";
 import header from '../styles/components/Header.module.scss';
 import layout from '../styles/components/Layout.module.scss';
+import Link from "next/link";
 
 type Props = {
   children: React.ReactNode;
@@ -24,11 +25,15 @@ export default function Layout({ children }: Props) {
       </div>
       <div className={layout.container__main}>
         <header className={header.horizontal}>
-          <img className={header.logo} src="images/grappa-logo.svg" alt="GRAPPA" />
+          <Link href="/">
+            {/* TO DO: Figure out why <a> linking doesn't work here */}
+            <img className={header.logo} src="images/grappa-logo.svg" alt="GRAPPA" />
+            {/* Image source: https://www.nasa.gov/sites/default/files/images/607025main_MSX_no_labels_full.jpg */}
+          </Link>
           <Navigation />
         </header>
-        <main>{children}</main>
       </div>
+      <main>{children}</main>      
     </div>
   );
 }

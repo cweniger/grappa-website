@@ -1,5 +1,5 @@
-$transition--smooth--fast: all 300ms ease;
-$transition--smooth--medium: all 1ms ease-in-out;
+$transition--smooth--fast: 300ms ease-in-out;
+$transition--smooth--medium: 600ms ease-in-out;
 
 .animate--line {
   &::after {

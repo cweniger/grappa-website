@@ -3,6 +3,8 @@ import BasicMeta from "../components/meta/BasicMeta";
 import OpenGraphMeta from "../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../components/meta/TwitterCardMeta";
 import { Hero } from "../components/Hero";
+import FeatureZigZag from "../components/FeatureZigZag";
+
 
 export default function Index() {
   return (
@@ -11,6 +13,7 @@ export default function Index() {
       <OpenGraphMeta url={"/"} />
       <TwitterCardMeta url={"/"} />
       <Hero />
+      <FeatureZigZag />
     </Layout>
   );
 }

@@ -4,6 +4,7 @@
     align-content: center;
     display: flex;
     justify-content: space-between;
+    padding: $space--medium 0;
 }
 
 .logo {
@@ -15,7 +16,7 @@
     background-color: $black;
     color: $white;
     display: block;
-    padding: $space--x-small 0;
+    padding: $space--medium 0;
     width: 100%;
     img {
         max-width: 14rem;
