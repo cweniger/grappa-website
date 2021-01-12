@@ -1,4 +1,12 @@
+@import "../theme/theme";
+
 .navigation {
+    ul {
+        display: flex;
+        font-family: $font-family--base;
+        font-weight: $font-weight--bold;
+        justify-content: space-between;
+    }
     ul li {
         display: inline;
     }
