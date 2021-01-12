@@ -1,0 +1,19 @@
+// Monochromatic colors
+$black: #111111;
+$neutral-gray-01: #2b2b2b;
+$neutral-gray-02: #454545;
+$neutral-gray-03: #5e5e5e;
+$neutral-gray-04: #787878;
+$neutral-gray-05: #ababab;
+$neutral-gray-06: #c4c4c4;
+$neutral-gray-07: #dedede;
+$neutral-gray-08: #f7f7f7;
+$white: #ffffff;
+
+// Chromatic colors
+$chroma-red: #dd5a53;
+$chroma-yellow: #f5bf10;
+$chroma-purple: #b374e5;
+
+// Chromatic gradients
+$chroma-gradient: linear-gradient(270deg, $chroma-yellow 24%, $chroma-purple 61%);

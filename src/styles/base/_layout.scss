@@ -1,0 +1,24 @@
+// General layout styling here. Can include layout-specific colors and spacing.
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+
+}
+
+body {
+  margin: $site-container--center;
+  max-width: $site-container;
+}
+
+section {
+
+}
+
+hr {
+
+}

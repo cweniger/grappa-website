@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Navigation from "./Navigation";
+import styles from '../styles/components/Navigation.module.scss';
+
 
 type Props = {
   children: React.ReactNode;
@@ -13,8 +15,10 @@ export default function Layout({ children }: Props) {
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="apple-touch-icon" href="/icon.png" />
         <meta name="theme-color" content="#fff" />
+        <link rel="stylesheet" href="/fonts/style.css" />
+         
       </Head>
-      <nav>
+      <nav className={styles.navigation}>
         <Navigation />
       </nav>
       <main>{children}</main>

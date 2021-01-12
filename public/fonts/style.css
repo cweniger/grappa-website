@@ -1,0 +1,39 @@
+@font-face {
+font-family: 'Neue Haas Grotesk Text Pro Roman';
+font-style: normal;
+font-weight: normal;
+src: local('Neue Haas Grotesk Text Pro Roman'), url('NHaasGroteskTXPro-55Rg.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Neue Haas Grotesk Text Pro Italic';
+font-style: normal;
+font-weight: normal;
+src: local('Neue Haas Grotesk Text Pro Italic'), url('NHaasGroteskTXPro-56It.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Neue Haas Grotesk Text Pro Bold';
+font-style: normal;
+font-weight: normal;
+src: local('Neue Haas Grotesk Text Pro Bold'), url('NHaasGroteskTXPro-75Bd.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Neue Haas Grotesk Text Pro Bold Italic';
+font-style: normal;
+font-weight: normal;
+src: local('Neue Haas Grotesk Text Pro Bold Italic'), url('NHaasGroteskTXPro-76BdIt.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Termina W05 Demi';
+  src: local('Termina W05 Demi'), url("d0135e26-87f0-40e0-9997-a1b4d016a1ca.woff2") format("woff2"),url("9f85c9c3-1a0e-4674-8336-4bed34897907.woff") format("woff");
+ }
+
+@font-face{
+  font-family:'Termina W05 Heavy';
+  src: url("5172460/ee50c958-2f7d-4c61-8934-2f0a0dc4f587.woff2") format("woff2"),url("5172460/af89826f-bc8f-42b3-bbbf-6dc534865f58.woff") format("woff");
+    }

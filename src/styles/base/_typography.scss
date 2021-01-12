@@ -1,0 +1,54 @@
+html {
+  font-size: 18px;
+}
+
+body {
+  color: $font-color--base;
+  font-family: $font-family--base;
+  font-size: $font-size--base;
+  line-height: $line-height--base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $font-color--heading;
+  font-family: $font-family--heading;
+  font-weight: $font-weight--bold;
+}
+
+h1,
+h2 {
+  line-height: $line-height--medium; 
+}
+
+h3,
+h4,
+h5,
+h6 {
+  line-height: $line-height--small;
+}
+
+// p {
+
+// }
+
+a {
+  color: $link--base;
+  font-weight: $font-weight--bold;
+
+  // &:hover {
+    // Would love to do some sort of gradient hover here...
+  // }
+}
+
+// ol {
+
+// }
+
+// li {
+
+// }
