@@ -1,0 +1,31 @@
+@import "../theme/theme";
+
+// TODO: Refactor
+
+.cta__primary {
+   background: $chroma-yellow;
+   border: .125rem solid transparent;
+   border-radius: $space--large;
+   display: inline-block;
+   margin: $space--large auto;
+   padding: $space--medium $space--large;
+   transition: background-image $transition--smooth--medium;
+   &:hover {
+       background-image: $chroma-gradient;
+       border: .125rem solid $chroma-purple;
+   }
+
+   &:focus-within {
+       background-image: $chroma-gradient;
+       border: .125rem solid $chroma-purple;
+       outline: none;
+   }
+
+   a {
+       color: $black;
+       text-decoration: none;
+       &:focus-within {
+        outline: none;
+       }
+   }
+}

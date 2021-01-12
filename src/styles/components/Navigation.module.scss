@@ -1,0 +1,43 @@
+@import "../theme/theme";
+
+// TODO: Refactor
+
+.navigation {
+    max-width: 42rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top: -1;
+    width: 100%;
+    ul {
+        display: flex;
+        justify-content: space-between;
+        text-transform: capitalize;
+    }
+    ul li {
+        display: inline;
+    }
+
+    ul li a {
+        color: $black;
+        font-family: $font-family--base;
+        font-weight: bold;
+        text-decoration: none; 
+        &::after {
+            background: $chroma-gradient;
+            border-radius: 5em;
+            content: '';
+            display: block;
+            height: .1em;
+            transform-origin: 50% 0%;
+            transform: scalex(0);
+            width: 100%;
+  }
+  
+        &:hover {
+         &::after {
+             transform: scalex(1);
+             transition: $transition--smooth--fast;
+         }
+  }
+    }
+}

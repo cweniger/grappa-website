@@ -1,0 +1,19 @@
+@import "../theme/theme";
+
+.container__zigzag {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: $space--x-large;
+  &:nth-of-type(even) {
+    flex-direction: row-reverse;
+   }
+}
+
+.item {
+  flex: 1;
+  margin: 0;
+  min-width: 20rem;
+  max-width: 30rem;
+}
