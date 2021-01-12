@@ -1,0 +1,19 @@
+$transition--smooth--fast: all 300ms ease;
+$transition--smooth--medium: all 1ms ease-in-out;
+
+.animate--line {
+  &::after {
+  border-radius: 5em;
+  content: '';
+  display: block;
+  height: 1em;
+  transform-origin: 50% 0%;
+  transform: scalex(0);
+  }
+  
+  &:hover {
+    &::after {
+      transform: scalex(1);
+    }
+  }
+}

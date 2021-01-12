@@ -35,3 +35,10 @@
 .container--width-260 {
   max-width: 260px;
 }
+
+.container--flex {
+  display: flex;
+  &--space-around{
+    justify-content: space-around;
+  }
+}

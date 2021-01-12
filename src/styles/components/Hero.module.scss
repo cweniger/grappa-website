@@ -1,0 +1,19 @@
+@import "../theme/theme";
+
+.container {
+  background-image: url(/images/galaxy-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+
+.header {
+  color: $white;
+  font-size: 2.25rem;
+}
+
+.subheader {
+  color: $white;
+  font-family: $font-family--heading;
+  font-size: 1.5rem;
+}

@@ -1,0 +1,25 @@
+@import "../theme/theme";
+
+.horizontal {
+    align-content: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    max-width: 13rem;
+    width: 100%;
+}
+
+.uva__bar {
+    background-color: $black;
+    color: $white;
+    display: block;
+    padding: $space--x-small 0;
+    width: 100%;
+    img {
+        max-width: 14rem;
+        fill: currentColor;
+        height: auto;
+    }
+}
