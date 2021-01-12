@@ -18,12 +18,12 @@ export default function Layout({ children }: Props) {
         <meta name="theme-color" content="#fff" />
         <link rel="stylesheet" href="/fonts/style.css" />
       </Head>
-      <div className={header.uva__bar}>
+      {/* <div className={header.uva__bar}>
         <div className={layout.container__main}>
           <img src="images/uva-logo.svg" alt="University of Amsterdam" />
         </div>
-      </div>
-      <div className={layout.container__main}>
+      </div> */}
+      <div className={header.container__main}>
         <header className={header.horizontal}>
           <Link href="/">
             {/* TO DO: Figure out why <a> linking doesn't work here */}

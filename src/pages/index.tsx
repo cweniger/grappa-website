@@ -4,6 +4,7 @@ import OpenGraphMeta from "../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../components/meta/TwitterCardMeta";
 import { Hero } from "../components/Hero";
 import FeatureZigZag from "../components/FeatureZigZag";
+import {FeaturedTestimonial} from "../components/FeaturedTestimonial";
 
 
 export default function Index() {
@@ -14,6 +15,7 @@ export default function Index() {
       <TwitterCardMeta url={"/"} />
       <Hero />
       <FeatureZigZag />
+      <FeaturedTestimonial />
     </Layout>
   );
 }

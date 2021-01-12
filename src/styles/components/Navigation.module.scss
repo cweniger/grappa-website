@@ -3,8 +3,10 @@
 // TODO: Refactor
 
 .navigation {
-    margin-top: $space--medium;
     max-width: 42rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top: -1;
     width: 100%;
     ul {
         display: flex;

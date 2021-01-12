@@ -25,7 +25,7 @@ export default function FeatureZigZag({}) {
           </p>
         </div>
         <div className={zigzag.item}>
-          <Image src="/images/homepage-foundations.png" alt="Star stuff" layout="responsive" width={542} height={320}/>
+          <Image src="/images/homepage-frontiers.png" alt="Star stuff" layout="responsive" width={542} height={542}/>
         </div>
       </div>
       <div className={zigzag.container__zigzag}>
@@ -36,7 +36,7 @@ export default function FeatureZigZag({}) {
           </p>
         </div>
         <div className={zigzag.item}>
-          <Image src="/images/homepage-foundations.png" alt="Star stuff" layout="responsive" width={542} height={320}/>
+          <Image src="/images/homepage-connected.jpg" alt="Star stuff" layout="responsive" width={542} height={203}/>
         </div>
       </div>
     </section>

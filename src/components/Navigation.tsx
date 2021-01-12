@@ -11,9 +11,9 @@ export default function Navigation() {
       <nav className={styles.navigation}>
     {/* <Burger active={active} onClick={() => setActive(!active)} /> */}
         <ul>
-          <li>
-            <Link href="/">
-              <a className={router.pathname === "/" ? "active" : null}>about</a>
+        <li>
+            <Link href="/research">
+              <a className={router.pathname === "/research" ? "active" : null}>research</a>
             </Link>
         </li>
         <li>
@@ -28,7 +28,9 @@ export default function Navigation() {
         </li>
         <li>
           <Link href="/news">
-            <a className={router.pathname === "/news" ? "active" : null}>news</a>
+            <a className={
+                  router.pathname.startsWith("/posts") ? "active" : null
+                }>news</a>
           </Link>
         </li>
         <li>
@@ -37,12 +39,13 @@ export default function Navigation() {
           </Link>
         </li>
         <li>
-          <Link href="/posts">
-            <a
-                className={
-                  router.pathname.startsWith("/posts") ? "active" : null
-                }
-            >blog</a>
+          <Link href="/opportunities">
+            <a className={router.pathname === "/opportunities" ? "active" : null}>opportunities</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/contact">
+          <a className={router.pathname === "/contact" ? "active" : null}>contact</a>
           </Link>
         </li>
       </ul>

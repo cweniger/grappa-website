@@ -1,13 +1,24 @@
 @import "../theme/theme";
 
+.container {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
 .horizontal {
     align-content: center;
     display: flex;
     justify-content: space-between;
+    margin: 0 auto;
     padding: $space--medium 0;
+    max-width: 70rem;
 }
 
 .logo {
+    cursor: pointer;
     max-width: 13rem;
     width: 100%;
 }
