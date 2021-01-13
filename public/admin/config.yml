@@ -55,7 +55,6 @@ collections:
             fields:
               - { label: "Hero Title", name: "heroHeader", widget: "string" }
               - { label: "Hero Subheader", name: "heroSubheader", widget: "markdown" }
-
   - name: "meta"
     label: "Meta"
     delete: false
@@ -101,12 +100,6 @@ collections:
                 name: "name"
                 widget: "string"
                 hint: "Tag name for displaying on the site"
-  - name: "config"
-    label: "Config"
-    delete: false
-    editor:
-      preview: false
-    files:
   - name: "posts"
     label: "Posts"
     folder: "src/pages/posts"
