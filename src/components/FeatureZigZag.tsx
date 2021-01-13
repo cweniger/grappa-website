@@ -3,18 +3,37 @@ import Image from "next/image";
 import zigzag from "../styles/components/FeatureZigZag.module.scss";
 import layout from "../styles/components/Layout.module.scss";
 
-export default function FeatureZigZag({}) {
+// interface Data {
+//   data: data;
+// }
+// interface FeatureZigZagProps {
+//   headerOne: string;
+//   subheaderOne: string;
+//   imageOne: string;
+//   imageOneAltText: string;
+//   headerTwo: string;
+//   subheaderTwo: string;
+//   imageTwo: string;
+//   imageTwoAltText: string;
+//   headerThree: string;
+//   subheaderThree: string;
+//   imageThree: string;
+//   imageThreeAltText: string;
+// }
+
+export const FeatureZigZag: React.FC = () => {
   return (
+    <>
     <section className={layout.container__main}>
       <div className={zigzag.container__zigzag}>
         <div className={zigzag.item}>
           <h3>Study the foundations of the Universe</h3>
           <p>
-            What makes the Universe tick? The GRAPPA master program focuses on particle physics, astroparticle physics and cosmology at the intersection of theory, experiments and observation. It includes a full year MSc project working on real research supervised by world-leading faculty.
+          What makes the Universe tick? The GRAPPA master program focuses on particle physics, astroparticle physics and cosmology at the intersection of theory, experiments and observation. It includes a full year MSc project working on real research supervised by world-leading faculty.
           </p>
         </div>
         <div className={zigzag.item}>
-          <Image src="/images/homepage-foundations.png" alt="Star stuff" layout="responsive" width={542} height={320}/>
+          <Image src="/images/homepage-foundations.png" alt="Space stuff" layout="responsive" width={542} height={320}/>
         </div>
       </div>
       <div className={zigzag.container__zigzag}>
@@ -40,5 +59,6 @@ export default function FeatureZigZag({}) {
         </div>
       </div>
     </section>
+    </>
   );
 }

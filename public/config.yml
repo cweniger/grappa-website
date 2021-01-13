@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway
+  branch: main
+media_folder: public/images/uploads
+public_folder: /images
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Index"
+        name: "index"
+        file: "content/index.md"
+        fields:
+          - label: "Header"
+            name: "header"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image", default: "/images/devfair-logo.svg" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Detail", name: "detail", widget: "markdown" }
+              - { label: "Hero Image", name: "image", widget: "image", default: "/images/hero.svg" }
