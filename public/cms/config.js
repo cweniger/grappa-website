@@ -15,17 +15,72 @@ export default {
         {
           label: 'Home',
           name: 'home',
-          file: 'content/pages/home.md',
+          file: 'content/home.md',
           fields: [
             {
               label: 'Hero Title',
-              name: 'hero_title',
+              name: 'heroHeader',
               widget: 'string',
             },
             {
-              label: 'Hero Description',
-              name: 'hero_description',
+              label: 'Hero Subheader',
+              name: 'heroSubheader',
+              widget: 'string',
+            },
+            {
+              label: 'Featured Content One Header',
+              name: 'featuredContentTwoHeader',
               widget: 'markdown',
+            },
+            {
+              label: 'Featured Content One Subheader',
+              name: 'featuredContentTwoSubheader',
+              widget: 'markdown',
+            },
+            {
+              label: 'Featured Content One Image',
+              name: 'featuredContentTwoImage',
+              widget: 'image',
+            },
+            {
+              label: 'Featured Content One Image Alt',
+              name: 'featuredContentTwoImageAlt',
+              widget: 'string',
+            },
+            {
+              label: 'Featured Content One Header',
+              name: 'featuredContentTwoHeader',
+              widget: 'markdown',
+            },
+            {
+              label: 'Featured Content One Subheader',
+              name: 'featuredContentTwoSubheader',
+              widget: 'markdown',
+            },
+            {
+              label: 'Featured Content Two Image',
+              name: 'featuredContentTwoImage',
+              widget: 'image',
+            },
+            {
+              label: 'Featured Content Two Image Alt',
+              name: 'featuredContentTwoImageAlt',
+              widget: 'string',
+            },
+            {
+              label: 'Featured Content Three Subheader',
+              name: 'featuredContentThreeSubheader',
+              widget: 'markdown',
+            },
+            {
+              label: 'Featured Content Three Image',
+              name: 'featuredContentThreeImage',
+              widget: 'image',
+            },
+            {
+              label: 'Featured Content Three Image Alt',
+              name: 'featuredContentThreeImageAlt',
+              widget: 'string',
             },
           ],
         },
