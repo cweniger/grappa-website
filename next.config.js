@@ -2,7 +2,7 @@
 // const rehypePrism = require("@mapbox/rehype-prism");
 
 module.exports = {
-  distDir: 'dist',
+  distDir: '../dist',
   webpack: (config) => {
     config.module.rules.push(
       ...[
