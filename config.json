@@ -1,19 +1,13 @@
 {
-  "base_url": "https://wutali-nextjs-netlify-blog.netlify.app",
-  "site_title": "Next.js Netlify Blog",
-  "site_description": "Next.js blog template for Netlify",
+  "base_url": "https://grappa-next.netlify.app",
+  "site_title": "University of Amsterdam GRAPPA",
+  "site_description": "University of Amsterdam GRAPPA website description",
   "site_keywords": [
     {
-      "keyword": "Next.js"
-    },
-    {
-      "keyword": "Netlify"
-    },
-    {
-      "keyword": "React"
+      "keyword": "university"
     }
   ],
   "posts_per_page": 5,
-  "twitter_account": "@my-account",
-  "github_account": "wutali"
+  "twitter_account": "@tatianatmac",
+  "github_account": "tatianatmac"
 }

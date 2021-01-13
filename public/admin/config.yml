@@ -41,6 +41,20 @@ collections:
           - label: "GitHub account"
             name: "github_account"
             widget: "string"
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home"
+        name: "home"
+        file: "content/home.md"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Hero Title", name: "heroHeader", widget: "string" }
+              - { label: "Hero Subheader", name: "heroSubheader", widget: "markdown" }
 
   - name: "meta"
     label: "Meta"
@@ -87,7 +101,12 @@ collections:
                 name: "name"
                 widget: "string"
                 hint: "Tag name for displaying on the site"
-
+  - name: "config"
+    label: "Config"
+    delete: false
+    editor:
+      preview: false
+    files:
   - name: "posts"
     label: "Posts"
     folder: "src/pages/posts"
