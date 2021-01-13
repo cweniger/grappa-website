@@ -2,7 +2,6 @@
 // const rehypePrism = require("@mapbox/rehype-prism");
 
 module.exports = {
-  target: "serverless",
   webpack: (config) => {
     config.module.rules.push(
       ...[
