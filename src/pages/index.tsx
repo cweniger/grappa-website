@@ -17,7 +17,7 @@ interface HomeData {
 
 const Index: NextPage<Props> = ({content}) => {
   const { attributes } = content;
-  console.log(content)
+  // console.log(content)
 return (
   <>
      <Layout>
@@ -26,7 +26,7 @@ return (
        <TwitterCardMeta url={"/"} />
        {/* <h1>{markdown.heroHeader}</h1>
        <p>{markdown.heroSubheader}</p> */}
-       
+
        <Hero header={attributes.heroHeader}
         subheader={attributes .heroSubheader}/>
        <FeatureZigZag />
