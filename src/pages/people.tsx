@@ -7,7 +7,22 @@ import layout from "../styles/components/Layout.module.scss";
 import groupBy from 'lodash.groupby'
 
 export default function People({ persons }) {
-  const personsByTitle = groupBy(persons, person => person.title);
+  // get alumni and visitors, has end date
+  const personsHasEndDate = groupBy(persons, person => {
+    if (person.endDate) {
+      return 'alumni'
+    } else {
+      return 'current'
+    }
+  });
+  /*
+  * { current: [{ title, startDate, endDate}, {...}], alumni: []}
+  */
+
+  // HOLD: Pending changing all titles to correct type: Linking to new content model (Job title)
+
+  const currentPeopleByTitle = groupBy(personsHasEndDate.current, person => person.title);
+
   return (
     <Layout>
       <BasicMeta url={"/"} />
@@ -15,24 +30,40 @@ export default function People({ persons }) {
       <TwitterCardMeta url={"/"} />
       <div className={layout.container__main}>
         <h1>People</h1>
-        {Object.keys(personsByTitle).map(key => (
+        {Object.keys(currentPeopleByTitle).map(key => (
           <div key={key}>
             <h2>{key}</h2>
             {
-              personsByTitle[key].map(fields => (
+              currentPeopleByTitle[key].map(fields => (
                 <div key={fields.fullName}>
                   {fields.profilePicture ? <img src={fields.profilePicture} alt={fields.fullName} />
                     : null}
                   {fields.slug ? (<Link href={`/members/${fields.slug}`}>
-                    <h3>{fields.fullName}</h3>
+                    <p>{fields.fullName}</p>
                   </Link>) : (
-                      <h3>{fields.fullName}</h3>
+                      <p>{fields.fullName}</p>
                     )}
                 </div>
               ))
             }
           </div>
         ))}
+        <h2>Alumni</h2>
+        <div>
+          {
+            personsHasEndDate.alumni.map(fields => (
+              <div key={fields.fullName}>
+                {fields.profilePicture ? <img src={fields.profilePicture} alt={fields.fullName} />
+                  : null}
+                {fields.slug ? (<Link href={`/members/${fields.slug}`}>
+                  <p>{fields.fullName}</p>
+                </Link>) : (
+                    <p>{fields.fullName}</p>
+                  )}
+              </div>
+            ))
+          }
+        </div>
       </div>
     </Layout>
   );
