@@ -14,9 +14,7 @@ export default function People({ member }) {
         <h1>{member.fullName}</h1>
         {member.profilePicture ? <img src={member.profilePicture} alt={member.fullName} />
           : null}
-        <h3>{member.fullName}</h3>
         <p>{member.institution}</p>
-
         <p>{member.phoneNumber}</p>
         <p>{member.office}</p>
       </div>

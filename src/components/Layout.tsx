@@ -27,7 +27,7 @@ export default function Layout({ children }: Props) {
         <header className={header.horizontal}>
           <Link href="/">
             {/* TO DO: Figure out why <a> linking doesn't work here */}
-            <img className={header.logo} src="images/grappa-logo.svg" alt="GRAPPA" />
+            <img className={header.logo} src="/images/grappa-logo.svg" alt="GRAPPA" />
             {/* Image source: https://www.nasa.gov/sites/default/files/images/607025main_MSX_no_labels_full.jpg */}
           </Link>
           <Navigation />
