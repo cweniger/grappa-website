@@ -5,7 +5,7 @@ import OpenGraphMeta from "../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../components/meta/TwitterCardMeta";
 import layout from "../styles/components/Layout.module.scss";
 import groupBy from 'lodash.groupby'
-import people from "../styles/components/People.module.scss";
+import people from "../styles/components/PeopleGrid.module.scss";
 
 export default function People({ persons }) {
   // get alumni and visitors, has end date
@@ -31,13 +31,15 @@ export default function People({ persons }) {
       <TwitterCardMeta url={"/"} />
       <div className={layout.container__main}>
         <h1>People</h1>
-        <section className={people.peopleGrid}>
+        <section >
         {Object.keys(currentPeopleByTitle).map(key => (
           
           <div key={key}>
             <h2>{key}</h2>
+            <div className={people.peopleGrid}>
             {
               currentPeopleByTitle[key].map(fields => (
+               
                 <div key={fields.fullName}>
                   {fields.profilePicture ? <img src={fields.profilePicture} alt={fields.fullName} />
                     : null}
@@ -47,8 +49,10 @@ export default function People({ persons }) {
                       <p>{fields.fullName}</p>
                     )}
                 </div>
+               
               ))
             }
+             </div>
           </div>
         ))}
         </section>
