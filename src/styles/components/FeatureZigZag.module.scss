@@ -8,7 +8,7 @@
   margin: $space--x-large;
   &:nth-of-type(even) {
     flex-direction: row-reverse;
-   }
+  }
 }
 
 .item {
@@ -16,4 +16,14 @@
   margin: 0;
   min-width: 20rem;
   max-width: 30rem;
+  min-height: auto;
+}
+
+.item div {
+  position: relative;
+}
+
+.item img {
+  height: auto !important;
+  min-height: auto !important;
 }
