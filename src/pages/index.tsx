@@ -4,8 +4,9 @@ import BasicMeta from "../components/meta/BasicMeta";
 import OpenGraphMeta from "../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../components/meta/TwitterCardMeta";
 import { Hero } from "../components/Hero";
-import { FeatureZigZag } from "../components/FeatureZigZag";
+import { FeaturedTeasers } from "../components/FeaturedTeasers";
 import { FeaturedTestimonial } from "../components/FeaturedTestimonial";
+import { FeaturedNews } from "../components/FeaturedNews";
 
 // interface Props {
 //   content: { attributes: HomeData };
@@ -15,32 +16,42 @@ import { FeaturedTestimonial } from "../components/FeaturedTestimonial";
 //   heroSubheader?: string;
 // }
 
-export default function Index({ testimonials, homepageTeasers }) {
+export default function Index({ hero, testimonials, homepageTeasers, news }) {
   // const { attributes } = content;
+  console.log(hero);
   return (
     <Layout>
       <BasicMeta url={"/"} />
       <OpenGraphMeta url={"/"} />
       <TwitterCardMeta url={"/"} />
-      {/* <h1>{markdown.heroHeader}</h1>
-       <p>{markdown.heroSubheader}</p> */}
-
-      {/* <Hero header={attributes.heroHeader} */}
-      {/* subheader={attributes .heroSubheader}/> */}
-      <FeatureZigZag homepageTeasers={homepageTeasers} />
+      <Hero hero={hero} />
+      <FeaturedTeasers homepageTeasers={homepageTeasers} />
       <FeaturedTestimonial testimonials={testimonials} />
+      <FeaturedNews news={news} />
     </Layout>
   );
 }
-// export const getStaticProps: GetStaticProps = async () => {
-//   const content = await import(`../content/${'home'}.md`);
-//   return { props: { content: content.default } };
-// };
-// export default Index;
 
 const spaceId = process.env.CONTENTFUL_SPACE;
 const environmentId = process.env.CONTENTFUL_ENV;
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
+
+async function fetchHero() {
+  const entryId = "2xGHilZov5iOIqcCbeoLoy";
+  const URL = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/entries/${entryId}?access_token=${accessToken}`;
+  const response = await fetch(URL);
+  const hero = await response.json();
+
+  const IMAGE_URL = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/assets/${hero.fields.backgroundImage.sys.id}?access_token=${accessToken}`;
+  const imageResponse = await fetch(IMAGE_URL);
+  const image = await imageResponse.json();
+
+  // Unsure how to pull one single entry
+  return {
+    ...hero.fields,
+    backgroundImage: `https:${image.fields.file.url}`,
+  };
+}
 
 async function fetchHomepageTeasers() {
   const contentType = "homepageTeasers";
@@ -122,7 +133,8 @@ async function fetchTestimonials() {
 }
 
 export async function getStaticProps() {
-  const [testimonials, news, homepageTeasers] = await Promise.all([
+  const [hero, testimonials, news, homepageTeasers] = await Promise.all([
+    fetchHero(),
     fetchTestimonials(),
     fetchNews(),
     fetchHomepageTeasers(),
@@ -130,6 +142,7 @@ export async function getStaticProps() {
 
   return {
     props: {
+      hero,
       news,
       testimonials,
       homepageTeasers,

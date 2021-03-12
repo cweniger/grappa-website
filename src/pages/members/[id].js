@@ -12,8 +12,9 @@ export default function People({ member }) {
       <TwitterCardMeta url={"/"} />
       <div className={layout.container__main}>
         <h1>{member.fullName}</h1>
-        {member.profilePicture ? <img src={member.profilePicture} alt={member.fullName} />
-          : null}
+        {member.profilePicture ? (
+          <img src={member.profilePicture} alt={member.fullName} />
+        ) : null}
         <p>{member.institution}</p>
         <p>{member.phoneNumber}</p>
         <p>{member.office}</p>
@@ -25,7 +26,7 @@ export default function People({ member }) {
 const spaceId = process.env.CONTENTFUL_SPACE;
 const environmentId = process.env.CONTENTFUL_ENV;
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
-const contentType = 'person';
+const contentType = "person";
 
 export async function getStaticPaths() {
   // Call an external API endpoint to get member posts
@@ -38,18 +39,18 @@ export async function getStaticPaths() {
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
-  return { paths, fallback: false }
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
   const URL = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/entries?access_token=${accessToken}&fields.slug=${params.id}&content_type=${contentType}`;
-  
+
   const response = await fetch(URL);
   const members = await response.json();
   const member = members.items[0].fields;
 
   if (!member.profilePicture) {
-    return { props: { member } }
+    return { props: { member } };
   }
 
   const asset = members.includes.Asset[0];
@@ -57,8 +58,8 @@ export async function getStaticProps({ params }) {
     props: {
       member: {
         ...member,
-        profilePicture: asset.fields.file.url
-      }
-    }
-  }
+        profilePicture: asset.fields.file.url,
+      },
+    },
+  };
 }

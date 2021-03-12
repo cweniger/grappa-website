@@ -1,14 +1,10 @@
 import React from "react";
 import styles from "../styles/components/PrimaryCTA.module.scss";
 
-export function PrimaryCTA({}) {
+export function PrimaryCTA({ href, ctaCopy }) {
   return (
     <div className={styles.cta__primary}>
-      <a
-        href="#"
-      >
-        Explore GRAPPA
-      </a>
+      <a href={href}>{ctaCopy}</a>
     </div>
   );
 }

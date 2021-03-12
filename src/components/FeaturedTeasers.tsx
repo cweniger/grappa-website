@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import zigzag from "../styles/components/FeatureZigZag.module.scss";
+import zigzag from "../styles/components/FeaturedTeasers.module.scss";
 import layout from "../styles/components/Layout.module.scss";
 import ReactMarkdown from "react-markdown";
 
-export function FeatureZigZag({ homepageTeasers }) {
+export function FeaturedTeasers({ homepageTeasers }) {
   return (
     <>
       <section className={layout.container__main}>
