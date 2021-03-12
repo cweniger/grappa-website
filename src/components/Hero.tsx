@@ -1,29 +1,20 @@
 import React from "react";
-// import { SocialList } from "../components/SocialList";
 import { PrimaryCTA } from "../components/PrimaryCTA";
-import layout from '../styles/components/Layout.module.scss';
-import hero from '../styles/components/Hero.module.scss';
-// interface Props {
-//   content: { markdown: HeroProps };
-// }
+import layout from "../styles/components/Layout.module.scss";
+import $ from "../styles/components/Hero.module.scss";
 
-interface HeroProps {
-  header: string;
-  subheader: string;
-}
+export function Hero({ hero }) {
+  const styles = {
+    backgroundImage: `url(${hero.backgroundImage})`,
+  };
 
-export const Hero: React.FC<HeroProps> = ({ header, subheader }) => {
   return (
-  <>
-    <section className={hero.container}>
-        <div className={layout.container__mainw}>
-         <h2 className={hero.header}>{header}</h2> 
-        <p className={hero.subheader}>{subheader}</p>
-          <PrimaryCTA />
-          {/* <SocialList /> */}
-        </div>  
+    <section style={styles} className={$.container}>
+      <div className={layout.container__main}>
+        <h2 className={$.header}>{hero.headline}</h2>
+        <p className={$.subheader}>{hero.subheader}</p>
+        <PrimaryCTA href="/" ctaCopy={hero.primaryCtaCopy} />
+      </div>
     </section>
-    </>
   );
 }
-

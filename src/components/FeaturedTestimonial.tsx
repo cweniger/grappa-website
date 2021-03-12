@@ -1,24 +1,41 @@
 import React from "react";
 import Image from "next/image";
-import layout from '../styles/components/Layout.module.scss';
-import featured from '../styles/components/FeaturedTestimonial.module.scss';
+import layout from "../styles/components/Layout.module.scss";
+import featured from "../styles/components/FeaturedTestimonial.module.scss";
+import ReactMarkdown from "react-markdown";
 
-export function FeaturedTestimonial({}) {
+export function FeaturedTestimonial({ testimonials }) {
+  const randomiser = Math.floor(
+    Math.random() * Math.floor(testimonials.length)
+  );
+
+  const testimonial = testimonials[randomiser];
+
   return (
     <section className={featured.container}>
-        <div className={layout.container__main}>
-          <figure className={featured.container__figure}>
-          <div>
-            <blockquote className={featured.quote}>In GRAPPA you will feel like you’re diving into an international atmosphere surrounded by fascinating courses and seminars, which are on the edge of current knowledge.
+      <div className={layout.container__main}>
+        <figure className={featured.container__figure}>
+          <div key={testimonial.id}>
+            <blockquote className={featured.quote}>
+              <ReactMarkdown>{testimonial.testimonialCopy}</ReactMarkdown>
             </blockquote>
-            <figcaption><h4>–Ariane Dekker, Master's student</h4></figcaption>
+            <figcaption>
+              <h4>
+                –{testimonial.student.fullName}, {testimonial.student.title}
+              </h4>
+            </figcaption>
           </div>
-          <Image className={featured.avatar} src="/images/ariane-dekker.jpg" alt="Ariane Dekker smiling" width={240} height={240}/>
-          </figure>
-        <div>
-          
-        </div>  
-        </div>
+          {testimonial.student.profilePic ? (
+            <Image
+              className={featured.avatar}
+              src={testimonial.student.profilePic}
+              alt={testimonial.student.fullName}
+              width={240}
+              height={240}
+            />
+          ) : null}
+        </figure>
+      </div>
     </section>
   );
 }

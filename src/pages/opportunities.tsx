@@ -4,31 +4,60 @@ import BasicMeta from "../components/meta/BasicMeta";
 import OpenGraphMeta from "../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../components/meta/TwitterCardMeta";
 import layout from "../styles/components/Layout.module.scss";
+import groupBy from "lodash.groupby";
 
-export default function Opportunities({ test }) {
+export default function Opportunities({ jobs }) {
+  const jobsByExpiration = groupBy(jobs, (job) => {
+    const expiryDate = new Date(job.closingDate);
+    const today = new Date();
+
+    if (expiryDate > today) {
+      return "current";
+    } else {
+      return "expired";
+    }
+  });
+
   return (
     <Layout>
       <BasicMeta url={"/"} />
       <OpenGraphMeta url={"/"} />
       <TwitterCardMeta url={"/"} />
       <div className={layout.container__main}>
-          <h1>{test.testText}</h1>
-          <p>We announce several PhD and postdoc positions at the GRAPPA institute, related to gravitational waves, fundamental physics and cosmology.</p>
+        <p>
+          We announce several PhD and postdoc positions at the GRAPPA institute,
+          related to gravitational waves, fundamental physics and cosmology.
+        </p>
 
-          <Link href="/"><a>See independent post-doctoral fellowships</a></Link>
+        <Link href="/">
+          <a>See independent post-doctoral fellowships</a>
+        </Link>
 
-          <h2>Expired Opportunities</h2>
-          <ul>
-            <li>
-              <Link href="https://www.uva.nl/en/content/vacancies/2020/10/20-646-postdoctoral-research-positions-in-dark-universe-physics--machine-learning.html"><a>Postdoctoral research positions in Dark Universe Physics & Machine Learning</a></Link>
-            </li>
-            <li>
-              <Link href="https://www.nikhef.nl/Peoplexs22/CandidatesPortalNoLogin/Vacancy.cfm?PortalID=13801&VacatureID=1130272"><a>PhD student in Dark Matter Research</a></Link>
-            </li>
-            <li>
-              <Link href="https://www.nikhef.nl/Peoplexs22/CandidatesPortalNoLogin/Vacancy.cfm?PortalID=13649&VacatureID=1128971"><a>PhD studentship in Gravitational Waves and Cosmology</a></Link>
-            </li>
-          </ul>
+        <h2>Current Opportunities</h2>
+        <ul>
+          {jobsByExpiration.current?.map((job) => {
+            return (
+              <li key={job.id}>
+                <Link href={job.listingUrl}>
+                  <a>
+                    {job.position} in {job.subject}
+                  </a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+
+        <h2>Expired Opportunities</h2>
+        <ul>
+          {jobsByExpiration.expired?.map((job) => {
+            return (
+              <li key={job.id}>
+                {job.position} in {job.subject}
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </Layout>
   );
@@ -38,15 +67,18 @@ export async function getStaticProps() {
   const spaceId = process.env.CONTENTFUL_SPACE;
   const environmentId = process.env.CONTENTFUL_ENV;
   const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
-  // const contentType = 'test';
-  const entryId = '4O6lzaAxTKq7Y6JNEyK7YO';
+  const contentType = "job";
 
-  const URL = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/entries/${entryId}?access_token=${accessToken}`;
+  const URL = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/entries?access_token=${accessToken}&content_type=${contentType}`;
   const response = await fetch(URL);
-  const testData = await response.json();
+  const jobs = await response.json();
 
-  return { props: {
-    test: testData.fields
-  } };
-
+  return {
+    props: {
+      jobs: jobs.items.map((item) => ({
+        ...item.fields,
+        id: item.sys.id,
+      })),
+    },
+  };
 }
