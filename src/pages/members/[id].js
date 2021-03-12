@@ -35,7 +35,12 @@ export async function getStaticPaths() {
   const persons = await res.json();
 
   // Get the paths we want to pre-render based on member posts
-  const paths = persons.items.map((person) => `/members/${person.fields.slug}`);
+  const personsWithSlug = persons.items.filter(
+    (person) => person.fields.slug !== undefined
+  );
+  const paths = personsWithSlug.map(
+    (person) => `/members/${person.fields.slug}`
+  );
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
