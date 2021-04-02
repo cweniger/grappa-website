@@ -1,11 +1,12 @@
-import Layout from "../components/Layout";
-import BasicMeta from "../components/meta/BasicMeta";
-import OpenGraphMeta from "../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../components/meta/TwitterCardMeta";
-import layout from "../styles/components/Layout.module.scss";
+import Layout from "../../components/Layout";
+import BasicMeta from "../../components/meta/BasicMeta";
+import OpenGraphMeta from "../../components/meta/OpenGraphMeta";
+import TwitterCardMeta from "../../components/meta/TwitterCardMeta";
+import layout from "../../styles/components/Layout.module.scss";
 import ReactMarkdown from "react-markdown";
+import Link from "next/link";
 
-export default function News({ articles }) {
+export default function Index({ articles }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
@@ -15,7 +16,9 @@ export default function News({ articles }) {
         <h1>News</h1>
         {articles.map((article) => (
           <div>
-            <h2>{article.headline}</h2>
+            <h2>
+              <Link href={`/news/${article.slug}`}>{article.headline}</Link>
+            </h2>
             <p>{article.date}</p>
             <ReactMarkdown>{article.bodyCopy}</ReactMarkdown>
           </div>
@@ -31,7 +34,7 @@ export async function getStaticProps() {
   const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
   const contentType = "news";
 
-  const URL = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/entries?access_token=${accessToken}&content_type=${contentType}`;
+  const URL = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/entries?access_token=${accessToken}&content_type=${contentType}&order=-fields.date`;
   const response = await fetch(URL);
   const articles = await response.json();
 

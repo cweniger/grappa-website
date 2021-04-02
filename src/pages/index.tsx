@@ -92,14 +92,30 @@ async function fetchHomepageTeasers() {
 async function fetchNews() {
   const contentType = "news";
 
-  const URL = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/entries?access_token=${accessToken}&content_type=${contentType}`;
+  const URL = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/entries?access_token=${accessToken}&content_type=${contentType}&fields.highlight=1&order=-fields.date`;
   const response = await fetch(URL);
   const articles = await response.json();
 
-  return articles.items.map((item) => ({
+  const items = articles.items.map((item) => ({
     ...item.fields,
     id: item.sys.id,
   }));
+  const assets = articles.includes.Asset;
+
+  const newsWithAssets = items.map((item) => {
+    if (!item.image) {
+      return item;
+    }
+
+    const asset = assets.find((asset) => asset.sys.id === item.image.sys.id);
+
+    return {
+      ...item,
+      image: `https:${asset.fields.file.url}`,
+    };
+  });
+
+  return newsWithAssets;
 }
 
 async function fetchTestimonials() {
