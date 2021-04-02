@@ -4,15 +4,21 @@ import layout from "../styles/components/Layout.module.scss";
 import featured from "../styles/components/FeaturedNews.module.scss";
 import ReactMarkdown from "react-markdown";
 import { PrimaryCTA } from "../components/PrimaryCTA";
+import Link from "next/link";
 
 export function FeaturedNews({ news }) {
+  console.log(news);
   return (
     <section className={featured.container}>
       <div className={layout.container__main}>
         {news.map((article) => (
           <div key={article.headline}>
-            <h3>{article.headline}</h3>
-            <PrimaryCTA href="/" ctaCopy="Test copy" />
+            {article.image && <img src={article.image} />}
+
+            <h3>
+              <Link href={`/news/${article.slug}`}>{article.headline}</Link>
+            </h3>
+            {article.summary && <p>{article.summary}</p>}
           </div>
         ))}
       </div>
