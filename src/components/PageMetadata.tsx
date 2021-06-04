@@ -1,18 +1,17 @@
-import Layout from "../components/Layout";
+import React from "react";
+import Image from "next/image";
+import layout from "../styles/components/Layout.module.scss";
+import ReactMarkdown from "react-markdown";
 import BasicMeta from "../components/meta/BasicMeta";
 import OpenGraphMeta from "../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../components/meta/TwitterCardMeta";
-import layout from "../styles/components/Layout.module.scss";
 
-export default function Contact() {
+export function PageMetadata() {
   return (
-    <Layout>
+    <>
       <BasicMeta url={"/"} />
       <OpenGraphMeta url={"/"} />
       <TwitterCardMeta url={"/"} />
-      <div className={layout.container__main}>
-          <h1>Contact</h1>
-        </div>
-    </Layout>
+    </>
   );
 }

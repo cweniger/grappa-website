@@ -1,29 +1,17 @@
 import { NextPage, GetStaticProps } from "next";
 import Layout from "../components/Layout";
-import BasicMeta from "../components/meta/BasicMeta";
-import OpenGraphMeta from "../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../components/meta/TwitterCardMeta";
+
 import { Hero } from "../components/Hero";
 import { FeaturedTeasers } from "../components/FeaturedTeasers";
+import { PageMetadata } from "../components/PageMetadata";
 import { FeaturedTestimonial } from "../components/FeaturedTestimonial";
 import { FeaturedNews } from "../components/FeaturedNews";
 
-// interface Props {
-//   content: { attributes: HomeData };
-// }
-// interface HomeData {
-//   heroHeader?: string;
-//   heroSubheader?: string;
-// }
-
 export default function Index({ hero, testimonials, homepageTeasers, news }) {
-  // const { attributes } = content;
   console.log(hero);
   return (
     <Layout>
-      <BasicMeta url={"/"} />
-      <OpenGraphMeta url={"/"} />
-      <TwitterCardMeta url={"/"} />
+      <PageMetadata />
       <Hero hero={hero} />
       <FeaturedTeasers homepageTeasers={homepageTeasers} />
       <FeaturedTestimonial testimonials={testimonials} />
@@ -124,6 +112,8 @@ async function fetchTestimonials() {
   const URL = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/entries?access_token=${accessToken}&content_type=${contentType}`;
   const response = await fetch(URL);
   const testimonials = await response.json();
+
+  console.log(testimonials);
 
   return testimonials.items.map((item) => {
     const student = testimonials.includes.Entry.find((student) => {
