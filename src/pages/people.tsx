@@ -40,16 +40,23 @@ export default function People({ persons }) {
               <h2>{key}</h2>
               <div className={people.peopleGrid}>
                 {currentPeopleByTitle[key].map((fields) => (
-                  <div key={fields.fullName}>
+                  <div className={people.box} key={fields.fullName}>
                     {fields.profilePicture ? (
-                      <img src={fields.profilePicture} alt={fields.fullName} />
-                    ) : null}
-                    {fields.slug ? (
                       <Link href={`/members/${fields.slug}`}>
-                        <p>{fields.fullName}</p>
+                        <img
+                          src={fields.profilePicture}
+                          alt={fields.fullName}
+                        />
                       </Link>
                     ) : (
-                      <p>{fields.fullName}</p>
+                      <div className={people.planet}></div>
+                    )}
+                    {fields.slug ? (
+                      <Link href={`/members/${fields.slug}`}>
+                        <p className={people.name}>{fields.fullName}</p>
+                      </Link>
+                    ) : (
+                      <p className={people.name}>{fields.fullName}</p>
                     )}
                   </div>
                 ))}
@@ -58,12 +65,9 @@ export default function People({ persons }) {
           ))}
         </section>
         <h2>Alumni</h2>
-        <div>
+        <div className={people.alumni}>
           {personsHasEndDate.alumni.map((fields) => (
             <div key={fields.fullName}>
-              {fields.profilePicture ? (
-                <img src={fields.profilePicture} alt={fields.fullName} />
-              ) : null}
               {fields.slug ? (
                 <Link href={`/members/${fields.slug}`}>
                   <p>{fields.fullName}</p>

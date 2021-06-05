@@ -6,16 +6,21 @@ import layout from "../../styles/components/Layout.module.scss";
 // import ReactMarkdown from "react-markdown";
 import { gql } from "@apollo/client";
 import client from "../../../apollo-client";
+import ReactMarkdown from "react-markdown";
 
-export default function Contact() {
+export default function Contact({ content }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
       <OpenGraphMeta url={"/"} />
       <TwitterCardMeta url={"/"} />
-      <div className={layout.container__main}>
-        <h1>Contact</h1>
-      </div>
+      <main className={layout.container__main}>
+        <section>
+          <h1>Contact</h1>
+          <h2>{content.title}</h2>
+          <ReactMarkdown>{content.text}</ReactMarkdown>
+        </section>
+      </main>
     </Layout>
   );
 }
@@ -29,19 +34,20 @@ export async function getStaticProps() {
           sys {
             id
           }
-          # add the fields you want to query
+          title
+          text
         }
       }
     `,
   });
 
-  console.log({ id: data?.textBlock?.sys?.id });
+  // console.log({ id: data?.textBlock?.sys?.id });
+  console.log(data);
   //  transform data into the shape we want
 
   return {
     props: {
-      hello: "world",
-      // mainContact: data.id.bl,
+      content: data.textBlock,
     },
   };
 }
