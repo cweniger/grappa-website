@@ -7,7 +7,6 @@ import { PrimaryCTA } from "../components/PrimaryCTA";
 import Link from "next/link";
 
 export function FeaturedNews({ news }) {
-  console.log(news);
   return (
     <section className={featured.container}>
       <div className={layout.container__main}>
