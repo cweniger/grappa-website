@@ -7,29 +7,45 @@ import { gql } from "@apollo/client";
 import client from "../../../apollo-client";
 import ReactMarkdown from "react-markdown";
 
-export default function PhDTrackOverview({ content }) {
+export default function MScFAQ({ content }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
       <OpenGraphMeta url={"/"} />
       <TwitterCardMeta url={"/"} />
+
       <main className={layout.container__main}>
         <h1>{content.title}</h1>
-        <ReactMarkdown>{content.text}</ReactMarkdown>
+        <ReactMarkdown>{content.description}</ReactMarkdown>
+        <ul>
+          {content.faqSectionCollection.items.map((faq) => (
+            <li key={faq.question}>
+              <h3>{faq.question}</h3>
+              <ReactMarkdown>{faq.answer}</ReactMarkdown>
+            </li>
+          ))}
+        </ul>
       </main>
     </Layout>
   );
 }
+
 export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
-      query PhdTrackOverviewPage {
-        textBlock(id: "4CDK3lFZu3s96reSTDbSVd") {
+      query mScFaqPageEntryQuery {
+        mScFaqPage(id: "5WvpK0Q4Jt4y8KFhCvcVZb") {
           sys {
             id
           }
           title
-          text
+          description
+          faqSectionCollection {
+            items {
+              question
+              answer
+            }
+          }
         }
       }
     `,
@@ -37,7 +53,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      content: data.textBlock,
+      content: data.mScFaqPage,
     },
   };
 }
