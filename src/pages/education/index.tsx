@@ -16,6 +16,7 @@ export default function Education({ content }) {
       <TwitterCardMeta url={"/"} />
       <main className={layout.container__main}>
         <h1>{content.title}</h1>
+        <p>{content.text}</p>
         <h2>GRAPPA Msc</h2>
         <ul>
           <li>
