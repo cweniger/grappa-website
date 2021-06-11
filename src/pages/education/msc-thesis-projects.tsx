@@ -1,8 +1,8 @@
-import Layout from "../components/Layout";
-import BasicMeta from "../components/meta/BasicMeta";
-import OpenGraphMeta from "../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../components/meta/TwitterCardMeta";
-import layout from "../styles/components/Layout.module.scss";
+import Layout from "../../components/Layout";
+import BasicMeta from "../../components/meta/BasicMeta";
+import OpenGraphMeta from "../../components/meta/OpenGraphMeta";
+import TwitterCardMeta from "../../components/meta/TwitterCardMeta";
+import layout from "../../styles/components/Layout.module.scss";
 
 export default function MScTrackOverview() {
   return (
@@ -12,23 +12,60 @@ export default function MScTrackOverview() {
       <TwitterCardMeta url={"/"} />
       <div className={layout.container__main}>
         <h1>MSc Thesis Projects</h1>
-        <p>The following projects are Master Thesis Projects that have been defined by GRAPPA faculty members. Other thesis projects may also be available, please contact the relevant faculty members. See also GRAPPA members’ research interests. Please note that this is an evolving list, so come back in the future.</p>
+        <p>
+          The following projects are Master Thesis Projects that have been
+          defined by GRAPPA faculty members. Other thesis projects may also be
+          available, please contact the relevant faculty members. See also
+          GRAPPA members’ research interests. Please note that this is an
+          evolving list, so come back in the future.
+        </p>
 
         <h2>Projects with a September 2020 start:</h2>
-        
-        <h3>Confronting self-interacting dark matter with observational data</h3>
 
-        <p>Dwarf galaxies are dark matter (DM) dominated systems, and therefore provide ideal laboratories to study not only the DM halo and galaxy structure, but also the nature of DM. It has been proposed that DM particles experience collisions against each other, and to further constrain the rate of these collisions, recent studies (e.g. Valli & Yu 2018) have derived a semi-analytic approach for describing self-interacting DM halo profiles, called the Jeans model. This approach is only valid in the regime where the mean free path is larger than the typical size of the collisional region (corresponding to a small collision cross section). A recent study (Correa 2020), however, is predicting that the dwarf galaxies that orbit around the Milky Way are in gravothermal core-collapse, a state where DM-DM collisions increase the density in the central regions. This scenario invalidates the Jeans model analysis of these systems, as well as the current upper limits of the DM collision cross sections.</p>
+        <h3>
+          Confronting self-interacting dark matter with observational data
+        </h3>
 
-        <p>The goals of this research project are to derive an alternative model for describing self-interacting DM halo profiles under gravothermal collapse, use the latest observational data from the local dwarfs to constrain their density profile and provide new upper limits to the DM collision cross sections. During the first part of the project the student will study the density profile of self-interacting DM haloes using cosmological simulations of galaxy formation.</p>
+        <p>
+          Dwarf galaxies are dark matter (DM) dominated systems, and therefore
+          provide ideal laboratories to study not only the DM halo and galaxy
+          structure, but also the nature of DM. It has been proposed that DM
+          particles experience collisions against each other, and to further
+          constrain the rate of these collisions, recent studies (e.g. Valli &
+          Yu 2018) have derived a semi-analytic approach for describing
+          self-interacting DM halo profiles, called the Jeans model. This
+          approach is only valid in the regime where the mean free path is
+          larger than the typical size of the collisional region (corresponding
+          to a small collision cross section). A recent study (Correa 2020),
+          however, is predicting that the dwarf galaxies that orbit around the
+          Milky Way are in gravothermal core-collapse, a state where DM-DM
+          collisions increase the density in the central regions. This scenario
+          invalidates the Jeans model analysis of these systems, as well as the
+          current upper limits of the DM collision cross sections.
+        </p>
 
-        <p>By carrying out this project, the student will learn about the observations of galaxies from the local group, cosmological simulations of galaxy formation, as well as the theory of structure formation.</p>
+        <p>
+          The goals of this research project are to derive an alternative model
+          for describing self-interacting DM halo profiles under gravothermal
+          collapse, use the latest observational data from the local dwarfs to
+          constrain their density profile and provide new upper limits to the DM
+          collision cross sections. During the first part of the project the
+          student will study the density profile of self-interacting DM haloes
+          using cosmological simulations of galaxy formation.
+        </p>
+
+        <p>
+          By carrying out this project, the student will learn about the
+          observations of galaxies from the local group, cosmological
+          simulations of galaxy formation, as well as the theory of structure
+          formation.
+        </p>
 
         <h4>References</h4>
         <p>Valli & Yu (2018) https://arxiv.org/abs/1711.03502</p>
         <p>Correa (2020) https://arxiv.org/abs/2007.02958</p>
 
-{/* Contact
+        {/* Contact
 
 Camila Correa and Shin’ichiro Ando
 Galactic clues to the nature of dark matter
@@ -100,7 +137,7 @@ The XENON collaboration has used the XENON1T detector to achieve the world’s m
 Contact
 
 Patrick Decowski */}
-</div>
+      </div>
     </Layout>
   );
 }

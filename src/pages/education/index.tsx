@@ -4,39 +4,59 @@ import BasicMeta from "../../components/meta/BasicMeta";
 import OpenGraphMeta from "../../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../../components/meta/TwitterCardMeta";
 import layout from "../../styles/components/Layout.module.scss";
+import { gql } from "@apollo/client";
+import client from "../../../apollo-client";
+import ReactMarkdown from "react-markdown";
 
-export default function Education() {
+export default function Education({ content }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
       <OpenGraphMeta url={"/"} />
       <TwitterCardMeta url={"/"} />
-      <div className={layout.container__main}>
-        <h1>Education</h1>
-
-        <h2>GRAPPA MSc</h2>
-        <Link href="/education/msc-track-overview">
-          <a>
-            <h3>Track Overview</h3>
-          </a>
-        </Link>
-        <Link href="/msc-faq">
-          <a>
-            <h3>FAQ</h3>
-          </a>
-        </Link>
-        <Link href="/msc-thesis-projects">
-          <a>
-            <h3>Thesis Projects</h3>
-          </a>
-        </Link>
+      <main className={layout.container__main}>
+        <h1>{content.title}</h1>
+        <h2>GRAPPA Msc</h2>
+        <ul>
+          <li>
+            <Link href="/education/msc-track-overview">MSc Track Overview</Link>
+          </li>
+          <li>
+            <Link href="/education/msc-faq">MSc FAQ</Link>
+          </li>
+          <li>
+            <Link href="/education/msc-thesis-projects">
+              MSc Thesis Projects
+            </Link>
+          </li>
+        </ul>
         <h2>GRAPPA Ph.D. Program</h2>
-        <Link href="/phd-track-overview">
-          <a>
-            <h3>Track Overview</h3>
-          </a>
-        </Link>
-      </div>
+        <p>
+          <Link href="/education/phd-track-overview">Ph.D. Track Overview</Link>
+        </p>
+      </main>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const { data } = await client.query({
+    query: gql`
+      query EducationPage {
+        textBlock(id: "74Q2vQC0Y2EGsgzM2Y1Onu") {
+          sys {
+            id
+          }
+          title
+          text
+        }
+      }
+    `,
+  });
+
+  return {
+    props: {
+      content: data.textBlock,
+    },
+  };
 }
