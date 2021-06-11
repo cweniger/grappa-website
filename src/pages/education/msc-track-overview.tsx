@@ -3,23 +3,19 @@ import BasicMeta from "../../components/meta/BasicMeta";
 import OpenGraphMeta from "../../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../../components/meta/TwitterCardMeta";
 import layout from "../../styles/components/Layout.module.scss";
-// import ReactMarkdown from "react-markdown";
 import { gql } from "@apollo/client";
 import client from "../../../apollo-client";
 import ReactMarkdown from "react-markdown";
 
-export default function Contact({ content }) {
+export default function MScTrackOverview({ content }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
       <OpenGraphMeta url={"/"} />
       <TwitterCardMeta url={"/"} />
       <main className={layout.container__main}>
-        <section>
-          <h1>Contact</h1>
-          <h2>{content.title}</h2>
-          <ReactMarkdown>{content.text}</ReactMarkdown>
-        </section>
+        <h1>{content.title}</h1>
+        <ReactMarkdown>{content.text}</ReactMarkdown>
       </main>
     </Layout>
   );
@@ -28,8 +24,8 @@ export default function Contact({ content }) {
 export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
-      query ContactPage {
-        textBlock(id: "1j0QoaJxhq6z12pEvldYqY") {
+      query MscTrackOverviewPage {
+        textBlock(id: "3NIrQbEeQQBiJS9arJBjoq") {
           sys {
             id
           }
