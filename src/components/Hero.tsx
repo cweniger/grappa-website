@@ -13,7 +13,7 @@ export function Hero({ hero }) {
       <div className={layout.container__main}>
         <h2 className={$.header}>{hero.headline}</h2>
         <p className={$.subheader}>{hero.subheader}</p>
-        <PrimaryCTA href="/" ctaCopy={hero.primaryCtaCopy} />
+        <PrimaryCTA href={hero.primaryCtaUrl} ctaCopy={hero.primaryCtaCopy} />
       </div>
     </section>
   );

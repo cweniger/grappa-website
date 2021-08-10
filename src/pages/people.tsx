@@ -49,7 +49,7 @@ export default function People({ persons }) {
                         />
                       </Link>
                     ) : (
-                      <div className={people.planet}></div>
+                      <div className={people.planet} />
                     )}
                     {fields.slug ? (
                       <Link href={`/members/${fields.slug}`}>
