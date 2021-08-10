@@ -8,7 +8,6 @@ import { FeaturedTestimonial } from "../components/FeaturedTestimonial";
 import { FeaturedNews } from "../components/FeaturedNews";
 
 export default function Index({ hero, testimonials, homepageTeasers, news }) {
-  console.log(hero);
   return (
     <Layout>
       <PageMetadata />
@@ -112,8 +111,6 @@ async function fetchTestimonials() {
   const URL = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/entries?access_token=${accessToken}&content_type=${contentType}`;
   const response = await fetch(URL);
   const testimonials = await response.json();
-
-  console.log(testimonials);
 
   return testimonials.items.map((item) => {
     const student = testimonials.includes.Entry.find((student) => {
