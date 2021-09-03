@@ -80,10 +80,10 @@ export default function People({ persons }) {
           {sortedAlumni.map((fields) => (
             <li key={fields.fullName}>
               {fields.slug ? (
-                <Link href={`/members/${fields.slug}`}>
-                  <a className={people.name}>{fields.fullName}</a>
-                </Link>
+                // <Link href={`/members/${fields.slug}`}>
+                <p className={people.name}>{fields.fullName}</p>
               ) : (
+                // </Link>
                 <p className={people.name}>{fields.fullName}</p>
               )}
             </li>
