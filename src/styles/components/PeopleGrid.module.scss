@@ -52,6 +52,8 @@
       box-shadow: 0.5rem 0.5rem $chroma-yellow, 0.5rem -0.5rem $chroma-red,
         -0.5rem 0.5rem $chroma-purple;
     }
+  }
+  &:focus-within {
     a {
       background-color: $black;
       color: $white;
