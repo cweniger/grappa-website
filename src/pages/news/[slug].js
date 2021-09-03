@@ -1,15 +1,11 @@
 import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
-import OpenGraphMeta from "../../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../../components/meta/TwitterCardMeta";
 import layout from "../../styles/components/Layout.module.scss";
 import ReactMarkdown from "react-markdown";
 export default function News({ article }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <OpenGraphMeta url={"/"} />
-      <TwitterCardMeta url={"/"} />
       <div className={layout.container__main}>
         <h1>{article.headline}</h1>
         <p>{article.date}</p>

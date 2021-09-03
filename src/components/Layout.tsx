@@ -1,9 +1,6 @@
 import Head from "next/head";
 import Navigation from "./Navigation";
 import header from "../styles/components/Header.module.scss";
-import layout from "../styles/components/Layout.module.scss";
-import Link from "next/link";
-import { mainModule } from "process";
 
 type Props = {
   children: React.ReactNode;
@@ -34,12 +31,10 @@ export default function Layout({ children }: Props) {
           <img src="images/uva-logo.svg" alt="University of Amsterdam" />
         </div>
       </div> */}
-      <div className={header.container__main}>
-        <header>
-          <Navigation />
-        </header>
-      </div>
-      <main className={header.container__main}>{children}</main>
+      <header className={header.container__main}>
+        <Navigation />
+      </header>
+      <main className={header.container__full}>{children}</main>
     </div>
   );
 }

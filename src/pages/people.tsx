@@ -1,14 +1,12 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
 import BasicMeta from "../components/meta/BasicMeta";
-import OpenGraphMeta from "../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../components/meta/TwitterCardMeta";
 import layout from "../styles/components/Layout.module.scss";
 import groupBy from "lodash.groupby";
-import orderBy from "lodash.orderby";
-import sortBy from "lodash.sortby";
 import people from "../styles/components/PeopleGrid.module.scss";
+import classnames from "classnames";
 import * as _ from "lodash";
+
 export default function People({ persons }) {
   // get alumni and visitors, has end date
   const personsHasEndDate = groupBy(persons, (person) => {
@@ -34,41 +32,50 @@ export default function People({ persons }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <OpenGraphMeta url={"/"} />
-      <TwitterCardMeta url={"/"} />
-      <div className={layout.container__main}>
-        <h1>People</h1>
-        <section>
-          {Object.keys(sortedCurrent).map((key) => (
-            <div key={key}>
-              <h2>{key}</h2>
-              <div className={people.peopleGrid}>
-                {sortedCurrent[key].map((fields) => (
-                  <div className={people.box} key={fields.fullName}>
-                    {fields.profilePicture ? (
-                      <Link href={`/members/${fields.slug}`}>
-                        <img
-                          src={fields.profilePicture}
-                          alt={fields.fullName}
-                        />
-                      </Link>
-                    ) : (
-                      <div className={people.planet} />
-                    )}
-                    {fields.slug ? (
-                      <Link href={`/members/${fields.slug}`}>
-                        <p className={people.nameCentred}>{fields.fullName}</p>
-                      </Link>
-                    ) : (
-                      <p className={people.nameCentred}>{fields.fullName}</p>
-                    )}
-                  </div>
-                ))}
+      <section className={(layout.container__full, people.color)}>
+        <div className={classnames(layout.container__main)}>
+          <h1 className={people.accent}>Meet our team</h1>
+          <p className={classnames(people.hero, "text__headline__2")}>
+            GRAPPA researchers have wide research interests, including dark
+            matter phenomenology, cosmic rays, high-energy astrophysics,
+            cosmology, black holes physics, gravitational waves, and string
+            theory.
+          </p>
+        </div>
+      </section>
+      {Object.keys(sortedCurrent).map((key) => (
+        <section className={classnames(layout.container__main)} key={key}>
+          <h2 className={classnames(people.underscore, "text__headline__3")}>
+            {key}
+          </h2>
+          <div className={people.peopleGrid}>
+            {sortedCurrent[key].map((fields) => (
+              <div className={people.box} key={fields.fullName}>
+                {fields.profilePicture ? (
+                  <Link href={`/members/${fields.slug}`}>
+                    <img src={fields.profilePicture} alt={fields.fullName} />
+                  </Link>
+                ) : (
+                  <Link href={`/members/${fields.slug}`}>
+                    <div className={people.planet} />
+                  </Link>
+                )}
+                {fields.slug ? (
+                  <Link href={`/members/${fields.slug}`}>
+                    <a className={people.nameCentred}>{fields.fullName}</a>
+                  </Link>
+                ) : (
+                  <p className={people.nameCentred}>{fields.fullName}</p>
+                )}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </section>
-        <h2>Alumni</h2>
+      ))}
+      <section className={classnames(layout.container__main)}>
+        <h2 className={classnames(people.underscore, "text__headline__3")}>
+          Alumni
+        </h2>
         <div className={people.alumni}>
           {sortedAlumni.map((fields) => (
             <div key={fields.fullName}>
@@ -82,7 +89,7 @@ export default function People({ persons }) {
             </div>
           ))}
         </div>
-      </div>
+      </section>
     </Layout>
   );
 }

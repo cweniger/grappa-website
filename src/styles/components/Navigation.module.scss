@@ -21,9 +21,9 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  max-width: 1420px;
+  max-width: 70rem;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 1.25rem;
 }
 
 .menuToggle {
@@ -38,12 +38,12 @@
 }
 
 .menuToggle:focus-visible {
-  background-color: black;
+  background-color: $black;
   outline: 0 transparent solid;
 }
 
 .menuToggle:focus:not(:focus-visible) {
-  background-color: black;
+  background-color: $black;
   outline: 0 transparent solid;
 }
 
@@ -63,6 +63,8 @@
     text-decoration: none;
     font-weight: 300;
     position: relative;
+    padding: 0.5rem 1rem;
+
     &::after {
       background: $chroma-gradient;
       border-radius: 5em;
@@ -85,18 +87,6 @@
   }
 }
 
-.navLinks a {
-  padding: 0.5rem 1rem;
-}
-
-.navLinks a:hover {
-  text-decoration: black wavy underline;
-  text-decoration-thickness: 1.22px;
-}
-
-.mobileLinks {
-}
-
 .mobileLinks a {
   text-transform: capitalize;
   font-family: $font-family--heading;
@@ -111,9 +101,9 @@
 }
 
 .mobileNavContainer {
-  margin-top: 95px;
+  margin-top: 75px;
   width: 100vw;
-  height: calc(100vh - 95px);
+  height: calc(100vh - 75px);
   background-color: white;
   overflow: hidden;
   position: fixed;
@@ -129,7 +119,7 @@
   list-style: none;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1025px) {
   .logo {
     max-width: 13rem;
   }

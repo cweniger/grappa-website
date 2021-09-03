@@ -3,14 +3,20 @@ import Layout from "../components/Layout";
 
 import { Hero } from "../components/Hero";
 import { FeaturedTeasers } from "../components/FeaturedTeasers";
-import { PageMetadata } from "../components/PageMetadata";
 import { FeaturedTestimonial } from "../components/FeaturedTestimonial";
+import BasicMeta from "../components/meta/BasicMeta";
 import { FeaturedNews } from "../components/FeaturedNews";
 
-export default function Index({ hero, testimonials, homepageTeasers, news }) {
+export default function Index({
+  hero,
+  url,
+  testimonials,
+  homepageTeasers,
+  news,
+}) {
   return (
     <Layout>
-      <PageMetadata />
+      <BasicMeta url={url} />
       <Hero hero={hero} />
       <FeaturedTeasers homepageTeasers={homepageTeasers} />
       <FeaturedTestimonial testimonials={testimonials} />

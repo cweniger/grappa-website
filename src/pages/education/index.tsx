@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
-import OpenGraphMeta from "../../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../../components/meta/TwitterCardMeta";
 import layout from "../../styles/components/Layout.module.scss";
 import { gql } from "@apollo/client";
 import client from "../../../apollo-client";
@@ -12,8 +10,6 @@ export default function Education({ content }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <OpenGraphMeta url={"/"} />
-      <TwitterCardMeta url={"/"} />
       <main className={layout.container__main}>
         <h1>{content.title}</h1>
         <p>{content.text}</p>
