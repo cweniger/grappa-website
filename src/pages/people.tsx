@@ -50,7 +50,7 @@ export default function People({ persons, heroEntry }) {
                   </Link>
                 ) : (
                   <Link href={`/members/${fields.slug}`}>
-                    <figure className={people.planet} />
+                    <div className={people.planet} />
                   </Link>
                 )}
                 {fields.slug ? (

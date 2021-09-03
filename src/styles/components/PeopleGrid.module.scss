@@ -27,7 +27,6 @@
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   row-gap: 1rem;
   column-gap: 1rem;
-  justify-items: center;
   margin: 0 auto;
 
   figure img {
@@ -109,6 +108,7 @@
   height: 10rem;
   background: $black;
   transition: $transition--ease--fast;
+  margin-bottom: 1rem;
 
   // background: linear-gradient(
   //   0deg,
