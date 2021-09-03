@@ -1,0 +1,14 @@
+@import "../theme/theme";
+
+.area {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.blurb {
+  font-family: $font-family--accent;
+}
+
+.summary {
+  margin-right: 2rem;
+}

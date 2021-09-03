@@ -10,4 +10,8 @@
 }
 .container__full {
   padding: 6rem 1rem 1rem;
+
+  &__black {
+    background-color: $black;
+  }
 }
