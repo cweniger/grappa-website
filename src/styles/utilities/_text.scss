@@ -28,3 +28,35 @@
 .text--emphasis {
   font-style: italic;
 }
+
+.text--eyebrow {
+  margin-top: 5rem;
+  font-weight: 600;
+  font-family: $font-family--heading;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.4em;
+  color: $chroma-yellow;
+}
+
+.text--eyebrow__grey {
+  @extend .text--eyebrow;
+  color: $neutral-gray-03;
+}
+
+.text--hero {
+  font-family: $font-family--heading;
+  font-weight: 300;
+  margin: 0 0 5rem 0;
+  color: $white;
+  max-width: 60rem;
+}
+
+.text--research {
+  font-family: $font-family--heading;
+  font-weight: 300;
+  // color: $neutral-gray-03;
+  max-width: 60rem;
+  min-width: 24rem;
+  margin-right: 2rem;
+}

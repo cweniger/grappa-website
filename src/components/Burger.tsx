@@ -4,7 +4,7 @@ type Props = {
 };
 export default function Burger({ active, onClick }: Props) {
   return (
-    <div className={"container " + (active ? "active" : "")} onClick={onClick}>
+    <div className={"container" + (active ? "active" : "")} onClick={onClick}>
       <div className={"meat meat-1"} />
       <div className={"meat meat-2"} />
       <div className={"meat meat-3"} />
@@ -17,7 +17,7 @@ export default function Burger({ active, onClick }: Props) {
             cursor: pointer;
             top: 1.5rem;
             right: 1.25rem;
-            z-index: 2;
+            z-index: 20;
           }
           .meat {
             position: absolute;
@@ -44,7 +44,7 @@ export default function Burger({ active, onClick }: Props) {
             transform: rotate(-45deg);
           }
 
-          @media (min-width: 1025px) {
+          @media (min-width: 1240px) {
             .container {
               display: none;
             }

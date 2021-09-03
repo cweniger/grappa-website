@@ -6,8 +6,11 @@ import groupBy from "lodash.groupby";
 import people from "../styles/components/PeopleGrid.module.scss";
 import classnames from "classnames";
 import * as _ from "lodash";
+import { gql } from "graphql-request";
+import { contentfulApi } from "../lib/contentful";
+import SecondaryHero from "../components/SecondaryHero";
 
-export default function People({ persons }) {
+export default function People({ persons, heroEntry }) {
   // get alumni and visitors, has end date
   const personsHasEndDate = groupBy(persons, (person) => {
     if (person.endDate) {
@@ -32,17 +35,7 @@ export default function People({ persons }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <section className={(layout.container__full, people.color)}>
-        <div className={classnames(layout.container__main)}>
-          <h1 className={people.accent}>Meet our team</h1>
-          <p className={classnames(people.hero, "text__headline__2")}>
-            GRAPPA researchers have wide research interests, including dark
-            matter phenomenology, cosmic rays, high-energy astrophysics,
-            cosmology, black holes physics, gravitational waves, and string
-            theory.
-          </p>
-        </div>
-      </section>
+      <SecondaryHero heroEntry={heroEntry} />
       {Object.keys(sortedCurrent).map((key) => (
         <section className={classnames(layout.container__main)} key={key}>
           <h2 className={classnames(people.underscore, "text__headline__3")}>
@@ -50,14 +43,14 @@ export default function People({ persons }) {
           </h2>
           <div className={people.peopleGrid}>
             {sortedCurrent[key].map((fields) => (
-              <div className={people.box} key={fields.fullName}>
+              <figure className={people.box} key={fields.fullName}>
                 {fields.profilePicture ? (
                   <Link href={`/members/${fields.slug}`}>
                     <img src={fields.profilePicture} alt={fields.fullName} />
                   </Link>
                 ) : (
                   <Link href={`/members/${fields.slug}`}>
-                    <div className={people.planet} />
+                    <figure className={people.planet} />
                   </Link>
                 )}
                 {fields.slug ? (
@@ -67,7 +60,7 @@ export default function People({ persons }) {
                 ) : (
                   <p className={people.nameCentred}>{fields.fullName}</p>
                 )}
-              </div>
+              </figure>
             ))}
           </div>
         </section>
@@ -94,7 +87,7 @@ export default function People({ persons }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ preview = false }) {
   const spaceId = process.env.CONTENTFUL_SPACE;
   const environmentId = process.env.CONTENTFUL_ENV;
   const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
@@ -122,8 +115,43 @@ export async function getStaticProps() {
     };
   });
 
+  const query = gql`
+    query researchCollectionQuery($preview: Boolean!) {
+      researchCollection(preview: $preview) {
+        items {
+          title
+          description
+          team: teamCollection(limit: 10) {
+            items {
+              fullName
+              profilePicture {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const heroQuery = gql`
+    query peopleHero {
+      hero(id: "3WITI7pVyu4moV9qQIB4Ll") {
+        headline
+        subheader
+      }
+    }
+  `;
+
+  const data = await contentfulApi(query, { preview });
+  const heroData = await contentfulApi(heroQuery, { preview });
+  const entry = data?.researchCollection?.items ?? null;
+  const heroEntry = heroData?.hero ?? null;
   return {
     props: {
+      entry,
+      heroEntry,
+      preview,
       persons: itemsWithAssets,
     },
   };
