@@ -11,7 +11,7 @@ export function FeaturedNews({ news }) {
     <section className={featured.container}>
       <div className={layout.container__main}>
         {news.map((article) => (
-          <div key={article.headline}>
+          <div key={article.headline} className={featured.teaser}>
             {article.image && <img src={article.image} />}
 
             <h3>

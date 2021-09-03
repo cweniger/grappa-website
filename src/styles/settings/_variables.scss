@@ -1,3 +1,4 @@
+@use "sass:math";
 // Global variables here. Add anything else you might need. Always start with section name for naming.
 
 // Font Colors
@@ -5,6 +6,7 @@ $font-color--base: $neutral-gray-03;
 $font-color--heading: $black;
 
 // Font Families
+$font-family--accent: $azeret;
 $font-family--base: $neue;
 $font-family--heading: $termina;
 
@@ -36,9 +38,9 @@ $site-container--center: 0 auto;
 
 // Space
 $space--base: 8px;
-$space--x-small: $space--base / 4;
-$space--small: $space--base / 2;
-$space--medium: $space--base * 2;
-$space--large: $space--base * 4;
-$space--x-large: $space--base * 8;
+$space--x-small: math.div($space--base, 4);
+$space--small: math.div($space--base, 2);
+$space--medium: math.div($space--base, 2);
+$space--large: math.div($space--base, 4);
+$space--x-large: math.div($space--base, 8);
 // Borders

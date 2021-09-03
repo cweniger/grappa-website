@@ -5,8 +5,10 @@ import OpenGraphMeta from "../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../components/meta/TwitterCardMeta";
 import layout from "../styles/components/Layout.module.scss";
 import groupBy from "lodash.groupby";
+import orderBy from "lodash.orderby";
+import sortBy from "lodash.sortby";
 import people from "../styles/components/PeopleGrid.module.scss";
-
+import * as _ from "lodash";
 export default function People({ persons }) {
   // get alumni and visitors, has end date
   const personsHasEndDate = groupBy(persons, (person) => {
@@ -20,12 +22,14 @@ export default function People({ persons }) {
    * { current: [{ title, startDate, endDate}, {...}], alumni: []}
    */
 
-  // HOLD: Pending changing all titles to correct type: Linking to new content model (Job title)
+  const sortedCurrent = _.chain(personsHasEndDate.current)
+    .sortBy("fullName")
+    .groupBy("title")
+    .value();
 
-  const currentPeopleByTitle = groupBy(
-    personsHasEndDate.current,
-    (person) => person.title
-  );
+  const sortedAlumni = _.chain(personsHasEndDate.alumni)
+    .sortBy("fullName")
+    .value();
 
   return (
     <Layout>
@@ -35,11 +39,11 @@ export default function People({ persons }) {
       <div className={layout.container__main}>
         <h1>People</h1>
         <section>
-          {Object.keys(currentPeopleByTitle).map((key) => (
+          {Object.keys(sortedCurrent).map((key) => (
             <div key={key}>
               <h2>{key}</h2>
               <div className={people.peopleGrid}>
-                {currentPeopleByTitle[key].map((fields) => (
+                {sortedCurrent[key].map((fields) => (
                   <div className={people.box} key={fields.fullName}>
                     {fields.profilePicture ? (
                       <Link href={`/members/${fields.slug}`}>
@@ -53,10 +57,10 @@ export default function People({ persons }) {
                     )}
                     {fields.slug ? (
                       <Link href={`/members/${fields.slug}`}>
-                        <p className={people.name}>{fields.fullName}</p>
+                        <p className={people.nameCentred}>{fields.fullName}</p>
                       </Link>
                     ) : (
-                      <p className={people.name}>{fields.fullName}</p>
+                      <p className={people.nameCentred}>{fields.fullName}</p>
                     )}
                   </div>
                 ))}
@@ -66,14 +70,14 @@ export default function People({ persons }) {
         </section>
         <h2>Alumni</h2>
         <div className={people.alumni}>
-          {personsHasEndDate.alumni.map((fields) => (
+          {sortedAlumni.map((fields) => (
             <div key={fields.fullName}>
               {fields.slug ? (
                 <Link href={`/members/${fields.slug}`}>
-                  <p>{fields.fullName}</p>
+                  <a className={people.name}>{fields.fullName}</a>
                 </Link>
               ) : (
-                <p>{fields.fullName}</p>
+                <p className={people.name}>{fields.fullName}</p>
               )}
             </div>
           ))}
