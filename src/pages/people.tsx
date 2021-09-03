@@ -76,9 +76,9 @@ export default function People({ persons }) {
         <h2 className={classnames(people.underscore, "text__headline__3")}>
           Alumni
         </h2>
-        <div className={people.alumni}>
+        <ul className={people.alumni}>
           {sortedAlumni.map((fields) => (
-            <div key={fields.fullName}>
+            <li key={fields.fullName}>
               {fields.slug ? (
                 <Link href={`/members/${fields.slug}`}>
                   <a className={people.name}>{fields.fullName}</a>
@@ -86,9 +86,9 @@ export default function People({ persons }) {
               ) : (
                 <p className={people.name}>{fields.fullName}</p>
               )}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
     </Layout>
   );
