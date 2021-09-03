@@ -1,7 +1,5 @@
 import Layout from "../components/Layout";
 import BasicMeta from "../components/meta/BasicMeta";
-import OpenGraphMeta from "../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../components/meta/TwitterCardMeta";
 import layout from "../styles/components/Layout.module.scss";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
@@ -9,8 +7,6 @@ export default function Research({ researchAreas }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <OpenGraphMeta url={"/"} />
-      <TwitterCardMeta url={"/"} />
       <div className={layout.container__main}>
         <h1>Research</h1>
         <p>

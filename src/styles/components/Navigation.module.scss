@@ -3,41 +3,133 @@
 // TODO: Refactor
 
 .navigation {
-    max-width: 42rem;
-    position: -webkit-sticky;
-    position: sticky;
-    top: -1;
-    width: 100%;
-    ul {
-        display: flex;
-        justify-content: space-between;
-        text-transform: capitalize;
-    }
-    ul li {
-        display: inline;
+  background-color: WHITE;
+  padding: 0.5rem 0;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  width: 100%;
+}
+
+.logo {
+  cursor: pointer;
+  max-width: 10rem;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.menuToggle {
+  width: 35px;
+  height: 25px;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.menuToggle:focus-visible {
+  background-color: $black;
+  outline: 0 transparent solid;
+}
+
+.menuToggle:focus:not(:focus-visible) {
+  background-color: $black;
+  outline: 0 transparent solid;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  text-transform: capitalize;
+  li {
+    display: inline;
+  }
+
+  li a {
+    color: $black;
+    font-family: $font-family--accent;
+    text-decoration: none;
+    font-weight: 300;
+    position: relative;
+    padding: 0.5rem 1rem;
+
+    &::after {
+      background: $chroma-gradient;
+      border-radius: 5em;
+      content: "";
+      display: block;
+      height: 0.1em;
+      transform-origin: 50% 0%;
+      transform: scalex(0);
+      width: 100%;
+      bottom: 0;
+      position: absolute;
     }
 
-    ul li a {
-        color: $black;
-        font-family: $font-family--base;
-        font-weight: bold;
-        text-decoration: none; 
-        &::after {
-            background: $chroma-gradient;
-            border-radius: 5em;
-            content: '';
-            display: block;
-            height: .1em;
-            transform-origin: 50% 0%;
-            transform: scalex(0);
-            width: 100%;
-  }
-  
-        &:hover {
-         &::after {
-             transform: scalex(1);
-             transition: $transition--smooth--fast;
-         }
-  }
+    &:hover {
+      &::after {
+        transform: scalex(1);
+        transition: $transition--smooth--fast;
+      }
     }
+  }
+}
+
+.mobileLinks a {
+  text-transform: capitalize;
+  font-family: $font-family--heading;
+  text-decoration: none;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.desktopNavContainer {
+  display: none;
+}
+
+.mobileNavContainer {
+  margin-top: 75px;
+  width: 100vw;
+  height: calc(100vh - 75px);
+  background-color: white;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+}
+
+.mobileNavContainer ul {
+  padding: 0 1.5rem;
+  list-style: none;
+}
+
+@media screen and (min-width: 1025px) {
+  .logo {
+    max-width: 13rem;
+  }
+  .menuToggle {
+    display: none;
+  }
+  .desktopNavContainer {
+    display: block;
+  }
+  .mobileNavContainer {
+    display: none;
+  }
 }

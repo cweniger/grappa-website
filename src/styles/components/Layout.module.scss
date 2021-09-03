@@ -3,4 +3,11 @@
 .container__main {
   margin: $site-container--center;
   max-width: 70rem;
+  padding: 6rem 1rem 1rem;
+  &:last-of-type {
+    padding-bottom: 10rem;
+  }
+}
+.container__full {
+  padding: 6rem 1rem 1rem;
 }

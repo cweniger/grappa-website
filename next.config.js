@@ -1,6 +1,6 @@
 // const withMdxEnhanced = require("next-mdx-enhanced");
 // const rehypePrism = require("@mapbox/rehype-prism");
-
+const path = require("path");
 module.exports = {
   webpack: (config) => {
     config.module.rules.push(
@@ -20,6 +20,9 @@ module.exports = {
   },
   images: {
     domains: ["images.ctfassets.net"],
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, "styles")],
   },
 };
 
