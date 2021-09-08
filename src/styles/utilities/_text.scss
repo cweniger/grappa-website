@@ -60,3 +60,15 @@
   min-width: 24rem;
   margin-right: 2rem;
 }
+
+.text--underscore {
+  font-family: $font-family--accent;
+  margin: 0 0 2rem;
+  display: inline-block;
+  padding: 0 0.75rem 0.75rem 0;
+  box-shadow: 10px 10px 0 0 $chroma-yellow;
+
+  &--small {
+    font-size: 1rem;
+  }
+}

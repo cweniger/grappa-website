@@ -1,0 +1,54 @@
+@import "../theme/theme";
+
+.box {
+  width: 100%;
+  max-width: 300px;
+  background-color: $neutral-gray-08;
+  transition: $transition--ease--fast;
+  margin: 2rem auto;
+
+  a {
+    cursor: pointer;
+    font-family: $font-family--accent;
+    font-weight: 300;
+    text-decoration: none;
+    font-size: 0.85rem;
+  }
+
+  img {
+    height: 300px;
+    max-width: 300px;
+    object-fit: cover;
+  }
+
+  p {
+    padding: 0 1rem;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0.25rem 0.25rem $chroma-purple;
+  }
+
+  @media (min-width: 900px) {
+    max-width: 250px;
+
+    img {
+      height: 250px;
+      max-width: 250px;
+    }
+  }
+}
+
+.cardFallback {
+  background: $black;
+  margin-bottom: 1rem;
+}
+
+.container {
+  flex-direction: column;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+  }
+}

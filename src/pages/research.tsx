@@ -9,6 +9,8 @@ import classnames from "classnames";
 import Avatar from "../components/Avatar";
 import people from "../styles/components/PeopleGrid.module.scss";
 import sortBy from "lodash.sortby";
+import Card from "../components/Card";
+
 import research from "../styles/components/Research.module.scss";
 export default function Research({ entry, heroEntry }) {
   return (
@@ -16,8 +18,23 @@ export default function Research({ entry, heroEntry }) {
       <BasicMeta url={"/"} />
       <SecondaryHero heroEntry={heroEntry} />
 
+      <section
+        className={classnames(
+          layout.container__main,
+          research.container,
+          "container--flex"
+        )}
+      >
+        {entry.map((area) => (
+          <Card key={area.title} area={area} />
+        ))}
+      </section>
       {entry.map((area) => (
-        <section key={area.title} className={layout.container__main}>
+        <section
+          id={`${area.slug}`}
+          key={area.title}
+          className={layout.container__main}
+        >
           <div className={research.area}>
             <div className={research.summary}>
               <h2 className="text--research text__headline__2">{area.title}</h2>
@@ -52,9 +69,14 @@ export async function getStaticProps({ preview = false }) {
         items {
           title
           description
+          image {
+            url
+          }
+          slug
           team: teamCollection(limit: 10) {
             items {
               fullName
+              slug
               profilePicture {
                 url
               }
@@ -86,65 +108,3 @@ export async function getStaticProps({ preview = false }) {
     },
   };
 }
-
-// export async function getStaticProps() {
-//   const spaceId = process.env.CONTENTFUL_SPACE;
-//   const environmentId = process.env.CONTENTFUL_ENV;
-//   const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
-//   const contentType = "research";
-
-//   const URL = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/entries?access_token=${accessToken}&content_type=${contentType}&include=2`;
-//   const response = await fetch(URL);
-//   const researchAreas = await response.json();
-//   const assets = researchAreas.includes.Asset;
-//   const teamMembers = researchAreas.includes.Entry;
-
-//   const teamMembersWithPhotos = teamMembers.map((teamMember) => {
-//     // Destructure data for Entry versus Asset
-//     // sys contains the teamMember id, which we need to return for future use
-//     // fields contains content entered in Contentful
-//     const { sys, fields } = teamMember;
-//     // Check to see if profilePicture exists for the teamMember
-//     if (fields.profilePicture) {
-//       // Find the image that matches this teamMember from the assets array
-//       const image = assets.find((image) => {
-//         return fields.profilePicture.sys.id === image.sys.id;
-//       });
-//       // Provides URL for later use
-//       fields.profilePicture = `https:${image.fields.file.url}`;
-//     }
-
-//     return {
-//       // Provides all the data into one array
-//       id: sys.id,
-//       ...fields,
-//     };
-//   });
-
-//   const researchAreasWithTeamMembers = researchAreas.items.map((area) => {
-//     const { sys, fields } = area;
-
-//     if (fields.team) {
-//       const populatedTeam = fields.team.map((member) => {
-//         const memberWithPhoto = teamMembersWithPhotos.find((teamMember) => {
-//           return member.sys.id === teamMember.id;
-//         });
-
-//         return memberWithPhoto;
-//       });
-
-//       fields.team = populatedTeam;
-//     }
-
-//     return {
-//       id: sys.id,
-//       ...fields,
-//     };
-//   });
-
-//   return {
-//     props: {
-//       researchAreas: researchAreasWithTeamMembers,
-//     },
-//   };
-// }
