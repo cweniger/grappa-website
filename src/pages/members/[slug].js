@@ -15,7 +15,10 @@ export default function Member({ entry, preview }) {
     <Layout preview={preview}>
       <BasicMeta url={"/"} />
       <section className={layout.container__main}>
-        <p className="text--eyebrow__grey">{entry.jobTitle.title}</p>
+        {entry.jobTitle && (
+          <p className="text--eyebrow__grey">{entry.jobTitle.title}</p>
+        )}
+        {entry.visitor && <p className="text--eyebrow__grey">Visitor</p>}
         <h1>{entry.fullName}</h1>
         <div
           className={classnames(
@@ -121,6 +124,7 @@ export async function getStaticProps({ params, preview = false }) {
             websiteUrl
             publicationUrl
             emailAddress
+            visitor
             phoneNumber
             slug
             profilePicture {
@@ -165,6 +169,7 @@ export async function getStaticProps({ params, preview = false }) {
       entry,
       preview,
     },
+    revalidate: 60,
   };
 }
 export async function getStaticPaths() {
@@ -174,6 +179,6 @@ export async function getStaticPaths() {
   });
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }
