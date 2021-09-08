@@ -8,10 +8,11 @@ import card from "../../styles/components/Card.module.scss";
 import classnames from "classnames";
 
 import { contentfulApi, getAllMembersSlugs } from "../../lib/contentful";
-export default function Member({ entry }) {
-  const researchAreas = entry.linkedFrom.researchCollection.items;
+export default function Member({ entry, preview }) {
+  const researchAreas = entry?.linkedFrom?.researchCollection?.items ?? [];
+  const projects = entry.linkedFrom.thesisProjectCollection.items ?? [];
   return (
-    <Layout>
+    <Layout preview={preview}>
       <BasicMeta url={"/"} />
       <section className={layout.container__main}>
         <p className="text--eyebrow__grey">{entry.jobTitle.title}</p>
@@ -63,17 +64,39 @@ export default function Member({ entry }) {
             </figure>
           ) : null}
         </div>
-        <div>
-          <h2 className="text--underscore text--underscore--small">
-            Research Areas
-          </h2>
-          <div className={classnames(card.container, "container--flex")}>
-            {researchAreas.map((area) => (
-              <Card key={area.title} area={area}>
-                <a href={`/research#${area.slug}`}>{area.title}</a>
-              </Card>
-            ))}
-          </div>
+        <div className={classnames(card.container, "container--flex")}>
+          {researchAreas.length > 0 && (
+            <div>
+              <h2 className="text--underscore text--underscore--small">
+                Research Areas
+              </h2>
+              <div className={classnames(card.container, "container--flex")}>
+                {researchAreas.map((area) => (
+                  <Card
+                    title={area.title}
+                    image={area.image}
+                    slug={`/research#${area.slug}`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+          {projects.length > 0 && (
+            <div>
+              <h2 className="text--underscore text--underscore--small">
+                Masters Thesis Projects
+              </h2>
+              <div className="">
+                {projects.map((area) => (
+                  <p key={area.title} area={area}>
+                    <a href={`/education/msc-thesis-projects#${area.slug}`}>
+                      {area.title}
+                    </a>
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </Layout>
@@ -83,8 +106,8 @@ export default function Member({ entry }) {
 export async function getStaticProps({ params, preview = false }) {
   const peopleData = await contentfulApi(
     gql`
-      query personCollectionQuery($slug: String!) {
-        personCollection(limit: 1, where: { slug: $slug }) {
+      query personCollectionQuery($slug: String!, $preview: Boolean!) {
+        personCollection(limit: 1, where: { slug: $slug }, preview: $preview) {
           items {
             jobTitle {
               title
@@ -104,13 +127,20 @@ export async function getStaticProps({ params, preview = false }) {
               url
             }
             linkedFrom {
-              researchCollection {
+              researchCollection(limit: 10) {
                 items {
                   title
                   slug
                   image {
                     url
                   }
+                }
+              }
+              thesisProjectCollection(limit: 20) {
+                items {
+                  title
+                  slug
+                  description
                 }
               }
             }
@@ -120,12 +150,13 @@ export async function getStaticProps({ params, preview = false }) {
     `,
     {
       slug: params.slug,
+      preview,
     }
   );
 
   const entry = peopleData?.personCollection.items[0] ?? [];
 
-  if (!entry || !entry.linkedFrom?.researchCollection?.items?.length) {
+  if (!entry) {
     return { notFound: true };
   }
 
