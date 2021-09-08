@@ -1,6 +1,5 @@
 import Link from "next/link";
 import people from "../styles/components/PeopleGrid.module.scss";
-import Image from "next/image";
 
 export default function Avatar({ person, small }) {
   return (

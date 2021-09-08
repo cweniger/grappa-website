@@ -23,9 +23,11 @@ export default function People({ persons, heroEntry }) {
    * { current: [{ title, startDate, endDate}, {...}], alumni: []}
    */
 
+  // sorts current by fullName, then groups by title and lastly puts in order of section order (manually input)
   const sortedCurrent = _.chain(personsHasEndDate.current)
     .sortBy("fullName")
-    .groupBy("title")
+    .orderBy("jobTitle.order")
+    .groupBy("jobTitle.title")
     .value();
 
   const sortedAlumni = _.chain(personsHasEndDate.alumni)
@@ -38,15 +40,16 @@ export default function People({ persons, heroEntry }) {
       <SecondaryHero heroEntry={heroEntry} />
       {Object.keys(sortedCurrent).map((key) => (
         <section className={classnames(layout.container__main)} key={key}>
-          <h2 className={classnames(people.underscore, "text__headline__3")}>
-            {key}
-          </h2>
+          <h2 className="text--underscore text__headline__3">{key}</h2>
           <div className={people.peopleGrid}>
             {sortedCurrent[key].map((fields) => (
               <figure className={people.box} key={fields.fullName}>
                 {fields.profilePicture ? (
                   <Link href={`/members/${fields.slug}`}>
-                    <img src={fields.profilePicture} alt={fields.fullName} />
+                    <img
+                      src={fields.profilePicture.url}
+                      alt={fields.fullName}
+                    />
                   </Link>
                 ) : (
                   <Link href={`/members/${fields.slug}`}>
@@ -66,9 +69,7 @@ export default function People({ persons, heroEntry }) {
         </section>
       ))}
       <section className={classnames(layout.container__main)}>
-        <h2 className={classnames(people.underscore, "text__headline__3")}>
-          Alumni
-        </h2>
+        <h2 className="text--underscore text__headline__3">Alumni</h2>
         <ul className={people.alumni}>
           {sortedAlumni.map((fields) => (
             <li key={fields.fullName}>
@@ -88,32 +89,24 @@ export default function People({ persons, heroEntry }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const spaceId = process.env.CONTENTFUL_SPACE;
-  const environmentId = process.env.CONTENTFUL_ENV;
-  const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
-  const contentType = "person";
-  // const entryId = '4O6lzaAxTKq7Y6JNEyK7YO';
-
-  const URL = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/entries?access_token=${accessToken}&content_type=${contentType}`;
-  const response = await fetch(URL);
-  const persons = await response.json();
-
-  const items = persons.items.map((item) => item.fields);
-  const assets = persons.includes.Asset;
-
-  const itemsWithAssets = items.map((item) => {
-    if (!item.profilePicture) {
-      return item;
+  const peopleQuery = gql`
+    query personCollectionQuery($preview: Boolean!) {
+      persons: personCollection(preview: $preview, limit: 200) {
+        items {
+          jobTitle {
+            title
+            order
+          }
+          endDate
+          fullName
+          slug
+          profilePicture {
+            url
+          }
+        }
+      }
     }
-
-    const asset = assets.find(
-      (asset) => asset.sys.id === item.profilePicture.sys.id
-    );
-    return {
-      ...item,
-      profilePicture: asset.fields.file.url,
-    };
-  });
+  `;
 
   const query = gql`
     query researchCollectionQuery($preview: Boolean!) {
@@ -144,15 +137,17 @@ export async function getStaticProps({ preview = false }) {
   `;
 
   const data = await contentfulApi(query, { preview });
+  const peopleData = await contentfulApi(peopleQuery, { preview });
   const heroData = await contentfulApi(heroQuery, { preview });
   const entry = data?.researchCollection?.items ?? null;
+  const persons = peopleData?.persons?.items ?? null;
   const heroEntry = heroData?.hero ?? null;
   return {
     props: {
       entry,
       heroEntry,
       preview,
-      persons: itemsWithAssets,
+      persons,
     },
   };
 }

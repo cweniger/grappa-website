@@ -1,3 +1,10 @@
+$width--small-x: $space--x-small;
+$width--small: 600px;
+$width--medium: 800px;
+$width--base: 900px;
+$width--large: $space--large;
+$width--large-x: $space--x-large;
+
 @mixin container--width($width) {
   max-width: $width;
 }
@@ -9,7 +16,7 @@
 
 .container--base {
   @include container--h-center;
-  @include container--width($container-width--base);
+  @include container--width($width--base);
   padding-left: $space--medium;
   padding-right: $space--medium;
 }
@@ -19,17 +26,11 @@
 }
 
 .container--small {
-  @include container--h-center;
-  @include container--width($container-width--small);
-  padding-left: $space--base;
-  padding-right: $space--base;
+  @include container--width($width--small);
 }
 
 .container--medium {
-  @include container--h-center;
-  @include container--width($container-width--medium);
-  padding-left: $space--base;
-  padding-right: $space--base;
+  @include container--width($width--medium);
 }
 
 .container--width-260 {
@@ -38,7 +39,20 @@
 
 .container--flex {
   display: flex;
-  &--space-around{
+
+  &--row {
+    flex-direction: row;
+  }
+
+  &--col {
+    flex-direction: column;
+  }
+
+  &--space-around {
     justify-content: space-around;
+  }
+
+  &--space-between {
+    justify-content: space-between;
   }
 }

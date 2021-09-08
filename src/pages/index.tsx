@@ -1,5 +1,7 @@
 import { NextPage, GetStaticProps } from "next";
 import Layout from "../components/Layout";
+import { gql } from "graphql-request";
+import { contentfulApi } from "../lib/contentful";
 
 import { Hero } from "../components/Hero";
 import { FeaturedTeasers } from "../components/FeaturedTeasers";
@@ -83,32 +85,25 @@ async function fetchHomepageTeasers() {
 }
 
 async function fetchNews() {
-  const contentType = "news";
-
-  const URL = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/entries?access_token=${accessToken}&content_type=${contentType}&fields.highlight=1&order=-fields.date`;
-  const response = await fetch(URL);
-  const articles = await response.json();
-
-  const items = articles.items.map((item) => ({
-    ...item.fields,
-    id: item.sys.id,
-  }));
-  const assets = articles.includes.Asset;
-
-  const newsWithAssets = items.map((item) => {
-    if (!item.image) {
-      return item;
+  const query = gql`
+    query newsCollectionQuery {
+      newsCollection {
+        items {
+          headline
+          bodyCopy
+          slug
+          summary
+          image {
+            url
+          }
+        }
+      }
     }
+  `;
 
-    const asset = assets.find((asset) => asset.sys.id === item.image.sys.id);
+  const data = await contentfulApi(query);
 
-    return {
-      ...item,
-      image: `https:${asset.fields.file.url}`,
-    };
-  });
-
-  return newsWithAssets;
+  return data?.newsCollection?.items ?? [];
 }
 
 async function fetchTestimonials() {
