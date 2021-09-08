@@ -23,6 +23,8 @@ const Card: React.FC<Props> = (props) => {
       {props.slug ? (
         <Link href={props.slug}>
           <p>
+            {/* TODO: consolidatea date format: var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+console.log(new Intl.DateTimeFormat('de-DE', options).format(date)); */}
             <time dateTime={props.date}>{props.date}</time>
             <br />
             <a>{props.title}</a>
