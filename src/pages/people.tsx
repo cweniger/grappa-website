@@ -13,10 +13,11 @@ import SecondaryHero from "../components/SecondaryHero";
 export default function People({ persons, heroEntry }) {
   // get alumni and visitors, has end date
   const personsHasEndDate = groupBy(persons, (person) => {
-    if (person.endDate) {
-      return "alumni";
-    } else {
+    let today = new Date();
+    if (person.endDate == null || person.endDate > today) {
       return "current";
+    } else {
+      return "alumni";
     }
   });
   /*
@@ -47,8 +48,8 @@ export default function People({ persons, heroEntry }) {
                 {fields.profilePicture ? (
                   <Link href={`/members/${fields.slug}`}>
                     <img
-                      src={fields.profilePicture.url}
-                      alt={fields.fullName}
+                      src={fields?.profilePicture?.url}
+                      alt={fields?.fullName}
                     />
                   </Link>
                 ) : (
@@ -91,7 +92,7 @@ export default function People({ persons, heroEntry }) {
 export async function getStaticProps({ preview = false }) {
   const peopleQuery = gql`
     query personCollectionQuery($preview: Boolean!) {
-      persons: personCollection(preview: $preview, limit: 200) {
+      persons: personCollection(preview: $preview, limit: 500) {
         items {
           jobTitle {
             title
@@ -114,7 +115,7 @@ export async function getStaticProps({ preview = false }) {
         items {
           title
           description
-          team: teamCollection(limit: 10) {
+          team: teamCollection(limit: 50) {
             items {
               fullName
               profilePicture {
