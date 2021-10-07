@@ -46,6 +46,9 @@ $width--large-x: $space--x-large;
 
   &--col {
     flex-direction: column;
+    @media (min-width: 600px) {
+      flex-direction: row;
+    }
   }
 
   &--space-around {
@@ -55,4 +58,10 @@ $width--large-x: $space--x-large;
   &--space-between {
     justify-content: space-between;
   }
+
+  &--align-start {
+    align-items: start;
+  }
+
+  
 }

@@ -1,12 +1,13 @@
 import Layout from "../../components/Layout";
 import Card from "../../components/Card";
 import BasicMeta from "../../components/meta/BasicMeta";
+import people from "../../styles/components/PeopleGrid.module.scss";
+
 import { gql } from "graphql-request";
 import layout from "../../styles/components/Layout.module.scss";
-import people from "../../styles/components/PeopleGrid.module.scss";
 import card from "../../styles/components/Card.module.scss";
 import classnames from "classnames";
-
+import Address from "../../components/Members/Address";
 import { contentfulApi, getAllMembersSlugs } from "../../lib/contentful";
 export default function Member({ entry, preview }) {
   const researchAreas = entry?.linkedFrom?.researchCollection?.items ?? [];
@@ -15,58 +16,26 @@ export default function Member({ entry, preview }) {
     <Layout preview={preview}>
       <BasicMeta url={"/"} />
       <section className={layout.container__main}>
-        {entry.jobTitle && (
-          <p className="text--eyebrow__grey">{entry.jobTitle.title}</p>
-        )}
-        {entry.visitor && <p className="text--eyebrow__grey">Visitor</p>}
-        <h1>{entry.fullName}</h1>
-        <div
-          className={classnames(
-            card.container,
-            "container--flex container--flex--space-between container--medium"
-          )}
-        >
-          <address className={people.address}>
-            {entry.additionalInstitutions && (
-              <p>
-                <p>Additional Institutions: </p>
-                <p>{entry.additionalInstitutions}</p>
-              </p>
+        <div className="container--flex container--flex--col">
+          <div className={classnames(card.container)}>
+            {entry.jobTitle && (
+              <p className="text--eyebrow__grey">{entry.jobTitle.title}</p>
             )}
-            {entry.phoneNumber && (
-              <p>
-                <a href={`tel:${entry.phoneNumber}`}>{entry.phoneNumber}</a>
-              </p>
-            )}
-            {entry.emailAddress && (
-              <p>
-                <a href={`mailto:${entry.emailAddress}`}>
-                  {entry.emailAddress}
-                </a>
-              </p>
-            )}
-            {entry.office && <p className={people.office}>{entry.office}</p>}
-            {entry.websiteUrl && (
-              <p>
-                <a href={entry.websiteUrl}>Personal Website</a>
-              </p>
-            )}
-            {entry.publicationUrl && (
-              <p>
-                <a href={entry.publicationUrl}>Published Papers</a>
-              </p>
-            )}
-          </address>
+            {entry.visitor && <p className="text--eyebrow__grey">Visitor</p>}
+            <h1>{entry.fullName}</h1>
+            <Address entry={entry} />
+          </div>
           {entry.profilePicture ? (
             <figure>
               <img
-                className={people.circleImg}
+                className={people.circleImgLg}
                 src={entry.profilePicture.url}
                 alt={entry.fullName}
               />
             </figure>
           ) : null}
         </div>
+
         <div className={classnames(card.container, "container--flex")}>
           {researchAreas.length > 0 && (
             <div>
