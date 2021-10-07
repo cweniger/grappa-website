@@ -13,13 +13,17 @@ import SecondaryHero from "../components/SecondaryHero";
 export default function People({ persons, heroEntry }) {
   // get alumni and visitors, has end date
   const personsHasEndDate = groupBy(persons, (person) => {
-    let today = new Date();
-    if (person.endDate == null || person.endDate > today) {
+    let todayRaw = new Date();
+    const today = todayRaw.toISOString();
+    console.log(today, "today");
+
+    if (person.endDate > today || person.endDate == null) {
       return "current";
-    } else {
+    } else if (person.endDate < today) {
       return "alumni";
     }
   });
+  console.log(personsHasEndDate.current, "alumni");
   /*
    * { current: [{ title, startDate, endDate}, {...}], alumni: []}
    */

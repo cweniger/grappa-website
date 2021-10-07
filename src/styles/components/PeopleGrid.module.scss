@@ -5,8 +5,15 @@
   width: 10rem;
   height: 10rem;
   transition: $transition--ease--fast;
+  object-fit: cover;
 
-  // transition: 400ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  &Lg {
+    @extend .circleImg;
+    margin: 0 2rem;
+    width: 13rem;
+    height: 13rem;
+
+  }
 }
 
 .color {
