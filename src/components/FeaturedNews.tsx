@@ -1,6 +1,6 @@
 import React from "react";
 import featured from "../styles/components/FeaturedNews.module.scss";
-import Card from "../components/Card";
+import NewsCard from "../components/NewsCard";
 import classnames from "classnames";
 import card from "../styles/components/Card.module.scss";
 
@@ -14,7 +14,7 @@ export function FeaturedNews({ news }) {
         )}
       >
         {news.map((article) => (
-          <Card
+          <NewsCard
             date={article.date}
             title={article.headline}
             image={article.image}

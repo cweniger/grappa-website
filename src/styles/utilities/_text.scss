@@ -47,6 +47,14 @@
   color: $neutral-gray-03;
 }
 
+.text--detail {
+  font-family: $font-family--accent;
+  color: $neutral-gray-03;
+  text-transform: uppercase;
+  font-size: .8rem;
+  margin-bottom: 1rem;
+}
+
 .text--hero {
   font-family: $font-family--heading;
   font-weight: 300;

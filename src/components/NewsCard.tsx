@@ -1,5 +1,5 @@
 import Link from "next/link";
-import card from "../styles/components/Card.module.scss";
+import card from "../styles/components/NewsCard.module.scss";
 
 interface Props {
   title?: string;
@@ -11,7 +11,7 @@ interface Props {
   slug?: string;
 }
 
-const Card: React.FC<Props> = (props) => {
+const NewsCard: React.FC<Props> = (props) => {
   const formattedDate = new Date(props.date).toLocaleDateString("en-GB", {
     year: "numeric",
     month: "numeric",
@@ -20,20 +20,11 @@ const Card: React.FC<Props> = (props) => {
 
   return (
     <figure className={card.box} key={props.title}>
-      {props.image ? (
-        <Link href={props.slug}>
-          <img src={props.image.url} alt={props.image.description} />
-        </Link>
-      ) : (
-        <Link href={props.slug}>
-          <figure className={card.cardFallback} />
-        </Link>
-      )}
       {props.slug ? (
         <p>
           <time className="text--detail">{formattedDate}</time>
           <br />
-          <a>{props.title}</a>
+          <Link href={props.slug}>{props.title}</Link>
         </p>
       ) : (
         <p>{props.title}</p>
@@ -42,4 +33,4 @@ const Card: React.FC<Props> = (props) => {
   );
 };
 
-export default Card;
+export default NewsCard;

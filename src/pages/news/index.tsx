@@ -2,7 +2,7 @@ import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
 import layout from "../../styles/components/Layout.module.scss";
 import { fetchNews } from "../../lib/contentful";
-import Card from "../../components/Card";
+import NewsCard from "../../components/NewsCard";
 import classnames from "classnames";
 import card from "../../styles/components/Card.module.scss";
 
@@ -14,7 +14,7 @@ export default function Index({ news }) {
         <h1>News</h1>
         <div className={classnames(card.container, "container--flex")}>
           {news.map((article) => (
-            <Card
+            <NewsCard
               key={article.headline}
               title={article.headline}
               image={article.image}
