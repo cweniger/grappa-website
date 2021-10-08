@@ -6,23 +6,18 @@
   background-color: $neutral-gray-08;
   transition: $transition--ease--fast;
   margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
 
-  a {
-    cursor: pointer;
-    font-family: $font-family--accent;
-    font-weight: 300;
-    text-decoration: none;
-    font-size: 0.85rem;
+  p {
+    padding: 0 1rem;
+    min-height: 50px;
   }
 
   img {
     height: 300px;
     max-width: 300px;
     object-fit: cover;
-  }
-
-  p {
-    padding: 0 1rem;
   }
 
   &:hover {
@@ -40,11 +35,6 @@
   }
 }
 
-.cardFallback {
-  background: $black;
-  margin-bottom: 1rem;
-}
-
 .container {
   flex-direction: column;
 
@@ -56,4 +46,12 @@
 
 .date {
   font-size: .8rem;
+}
+
+
+.link {
+  font-family: $font-family--accent;
+  font-weight: 300;
+  text-decoration: none;
+  font-size: 0.85rem;
 }

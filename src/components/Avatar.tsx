@@ -3,7 +3,7 @@ import people from "../styles/components/PeopleGrid.module.scss";
 
 export default function Avatar({ person, small }) {
   return (
-    <figure className={small ? people.hBox : people.box} key={person.fullName}>
+    <figure className={small ? people.hBox : people.box} key={person.slug}>
       {person.profilePicture ? (
         <Link href={`/members/${person.slug}`}>
           <img src={person.profilePicture.url} alt={person.fullName} />
