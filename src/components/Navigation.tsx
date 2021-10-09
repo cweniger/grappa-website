@@ -18,12 +18,14 @@ export default function Navigation() {
     <nav className={styles.navigation}>
       <div className={styles.uva__bar}>
         <div className={styles.uva__wrapper}>
-          <img
-            src="/images/uva-logo.svg"
-            alt="University of Amsterdam"
-            width="250px"
-            height="auto"
-          />
+          <a href="https://www.uva.nl">
+            <img
+              src="/images/uva-logo.svg"
+              alt="University of Amsterdam"
+              width="250px"
+              height="auto"
+            />
+          </a>
         </div>
       </div>
       <div className={styles.navContainer}>
