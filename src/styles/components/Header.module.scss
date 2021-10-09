@@ -8,15 +8,3 @@
   z-index: 1000;
 }
 
-.uva__bar {
-  background-color: $black;
-  color: $white;
-  display: block;
-  padding: $space--medium 0;
-  width: 100%;
-  img {
-    max-width: 14rem;
-    fill: currentColor;
-    height: auto;
-  }
-}

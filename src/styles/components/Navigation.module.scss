@@ -4,7 +4,6 @@
 
 .navigation {
   background-color: WHITE;
-  padding: 0.5rem 0;
   position: fixed;
   z-index: 10;
   top: 0;
@@ -14,6 +13,7 @@
 .logo {
   cursor: pointer;
   max-width: 10rem;
+  width: 100%;
 }
 
 .navContainer {
@@ -23,38 +23,40 @@
   align-items: center;
   max-width: 70rem;
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0.5rem 0;
 }
 
-.menuToggle {
-  width: 35px;
-  height: 25px;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
+.uva__bar {
+
+  background-color: $black;
+  color: $white;
+  display: block;
+  padding: $space--medium 0;
+  width: 100%;
+  padding: 1rem 0;
+  
+}
+
+.uva__wrapper {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  align-items: center;
+  max-width: 70rem;
+  margin: 0 auto;
 }
 
-.menuToggle:focus-visible {
-  background-color: $black;
-  outline: 0 transparent solid;
-}
-
-.menuToggle:focus:not(:focus-visible) {
-  background-color: $black;
-  outline: 0 transparent solid;
-}
 
 .navLinks {
   display: flex;
   align-items: center;
-  justify-content: center;
   justify-content: space-between;
   text-transform: capitalize;
+  width: 48rem;
+  margin: 0;
+  padding: 0;
+
   li {
     display: inline;
+    
   }
 
   li a {
@@ -63,13 +65,14 @@
     text-decoration: none;
     font-weight: 300;
     position: relative;
-    padding: 0.5rem 1rem;
     background-color: white;
+    padding-bottom: .5rem;
 
     &::after {
       background: $chroma-gradient;
       border-radius: 5em;
       content: "";
+      
       display: block;
       height: 0.1em;
       transform-origin: 50% 0%;
@@ -86,6 +89,11 @@
       }
     }
   }
+}
+
+
+.navLinks li a:last-of-type {
+  margin-right: 0;
 }
 
 .mobileLinks a {
@@ -133,4 +141,26 @@
   .mobileNavContainer {
     display: none;
   }
+}
+
+
+.menuToggle {
+  width: 35px;
+  height: 25px;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.menuToggle:focus-visible {
+  background-color: $black;
+  outline: 0 transparent solid;
+}
+
+.menuToggle:focus:not(:focus-visible) {
+  background-color: $black;
+  outline: 0 transparent solid;
 }

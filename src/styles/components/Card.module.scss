@@ -7,7 +7,7 @@
   transition: $transition--ease--fast;
   margin: 2rem auto;
   display: flex;
-  flex-direction: column;
+flex-direction: column;
 
   p {
     padding: 0 1rem;
@@ -54,4 +54,15 @@
   font-weight: 300;
   text-decoration: none;
   font-size: 0.85rem;
+}
+
+.boxSmall {
+  @extend .box;
+  max-width: 200px;
+  
+  img {
+    height: 200px;
+    max-width: 200px;
+    object-fit: cover;
+  }
 }

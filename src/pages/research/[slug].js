@@ -18,8 +18,12 @@ export default function ResearchTemplate({ entry }) {
 export async function getStaticProps({ params, preview = false }) {
   const researchData = await contentfulApi(
     gql`
-      query researchCollectionQuery($preview: Boolean!) {
-        researchCollection(preview: $preview, order: order_ASC) {
+      query researchCollectionQuery($slug: String!, $preview: Boolean!) {
+        researchCollection(
+          limit: 1
+          where: { slug: $slug }
+          preview: $preview
+        ) {
           items {
             title
             description

@@ -1,8 +1,9 @@
-import people from "../../styles/components/PeopleGrid.module.scss";
+import people from "../../styles/components/Address.module.scss";
 
 export default function Address({ entry }) {
   return (
     <address className={people.address}>
+      {entry.fullName && <h1>{entry.fullName}</h1>}
       {entry.additionalInstitutions && (
         <p>
           <p>Additional Institutions: </p>

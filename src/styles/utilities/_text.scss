@@ -40,12 +40,22 @@
   font-size: 1rem;
   letter-spacing: 0.4em;
   color: $chroma-yellow;
+
+  &__grey {
+    @extend .text--eyebrow;
+    color: $neutral-gray-03;
+  }
+
+  &__white {
+    @extend .text--eyebrow;
+    color: $white;
+    &Sm {
+      @extend .text--eyebrow__white;
+      font-size: .7rem;
+    }
+  }
 }
 
-.text--eyebrow__grey {
-  @extend .text--eyebrow;
-  color: $neutral-gray-03;
-}
 
 .text--detail {
   font-family: $font-family--accent;

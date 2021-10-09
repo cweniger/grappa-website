@@ -39,6 +39,28 @@ export default function Research({ entry, heroEntry }) {
           />
         ))}
       </section>
+
+      <section className={classnames(layout.container__main)}>
+        <p className="text__headline__2">
+          We also have major areas of experimentation.
+        </p>
+        <div
+          className={classnames(
+            layout.container__main,
+            "container--flex container--flex--space-between"
+          )}
+        >
+          {researchByType.experiment.map((area) => (
+            <Card
+              small
+              key={area.title}
+              title={area.title}
+              image={area.image}
+              slug={`/research/${area.slug}`}
+            />
+          ))}
+        </div>
+      </section>
     </Layout>
   );
 }

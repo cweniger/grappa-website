@@ -8,12 +8,16 @@ interface Props {
   };
   date?: Date;
   slug?: string;
+  small?: boolean;
 }
 
-const Card: React.FC<Props> = (props) => {
+const Card: React.FC<Props> = (props: Props) => {
   return (
     <Link href={props.slug}>
-      <figure className={card.box} key={props.title}>
+      <figure
+        className={props.small ? card.boxSmall : card.box}
+        key={props.title}
+      >
         {props.image && (
           <img src={props.image.url} alt={props.image.description} />
         )}
