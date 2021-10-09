@@ -16,24 +16,24 @@ export default function Member({ entry, preview }) {
     <Layout preview={preview}>
       <BasicMeta url={"/"} />
       <section className={layout.container__main}>
-        <div className="container--flex container--flex--col">
-          <div className={classnames(card.container)}>
-            {entry.jobTitle && (
-              <p className="text--eyebrow__grey">{entry.jobTitle.title}</p>
-            )}
-            {entry.visitor && <p className="text--eyebrow__grey">Visitor</p>}
-            <h1>{entry.fullName}</h1>
+        <div>
+          {entry.jobTitle && (
+            <p className="text--eyebrow__grey">{entry.jobTitle.title}</p>
+          )}
+          {entry.visitor && <p className="text--eyebrow__grey">Visitor</p>}
+          <div className="container--flex container--flex--col">
             <Address entry={entry} />
+
+            {entry.profilePicture ? (
+              <figure>
+                <img
+                  className={people.circleImgLg}
+                  src={entry.profilePicture.url}
+                  alt={entry.fullName}
+                />
+              </figure>
+            ) : null}
           </div>
-          {entry.profilePicture ? (
-            <figure>
-              <img
-                className={people.circleImgLg}
-                src={entry.profilePicture.url}
-                alt={entry.fullName}
-              />
-            </figure>
-          ) : null}
         </div>
 
         <div className={classnames(card.container, "container--flex")}>

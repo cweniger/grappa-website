@@ -1,0 +1,39 @@
+@import "../theme/theme";
+
+.box {
+  width: 100%;
+  max-width: 250px;
+  
+  margin: 2rem auto;
+
+  a {
+    cursor: pointer;
+    font-family: $font-family--accent;
+    font-weight: 300;
+    text-decoration: none;
+    font-size: 0.85rem;
+  }
+
+
+  @media (min-width: 900px) {
+    max-width: 400px;
+  }
+}
+
+.cardFallback {
+  background: $black;
+  margin-bottom: 1rem;
+}
+
+.container {
+  flex-direction: column;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.date {
+  font-size: .8rem;
+}

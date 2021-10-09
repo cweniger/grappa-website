@@ -167,37 +167,3 @@
     margin-bottom: 1rem;
   }
 }
-
-.address {
-  font-family: $font-family--accent;
-  font-style: normal;
-}
-
-.address p {
-  margin: 0 0 1rem 0;
-}
-
-.address a {
-  text-decoration: none;
-  font-family: inherit;
-  font-weight: 300;
-  font-size: 0.9em;
-}
-
-.address a[href^="mailto"]::before {
-  content: "✉️";
-  margin-right: 1rem;
-}
-.address a[href^="tel"]::before {
-  content: "☎️";
-  margin-right: 1rem;
-}
-.address a[href^="http"]::before {
-  content: "🔗";
-  margin-right: 1rem;
-}
-
-.address .office::before {
-  content: "🏛️";
-  margin-right: 1rem;
-}

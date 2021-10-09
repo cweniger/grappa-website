@@ -10,6 +10,21 @@ export function contentfulApi(query, variables = {}) {
   return request(url, query, variables);
 }
 
+export async function getAllResearchSlugs() {
+  const researchData = await contentfulApi(
+    gql`
+      query researchCollectionQuery {
+        researchCollection(limit: 40) {
+          items {
+            slug
+          }
+        }
+      }
+    `
+  );
+  return researchData?.researchCollection?.items;
+}
+
 export async function getAllMembersSlugs() {
   const personData = await contentfulApi(
     gql`

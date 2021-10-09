@@ -1,4 +1,4 @@
-import card from "../styles/components/Card.module.scss";
+import row from "../styles/components/Row.module.scss";
 import Link from "./Link";
 interface Props {
   title?: string;
@@ -11,21 +11,18 @@ interface Props {
   small?: boolean;
 }
 
-const Card: React.FC<Props> = (props: Props) => {
+const Row: React.FC<Props> = (props: Props) => {
   return (
     <Link href={props.slug}>
-      <figure
-        className={props.small ? card.boxSmall : card.box}
-        key={props.title}
-      >
-        {props.image && (
+      <figure className={row.area} key={props.title}>
+        {/* {props.image && (
           <img src={props.image.url} alt={props.image.description} />
-        )}
+        )} */}
 
-        <p className={card.link}>{props.title}</p>
+        <p className="text__headline__3">{props.title}</p>
       </figure>
     </Link>
   );
 };
 
-export default Card;
+export default Row;

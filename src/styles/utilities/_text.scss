@@ -15,13 +15,24 @@
     line-height: 1.2;
 
     @media (min-width: 600px) {
-      font-size: 36px;
+      font-size: 48px;
     }
   }
 
   &__3 {
+    font-size: 28px;
+    line-height: 1.4;
+    @media (min-width: 600px) {
+      font-size: 36px;
+    }
+  }
+
+  &__4 {
     font-size: 18px;
-    line-height: 1.2;
+    line-height: 1.5;
+    @media (min-width: 600px) {
+      font-size: 24px;
+    }
   }
 }
 
@@ -40,11 +51,29 @@
   font-size: 1rem;
   letter-spacing: 0.4em;
   color: $chroma-yellow;
+
+  &__grey {
+    @extend .text--eyebrow;
+    color: $neutral-gray-03;
+  }
+
+  &__white {
+    @extend .text--eyebrow;
+    color: $white;
+    &Sm {
+      @extend .text--eyebrow__white;
+      font-size: .7rem;
+    }
+  }
 }
 
-.text--eyebrow__grey {
-  @extend .text--eyebrow;
+
+.text--detail {
+  font-family: $font-family--accent;
   color: $neutral-gray-03;
+  text-transform: uppercase;
+  font-size: .8rem;
+  margin-bottom: 1rem;
 }
 
 .text--hero {
@@ -77,3 +106,4 @@
     font-size: 1rem;
   }
 }
+

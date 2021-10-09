@@ -2,6 +2,7 @@ import Link from "next/link";
 import Burger from "./Burger";
 import { useState } from "react";
 import styles from "../styles/components/Navigation.module.scss";
+import layout from "../styles/components/Layout.module.scss";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 
@@ -15,6 +16,18 @@ export default function Navigation() {
   }
   return (
     <nav className={styles.navigation}>
+      <div className={styles.uva__bar}>
+        <div className={styles.uva__wrapper}>
+          <a href="https://www.uva.nl">
+            <img
+              src="/images/uva-logo.svg"
+              alt="University of Amsterdam"
+              width="250px"
+              height="auto"
+            />
+          </a>
+        </div>
+      </div>
       <div className={styles.navContainer}>
         <Link href="/">
           <img

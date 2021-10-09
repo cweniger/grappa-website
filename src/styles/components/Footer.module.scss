@@ -1,0 +1,26 @@
+@import "../theme/theme";
+
+.container {
+  background-color: black;
+  color: white;
+  width: 100%;
+  font-size: .8rem;
+}
+
+.link {
+  color: $neutral-gray-04;
+  text-decoration: none;
+  &:hover {
+    color: $white;
+    transition: $transition--smooth--fast;
+  }
+}
+
+.list {
+  list-style-type: none;
+  margin: 1rem 0 2rem 0;
+  padding: 0;
+  li {
+    margin-bottom: 1rem;
+  }
+}

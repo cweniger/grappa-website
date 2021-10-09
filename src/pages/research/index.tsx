@@ -1,15 +1,24 @@
 import { gql } from "graphql-request";
-import Layout from "../components/Layout";
-import SecondaryHero from "../components/SecondaryHero";
-import BasicMeta from "../components/meta/BasicMeta";
-import layout from "../styles/components/Layout.module.scss";
-import { contentfulApi } from "../lib/contentful";
+import Layout from "../../components/Layout";
+import SecondaryHero from "../../components/SecondaryHero";
+import BasicMeta from "../../components/meta/BasicMeta";
+import layout from "../../styles/components/Layout.module.scss";
+import { contentfulApi } from "../../lib/contentful";
 import classnames from "classnames";
-import Card from "../components/Card";
-import ResearchGrid from "../components/ResearchGrid";
+import Card from "../../components/Card";
+import Row from "../../components/Row";
 
-import research from "../styles/components/Research.module.scss";
+import groupBy from "lodash.groupby";
+
+import research from "../../styles/components/Research.module.scss";
 export default function Research({ entry, heroEntry }) {
+  const researchByType = groupBy(entry, (area) => {
+    if (area.researchType == "Research Theme") {
+      return "theme";
+    } else {
+      return "experiment";
+    }
+  });
   return (
     <Layout>
       <BasicMeta url={"/"} />
@@ -19,21 +28,36 @@ export default function Research({ entry, heroEntry }) {
         className={classnames(
           layout.container__main,
           research.container,
-          "container--flex"
+          "container--flex container--flex--space-between"
         )}
       >
-        {entry.map((area) => (
+        {researchByType.theme.map((area) => (
           <Card
             key={area.title}
             title={area.title}
             image={area.image}
-            slug={`/research#${area.slug}`}
+            slug={`/research/${area.slug}`}
           />
         ))}
       </section>
-      {entry.map((area) => (
-        <ResearchGrid area={area} />
-      ))}
+
+      <section className={classnames(layout.container__main)}>
+        <p className="text__headline__1">
+          We also have major areas of experimentation.
+        </p>
+        <div
+          className={classnames("container--flex container--flex--colstatic")}
+        >
+          {researchByType.experiment.map((area) => (
+            <Row
+              key={area.title}
+              title={area.title}
+              image={area.image}
+              slug={`/research/${area.slug}`}
+            />
+          ))}
+        </div>
+      </section>
     </Layout>
   );
 }
@@ -41,13 +65,15 @@ export default function Research({ entry, heroEntry }) {
 export async function getStaticProps({ preview = false }) {
   const query = gql`
     query researchCollectionQuery($preview: Boolean!) {
-      researchCollection(preview: $preview) {
+      researchCollection(preview: $preview, order: order_ASC) {
         items {
           title
           description
           image {
             url
           }
+          researchType
+          order
           slug
           team: teamCollection(limit: 10) {
             items {

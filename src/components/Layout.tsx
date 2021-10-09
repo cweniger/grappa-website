@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navigation from "./Navigation";
 import header from "../styles/components/Header.module.scss";
-
+import Footer from "./Footer";
 type Props = {
   children: React.ReactNode;
 };
@@ -22,19 +22,16 @@ export default function Layout({ children }: Props) {
           crossOrigin="true"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200&family=Epilogue&display=swap"
           rel="stylesheet"
         />
       </Head>
-      {/* <div className={header.uva__bar}>
-        <div className={layout.container__main}>
-          <img src="images/uva-logo.svg" alt="University of Amsterdam" />
-        </div>
-      </div> */}
+
       <header className={header.container__main}>
         <Navigation />
       </header>
       <main className={header.container__full}>{children}</main>
+      <Footer />
     </div>
   );
 }

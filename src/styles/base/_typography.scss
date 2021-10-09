@@ -16,7 +16,7 @@ h4,
 h5,
 h6 {
   color: $font-color--heading;
-  font-family: $font-family--heading;
+  font-family: $font-family--base;
   font-weight: $font-weight--bold;
 }
 
@@ -38,9 +38,7 @@ h6 {
 
 a {
   color: $link--base;
-  font-family: $neue;
-  font-weight: $font-weight--bold;
-
+text-decoration: none;
   // &:hover {
     // Would love to do some sort of gradient hover here...
   // }

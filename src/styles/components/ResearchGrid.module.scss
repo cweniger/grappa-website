@@ -1,9 +1,5 @@
 @import "../theme/theme";
 
-.area {
-  display: flex;
-  justify-content: flex-start;
-}
 
 .blurb {
   font-family: $font-family--accent;
@@ -11,11 +7,17 @@
 
 .summary {
   margin-right: 2rem;
+  flex-grow: 1;
+}
+
+.main {
+max-width: 864px;
 }
 
 .container {
+  display: flex;
+  justify-content: flex-start;
   margin: 0 auto;
-  padding: 0;
   flex-direction: column;
 
   @media (min-width: 600px) {
