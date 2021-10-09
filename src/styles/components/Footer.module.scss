@@ -10,6 +10,10 @@
 .link {
   color: $neutral-gray-04;
   text-decoration: none;
+  &:hover {
+    color: $white;
+    transition: $transition--smooth--fast;
+  }
 }
 
 .list {

@@ -15,13 +15,24 @@
     line-height: 1.2;
 
     @media (min-width: 600px) {
-      font-size: 36px;
+      font-size: 48px;
     }
   }
 
   &__3 {
+    font-size: 28px;
+    line-height: 1.4;
+    @media (min-width: 600px) {
+      font-size: 36px;
+    }
+  }
+
+  &__4 {
     font-size: 18px;
-    line-height: 1.2;
+    line-height: 1.5;
+    @media (min-width: 600px) {
+      font-size: 24px;
+    }
   }
 }
 

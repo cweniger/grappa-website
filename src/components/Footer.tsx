@@ -12,7 +12,10 @@ export default function Footer() {
         )}
       >
         <div>
-          <h3 className="text--eyebrow__white">GRAPPA</h3>
+          <p className="text__headline__4">
+            GRAPPA is a centre of excellence of the University of Amsterdam,
+            focussing on Gravitation and Astroparticle Physics.
+          </p>
           <ul className={footer.list}>
             <li>
               <Link href="/news" className={footer.link}>
