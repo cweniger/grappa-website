@@ -46,8 +46,11 @@ $width--large-x: $space--x-large;
   }
   &--cols--3 {
     @extend .container--grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 120px;
+    
+    @media (min-width: 600px) {
+      gap: 120px;
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   &--cols--4 {

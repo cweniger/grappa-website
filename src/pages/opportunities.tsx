@@ -25,10 +25,6 @@ export default function Opportunities({ jobs }) {
           related to gravitational waves, fundamental physics and cosmology.
         </p>
 
-        <Link href="/">
-          <a>See independent post-doctoral fellowships</a>
-        </Link>
-
         <h2>Current Opportunities</h2>
         <ul>
           {jobsByExpiration.current?.map((job) => {
@@ -51,25 +47,43 @@ export default function Opportunities({ jobs }) {
           with us. Please get in touch with one of the core faculty whom you are
           interested in working with!{" "}
         </p>
+        <h3>
+          <a href="https://www.nwo.nl/en/calls/nwo-talent-programme-veni-social-sciences-and-humanities-ssh">
+            NWO Talent Program Veni
+          </a>
+        </h3>
         <p>
-          NWO Talent Program Veni
-          (www.nwo.nl/en/funding/our-funding-instruments/nwo/innovational-research-incentives-scheme/veni/ew/innovational-research-incentives-scheme-veni-enw.html)
-          This is a grant for researchers who have obtained their PhD within the
-          last three years (extension might be possible). This fellowship is for
-          three years. Next deadline: 20 May 2021 Marie Skłodowska-Curie
-          Individual Fellowships
-          (ec.europa.eu/research/mariecurieactions/actions/individual-fellowships_en)
-          This provides a great option if you are an experienced junior
-          researcher (of any nationality holding PhD or has at least four year
-          full-time research experience) looking to give your career a boost by
-          working at GRAPPA. It is up to two years with competitive salary. Call
-          closed now. (re-opens yearly) Bilateral opportunities There are also
-          several nationality-dependent opportunities. See below. Japan: JSPS
-          Overseas Research Fellowships (www.jsps.go.jp/english/e-ab/index.html)
-          Sweden: International postdoc grant
-          (www.vr.se/english/applyingforfunding/calls/internationalpostdocgrant.5.2c821fd116dcb0e77cb2495.html)
-          Switzerland: Postdoc.Mobility
-          (www.snf.ch/en/funding/careers/postdoc-mobility/Pages/default.aspx)
+          Grant for researchers who have obtained their PhD within the last
+          three years (extension might be possible). This fellowship is for
+          three years. Next deadline: 20 May 2021{" "}
+        </p>
+        <h3>
+          <a href="https://ec.europa.eu/research/mariecurieactions/actions/postdoctoral-fellowships">
+            Marie Skłodowska-Curie Individual Fellowships
+          </a>
+        </h3>
+        <p>
+          Fellowship for an experienced junior researcher (of any nationality
+          holding PhD or has at least four year full-time research experience)
+          looking to give your career a boost by working at GRAPPA. It is up to
+          two years with competitive salary. Call closed now. (re-opens yearly)
+        </p>
+        <h3>Nationality-dependent opportunities</h3>
+        <p>
+          <h4>Japan</h4>
+          <p>
+            <a href="https://www.jsps.go.jp/english/e-ab/index.html">
+              JSPS Overseas Research Fellowships
+            </a>
+          </p>
+          <h4>Sweden</h4>
+          <a href="https://www.vr.se/english/applyingforfunding/calls/internationalpostdocgrant.5.2c821fd116dcb0e77cb2495.html">
+            International postdoc grant
+          </a>
+          <h4>Switzerland</h4>{" "}
+          <a href="https://www.snf.ch/en/XIZpfY3iVS5KRRoD/funding/careers/postdoc-mobility">
+            Postdoc.Mobility
+          </a>
         </p>
 
         <h2>Expired Opportunities</h2>
