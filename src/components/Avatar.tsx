@@ -2,23 +2,22 @@ import Link from "next/link";
 import people from "../styles/components/PeopleGrid.module.scss";
 
 export default function Avatar({ person, small }) {
+  const image = person.profilePicture ? (
+    <img src={person.profilePicture.url} alt={person.fullName} />
+  ) : (
+    <figure className={people.planet} />
+  );
   return (
     <figure className={small ? people.hBox : people.box} key={person.slug}>
-      {person.profilePicture ? (
+      {person.slug && !person.omitProfile ? (
         <Link href={`/members/${person.slug}`}>
-          <img src={person.profilePicture.url} alt={person.fullName} />
+          <>
+            {image}
+            <p>{person.fullName}</p>
+          </>
         </Link>
       ) : (
-        <Link href={`/members/${person.slug}`}>
-          <figure className={people.planet} />
-        </Link>
-      )}
-      {person.slug ? (
-        <Link href={`/members/${person.slug}`}>
-          <a className={people.nameCentred}>{person.fullName}</a>
-        </Link>
-      ) : (
-        <p className={people.nameCentred}>{person.fullName}</p>
+        <p>{person.fullName}</p>
       )}
     </figure>
   );

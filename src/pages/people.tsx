@@ -12,10 +12,18 @@ import SecondaryHero from "../components/SecondaryHero";
 
 export default function People({ persons, heroEntry }) {
   // get alumni and visitors, has end date
-  const personsHasEndDate = groupBy(persons, (person) => {
+  const grappaMembers = groupBy(persons, (person) => {
+    if (person.omitProfile === true) {
+      return "nonmember";
+    } else {
+      return "member";
+    }
+  });
+
+  console.log(grappaMembers);
+  const personsHasEndDate = groupBy(grappaMembers.member, (person) => {
     let todayRaw = new Date();
     const today = todayRaw.toISOString();
-    console.log(today, "today");
 
     if (person.endDate > today || person.endDate == null) {
       return "current";
@@ -47,10 +55,13 @@ export default function People({ persons, heroEntry }) {
           const boxCheck = sortedCurrent[key].length > 3;
           return (
             <section
-              className={classnames(!boxCheck && people.peopleSection)}
+              className={classnames(
+                layout.container__main,
+                !boxCheck && people.peopleSection
+              )}
               /*className={classnames(layout.container__main)}*/
             >
-              <h2 className="text--underscore text__headline__3">{key}</h2>
+              <h2 className="text--underscore text__headline__4">{key}</h2>
               <div className={boxCheck ? people.peopleGrid : people.smallDept}>
                 {sortedCurrent[key].map((fields) => (
                   <figure className={people.box} key={fields.fullName}>
@@ -80,7 +91,7 @@ export default function People({ persons, heroEntry }) {
           );
         })}
         <section className={classnames(layout.container__main)}>
-          <h2 className="text--underscore text__headline__3">Alumni</h2>
+          <h2 className="text--underscore text__headline__4">Alumni</h2>
           <ul className={people.alumni}>
             {sortedAlumni.map((fields) => (
               <li key={fields.fullName}>
@@ -109,6 +120,7 @@ export async function getStaticProps({ preview = false }) {
             title
             order
           }
+          omitProfile
           endDate
           fullName
           slug

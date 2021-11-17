@@ -6,7 +6,6 @@ import ContentfulMarkdown from "../components/ContentfulMarkdown";
 import classnames from "classnames";
 
 export default function ResearchGrid({ area }) {
-  console.log(area.description, "area??");
   return (
     <section key={area.title} id={area.slug} className={layout.container__main}>
       <div className={classnames(research.container)}>
@@ -21,11 +20,7 @@ export default function ResearchGrid({ area }) {
 
         <div className={classnames(research.main)}>
           <h1 className="text--research text__headline__2">{area.title}</h1>
-          <p className={research.blurb}>
-            The early universe was hot and dense. Interactions between particles
-            were very frequent and energetic. Matter was in the form of free
-            electrons and atomic nuclei with light bouncing between them.
-          </p>
+          {area.abstract && <p className={research.blurb}>{area.abstract}</p>}
           <ContentfulMarkdown className="" content={area.description} />
         </div>
       </div>

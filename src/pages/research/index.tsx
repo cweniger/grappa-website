@@ -68,6 +68,7 @@ export async function getStaticProps({ preview = false }) {
       researchCollection(preview: $preview, order: order_ASC) {
         items {
           title
+          abstract
           description
           image {
             url
@@ -79,6 +80,7 @@ export async function getStaticProps({ preview = false }) {
             items {
               fullName
               slug
+              omitProfile
               profilePicture {
                 url
               }
