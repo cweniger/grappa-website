@@ -27,9 +27,7 @@ export default function Layout({ children }: Props) {
         />
       </Head>
 
-      <header className={header.container__main}>
-        <Navigation />
-      </header>
+      <Navigation />
       <main className={header.container__full}>{children}</main>
       <Footer />
     </div>

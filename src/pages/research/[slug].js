@@ -26,6 +26,7 @@ export async function getStaticProps({ params, preview = false }) {
         ) {
           items {
             title
+            abstract
             description
             image {
               url
@@ -36,6 +37,7 @@ export async function getStaticProps({ params, preview = false }) {
             team: teamCollection(limit: 10) {
               items {
                 fullName
+                omitProfile
                 slug
                 profilePicture {
                   url
