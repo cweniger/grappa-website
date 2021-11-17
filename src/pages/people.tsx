@@ -23,7 +23,6 @@ export default function People({ persons, heroEntry }) {
       return "alumni";
     }
   });
-  console.log(personsHasEndDate.current, "alumni");
   /*
    * { current: [{ title, startDate, endDate}, {...}], alumni: []}
    */
@@ -43,51 +42,59 @@ export default function People({ persons, heroEntry }) {
     <Layout>
       <BasicMeta url={"/"} />
       <SecondaryHero heroEntry={heroEntry} />
-      {Object.keys(sortedCurrent).map((key) => (
-        <section className={classnames(layout.container__main)} key={key}>
-          <h2 className="text--underscore text__headline__3">{key}</h2>
-          <div className={people.peopleGrid}>
-            {sortedCurrent[key].map((fields) => (
-              <figure className={people.box} key={fields.fullName}>
-                {fields.profilePicture ? (
-                  <Link href={`/members/${fields.slug}`}>
-                    <img
-                      src={fields?.profilePicture?.url}
-                      alt={fields?.fullName}
-                    />
-                  </Link>
-                ) : (
-                  <Link href={`/members/${fields.slug}`}>
-                    <div className={people.planet} />
-                  </Link>
-                )}
-                {fields.slug ? (
-                  <Link href={`/members/${fields.slug}`}>
-                    <a className={people.nameCentred}>{fields.fullName}</a>
-                  </Link>
-                ) : (
-                  <p className={people.nameCentred}>{fields.fullName}</p>
-                )}
-              </figure>
-            ))}
-          </div>
-        </section>
-      ))}
       <section className={classnames(layout.container__main)}>
-        <h2 className="text--underscore text__headline__3">Alumni</h2>
-        <ul className={people.alumni}>
-          {sortedAlumni.map((fields) => (
-            <li key={fields.fullName}>
-              {fields.slug ? (
-                // <Link href={`/members/${fields.slug}`}>
-                <p className={people.name}>{fields.fullName}</p>
-              ) : (
-                // </Link>
-                <p className={people.name}>{fields.fullName}</p>
-              )}
-            </li>
-          ))}
-        </ul>
+        {Object.keys(sortedCurrent).map((key) => {
+          const boxCheck = sortedCurrent[key].length > 3;
+          return (
+            <section
+              className={classnames(!boxCheck && people.peopleSection)}
+              /*className={classnames(layout.container__main)}*/
+            >
+              <h2 className="text--underscore text__headline__3">{key}</h2>
+              <div className={boxCheck ? people.peopleGrid : people.smallDept}>
+                {sortedCurrent[key].map((fields) => (
+                  <figure className={people.box} key={fields.fullName}>
+                    {fields.profilePicture ? (
+                      <Link href={`/members/${fields.slug}`}>
+                        <img
+                          src={fields?.profilePicture?.url}
+                          alt={fields?.fullName}
+                        />
+                      </Link>
+                    ) : (
+                      <Link href={`/members/${fields.slug}`}>
+                        <div className={people.planet} />
+                      </Link>
+                    )}
+                    {fields.slug ? (
+                      <Link href={`/members/${fields.slug}`}>
+                        <a className={people.nameCentred}>{fields.fullName}</a>
+                      </Link>
+                    ) : (
+                      <p className={people.nameCentred}>{fields.fullName}</p>
+                    )}
+                  </figure>
+                ))}
+              </div>
+            </section>
+          );
+        })}
+        <section className={classnames(layout.container__main)}>
+          <h2 className="text--underscore text__headline__3">Alumni</h2>
+          <ul className={people.alumni}>
+            {sortedAlumni.map((fields) => (
+              <li key={fields.fullName}>
+                {fields.slug ? (
+                  // <Link href={`/members/${fields.slug}`}>
+                  <p className={people.name}>{fields.fullName}</p>
+                ) : (
+                  // </Link>
+                  <p className={people.name}>{fields.fullName}</p>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
       </section>
     </Layout>
   );
