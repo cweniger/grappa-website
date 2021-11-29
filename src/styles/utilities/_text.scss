@@ -63,6 +63,10 @@
   &__grey {
     @extend .text--eyebrow;
     color: $neutral-gray-03;
+    &Sm {
+      @extend .text--eyebrow__grey;
+      font-size: 0.7rem;
+    }
   }
 
   &__white {
@@ -77,10 +81,10 @@
 
 .text--detail {
   font-family: $font-family--accent;
-  color: $neutral-gray-03;
+  color: $neutral-gray-04;
   text-transform: uppercase;
   font-size: 0.8rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 .text--hero {
@@ -105,6 +109,18 @@
   font-family: $font-family--heading;
   font-weight: 300;
   margin: 1rem 0 0;
+}
+
+.text--teasers {
+  font-family: $font-family--accent;
+  font-weight: 200;
+  font-size: 0.8rem;
+  margin: 1rem 0 0;
+}
+
+.text--attr {
+  font-family: $font-family--heading;
+  font-weight: 600;
 }
 
 .text--research {
@@ -141,5 +157,6 @@
     text-transform: uppercase;
     letter-spacing: 0.4em;
     box-shadow: 1px 1px 0 0 $chroma-purple;
+    margin-top: 1rem;
   }
 }

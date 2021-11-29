@@ -10,6 +10,7 @@ interface Props {
   date?: Date;
   slug?: string;
   rail?: boolean;
+  grid?: boolean;
 }
 
 const NewsCard: React.FC<Props> = (props) => {
@@ -24,7 +25,10 @@ const NewsCard: React.FC<Props> = (props) => {
       {props.slug && (
         <Link href={props.slug}>
           <a>
-            <figure className={card.box} key={props.slug}>
+            <div
+              className={props.grid ? card.gridBox : card.box}
+              key={props.slug}
+            >
               <>
                 {props?.image && (
                   <img
@@ -32,15 +36,13 @@ const NewsCard: React.FC<Props> = (props) => {
                     alt={props?.image?.description}
                   />
                 )}
+
                 {props.title && (
-                  <>
-                    <p className="text--news text__headline__5">
-                      {props.title}
-                    </p>
-                  </>
+                  <p className="text--news text__headline__5">{props.title}</p>
                 )}
+                <time className="text--detail">{formattedDate}</time>
               </>
-            </figure>
+            </div>
           </a>
         </Link>
       )}

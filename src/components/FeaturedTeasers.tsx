@@ -11,8 +11,10 @@ export function FeaturedTeasers({ homepageTeasers }) {
         {homepageTeasers.map((teaser) => (
           <div className={zigzag.container__zigzag} key={teaser.id}>
             <div className={zigzag.item}>
-              <h3>{teaser.headline}</h3>
-              <ReactMarkdown>{teaser.bodyCopy}</ReactMarkdown>
+              <h3 className="text--news">{teaser.headline}</h3>
+              <ReactMarkdown className="text--teasers">
+                {teaser.bodyCopy}
+              </ReactMarkdown>
             </div>
             <div className={zigzag.item}>
               <Image

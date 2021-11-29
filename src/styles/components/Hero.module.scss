@@ -11,13 +11,18 @@
 
 .header {
   color: $white;
-  font-size: 2.25rem;
+  font-size: 4rem;
   font-weight: 500;
+  font-family: $font-family--heading;
+  margin-bottom: 2rem;
 }
 
 .subheader {
   color: $white;
   font-family: $font-family--heading;
   font-weight: 400;
-  font-size: 1.5rem;
+  max-width: 40ch;
+  margin: auto;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
 }

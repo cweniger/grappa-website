@@ -7,7 +7,7 @@
   transition: $transition--ease--fast;
   margin: 2rem auto;
   display: flex;
-flex-direction: column;
+  flex-direction: column;
 
   p {
     padding: 0 1rem;
@@ -36,7 +36,9 @@ flex-direction: column;
 }
 
 .container {
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
 
   @media (min-width: 600px) {
     flex-direction: row;
@@ -45,9 +47,8 @@ flex-direction: column;
 }
 
 .date {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
-
 
 .link {
   font-family: $font-family--accent;
@@ -59,10 +60,16 @@ flex-direction: column;
 .boxSmall {
   @extend .box;
   max-width: 200px;
-  
+
   img {
     height: 200px;
     max-width: 200px;
     object-fit: cover;
   }
+}
+
+.projectContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 }

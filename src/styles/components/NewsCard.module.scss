@@ -7,13 +7,22 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 250px;
-  @media (min-width: 900px) {
-    max-width: 400px;
-  }
 
   img {
     width: 100%;
+  }
+}
+
+.gridBox {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  height: 100%;
+  width: 100%;
+
+  img {
+    width: 100%;
+    margin-bottom: auto;
   }
 }
 

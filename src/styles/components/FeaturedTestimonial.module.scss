@@ -1,38 +1,32 @@
 @import "../theme/theme";
 
 .container {
-  background-color: $chroma-purple;
-  border-bottom: $space--small solid;
+  border-top: $space--small solid;
   border-image: $chroma-gradient-pr;
   border-image-slice: 1;
-  display: flex;
-  padding: $space--large;
-  img {
-    border-radius: 50%;
-  }
-}
-
-.container__figure {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  background-color: $chroma-yellow;
+  margin: $site-container--center;
+  padding: 2rem 0 0;
 }
 
 .quote {
   color: $black;
   font-family: $font-family--heading;
   font-weight: 400;
-  font-size: 1.5rem;
-  max-width: 34rem;
+  max-width: 60ch;
+  margin: auto;
+  width: 100%;
+  font-size: 1rem;
 }
 
 .avatar {
-  border: 10px solid $black;
-
-  ::before {
-    width: 1rem;
-    height: 1rem;
-    background-color: blue;
+  background-image: linear-gradient(
+    180deg,
+    $chroma-yellow calc(50% - 20px),
+    white 0%
+  );
+  text-align: center;
+  img {
+    border-radius: 50%;
   }
 }

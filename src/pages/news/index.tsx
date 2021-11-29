@@ -8,8 +8,9 @@ import { fetchNews } from "../../lib/contentful";
 import NewsHero from "../../components/NewsHero";
 import { contentfulApi } from "../../lib/contentful";
 import NewsRail from "../../components/NewsRail";
+import NewsGrid from "../../components/NewsGrid";
 
-export default function Index({ newsEntry }) {
+export default function Index({ news, newsEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
@@ -20,7 +21,13 @@ export default function Index({ newsEntry }) {
           "container--flex"
         )}
       >
-        <NewsHero featuredNewsEntry={newsEntry.featuredArticle} />
+        <div>
+          {newsEntry.title && (
+            <h1 className="text--eyebrow__grey">{newsEntry.title}</h1>
+          )}
+          <NewsHero featuredNewsEntry={newsEntry.featuredArticle} />
+          <NewsGrid news={news} />
+        </div>
         <aside>
           <p className="text--underscore--sm">Highlights</p>
           <NewsRail news={newsEntry.highlights.items} />
@@ -30,17 +37,17 @@ export default function Index({ newsEntry }) {
   );
 }
 
-export async function getStaticProps({ preview = false }) {
-  const [news] = await Promise.all([fetchNews()]);
-
+export async function fetchNewsEntry() {
   const newsQuery = gql`
     query newsPageEntryQuery {
       newsPage(id: "3KdcDIWELV45lOUp4IYusR") {
         sys {
           id
         }
+        title
         featuredArticle {
           headline
+          date
           summary
           image {
             url
@@ -49,6 +56,7 @@ export async function getStaticProps({ preview = false }) {
         highlights: highlightArticlesCollection(limit: 3) {
           items {
             headline
+            date
             summary
             image {
               url
@@ -59,16 +67,17 @@ export async function getStaticProps({ preview = false }) {
     }
   `;
 
-  const newsData = await contentfulApi(newsQuery, { preview });
+  const newsData = await contentfulApi(newsQuery);
 
-  // const featuredNewsEntry = featuredNewsData?.news ?? null;
-  const newsEntry = newsData?.newsPage ?? null;
+  return newsData?.newsPage ?? [];
+}
 
+export async function getStaticProps({ preview = false }) {
+  const [news, newsEntry] = await Promise.all([fetchNews(), fetchNewsEntry()]);
   return {
     props: {
       news,
       newsEntry,
-      // featuredNewsEntry,
       preview,
     },
   };
