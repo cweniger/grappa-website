@@ -18,3 +18,9 @@
     background-color: $black;
   }
 }
+
+.container__news {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 3rem;
+}

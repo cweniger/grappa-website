@@ -34,6 +34,14 @@
       font-size: 24px;
     }
   }
+
+  &__5 {
+    font-size: 16px;
+    line-height: 1.5;
+    @media (min-width: 600px) {
+      font-size: 18px;
+    }
+  }
 }
 
 .text--lowercase {
@@ -62,17 +70,16 @@
     color: $white;
     &Sm {
       @extend .text--eyebrow__white;
-      font-size: .7rem;
+      font-size: 0.7rem;
     }
   }
 }
-
 
 .text--detail {
   font-family: $font-family--accent;
   color: $neutral-gray-03;
   text-transform: uppercase;
-  font-size: .8rem;
+  font-size: 0.8rem;
   margin-bottom: 1rem;
 }
 
@@ -82,6 +89,22 @@
   margin: 0 0 5rem 0;
   color: $white;
   max-width: 60rem;
+  &__grey {
+    @extend .text--hero;
+    color: $neutral-gray-03;
+  }
+}
+
+.text--featured {
+  font-family: $font-family--heading;
+  font-weight: 300;
+  margin: 0 0 1rem 0;
+}
+
+.text--news {
+  font-family: $font-family--heading;
+  font-weight: 300;
+  margin: 1rem 0 0;
 }
 
 .text--research {
@@ -102,8 +125,21 @@
   padding: 0 0.75rem 0.75rem 0;
   box-shadow: 10px 10px 0 0 $chroma-yellow;
 
-  &--small {
-    font-size: 1rem;
+  &--sm {
+    @extend .text--underscore;
+    color: $chroma-purple;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    box-shadow: 1px 1px 0 0 $chroma-purple;
+  }
+
+  &--md {
+    @extend .text--underscore;
+    color: $chroma-purple;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    box-shadow: 1px 1px 0 0 $chroma-purple;
   }
 }
-

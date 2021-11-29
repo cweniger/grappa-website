@@ -1,22 +1,19 @@
 @import "../theme/theme";
 
 .box {
+  border-bottom: 1px solid $neutral-gray-06;
+  padding-bottom: 1rem;
+
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 250px;
-  
-  margin: 2rem auto;
-
-  a {
-    cursor: pointer;
-    font-family: $font-family--accent;
-    font-weight: 300;
-    text-decoration: none;
-    font-size: 0.85rem;
-  }
-
-
   @media (min-width: 900px) {
     max-width: 400px;
+  }
+
+  img {
+    width: 100%;
   }
 }
 
@@ -35,5 +32,5 @@
 }
 
 .date {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
