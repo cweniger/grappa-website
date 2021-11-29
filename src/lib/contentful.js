@@ -61,6 +61,7 @@ export async function fetchNews() {
         items {
           headline
           bodyCopy
+          hideFromList
           slug
           summary
           date

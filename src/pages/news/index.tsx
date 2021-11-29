@@ -1,39 +1,84 @@
+import { gql } from "graphql-request";
+import layout from "../../styles/components/Layout.module.scss";
+import classnames from "classnames";
+
 import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
-import layout from "../../styles/components/Layout.module.scss";
 import { fetchNews } from "../../lib/contentful";
-import NewsCard from "../../components/NewsCard";
-import classnames from "classnames";
-import card from "../../styles/components/Card.module.scss";
+import NewsHero from "../../components/NewsHero";
+import { contentfulApi } from "../../lib/contentful";
+import NewsRail from "../../components/NewsRail";
+import NewsGrid from "../../components/NewsGrid";
 
-export default function Index({ news }) {
+export default function Index({ news, newsEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <div className={layout.container__main}>
-        <h1>News</h1>
-        <div className={classnames(card.container, "container--flex")}>
-          {news.map((article) => (
-            <NewsCard
-              key={article.headline}
-              title={article.headline}
-              image={article.image}
-              date={article.date}
-              slug={`/news/${article.slug}`}
-            />
-          ))}
+      <section
+        className={classnames(
+          layout.container__main,
+          layout.container__news,
+          "container--flex"
+        )}
+      >
+        <div>
+          {newsEntry.title && (
+            <h1 className="text--eyebrow__grey">{newsEntry.title}</h1>
+          )}
+          <NewsHero featuredNewsEntry={newsEntry.featuredArticle} />
+          <NewsGrid news={news} />
         </div>
-      </div>
+        <aside>
+          <p className="text--underscore--sm">Highlights</p>
+          <NewsRail news={newsEntry.highlights.items} />
+        </aside>
+      </section>
     </Layout>
   );
 }
 
-export async function getStaticProps() {
-  const [news] = await Promise.all([fetchNews()]);
+export async function fetchNewsEntry() {
+  const newsQuery = gql`
+    query newsPageEntryQuery {
+      newsPage(id: "3KdcDIWELV45lOUp4IYusR") {
+        sys {
+          id
+        }
+        title
+        featuredArticle {
+          headline
+          date
+          summary
+          image {
+            url
+          }
+        }
+        highlights: highlightArticlesCollection(limit: 3) {
+          items {
+            headline
+            date
+            summary
+            image {
+              url
+            }
+          }
+        }
+      }
+    }
+  `;
 
+  const newsData = await contentfulApi(newsQuery);
+
+  return newsData?.newsPage ?? [];
+}
+
+export async function getStaticProps({ preview = false }) {
+  const [news, newsEntry] = await Promise.all([fetchNews(), fetchNewsEntry()]);
   return {
     props: {
       news,
+      newsEntry,
+      preview,
     },
   };
 }

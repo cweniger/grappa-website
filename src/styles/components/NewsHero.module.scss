@@ -1,0 +1,15 @@
+@import "../theme/theme";
+
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.blurb {
+  font-family: $font-family--accent;
+}
+
+.image {
+  margin-top: 1rem;
+}

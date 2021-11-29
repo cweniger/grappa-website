@@ -8,13 +8,14 @@ import { FeaturedTeasers } from "../components/FeaturedTeasers";
 import { FeaturedTestimonial } from "../components/FeaturedTestimonial";
 import BasicMeta from "../components/meta/BasicMeta";
 import { FeaturedNews } from "../components/FeaturedNews";
+import { fetchNewsEntry } from "./news";
 
 export default function Index({
   hero,
   url,
   testimonials,
   homepageTeasers,
-  news,
+  newsEntry,
 }) {
   return (
     <Layout>
@@ -22,7 +23,7 @@ export default function Index({
       <Hero hero={hero} />
       <FeaturedTeasers homepageTeasers={homepageTeasers} />
       <FeaturedTestimonial testimonials={testimonials} />
-      <FeaturedNews news={news} />
+      <FeaturedNews newsEntry={newsEntry} />
     </Layout>
   );
 }
@@ -84,28 +85,6 @@ async function fetchHomepageTeasers() {
   });
 }
 
-async function fetchNews() {
-  const query = gql`
-    query newsCollectionQuery {
-      newsCollection {
-        items {
-          headline
-          bodyCopy
-          slug
-          summary
-          image {
-            url
-          }
-        }
-      }
-    }
-  `;
-
-  const data = await contentfulApi(query);
-
-  return data?.newsCollection?.items ?? [];
-}
-
 async function fetchTestimonials() {
   const contentType = "testimonial";
 
@@ -137,17 +116,17 @@ async function fetchTestimonials() {
 }
 
 export async function getStaticProps() {
-  const [hero, testimonials, news, homepageTeasers] = await Promise.all([
+  const [hero, testimonials, newsEntry, homepageTeasers] = await Promise.all([
     fetchHero(),
     fetchTestimonials(),
-    fetchNews(),
+    fetchNewsEntry(),
     fetchHomepageTeasers(),
   ]);
 
   return {
     props: {
       hero,
-      news,
+      newsEntry,
       testimonials,
       homepageTeasers,
     },

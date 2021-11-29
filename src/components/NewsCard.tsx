@@ -9,6 +9,8 @@ interface Props {
   };
   date?: Date;
   slug?: string;
+  rail?: boolean;
+  grid?: boolean;
 }
 
 const NewsCard: React.FC<Props> = (props) => {
@@ -19,17 +21,32 @@ const NewsCard: React.FC<Props> = (props) => {
   });
 
   return (
-    <figure className={card.box} key={props.title}>
-      {props.slug ? (
-        <p>
-          <time className="text--detail">{formattedDate}</time>
-          <br />
-          <Link href={props.slug}>{props.title}</Link>
-        </p>
-      ) : (
-        <p>{props.title}</p>
+    <>
+      {props.slug && (
+        <Link href={props.slug}>
+          <a>
+            <div
+              className={props.grid ? card.gridBox : card.box}
+              key={props.slug}
+            >
+              <>
+                {props?.image && (
+                  <img
+                    src={props?.image?.url}
+                    alt={props?.image?.description}
+                  />
+                )}
+
+                {props.title && (
+                  <p className="text--news text__headline__5">{props.title}</p>
+                )}
+                <time className="text--detail">{formattedDate}</time>
+              </>
+            </div>
+          </a>
+        </Link>
       )}
-    </figure>
+    </>
   );
 };
 

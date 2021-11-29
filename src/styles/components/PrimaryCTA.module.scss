@@ -4,15 +4,14 @@
 
 .cta__primary {
   background: $chroma-yellow;
-  border: 0.125rem solid transparent;
-  border-radius: $space--large;
+  border-radius: 99px;
   display: inline-block;
   margin: $space--large auto;
-  padding: $space--medium $space--large;
-  transition: background-image $transition--smooth--medium;
+  padding: 12px 24px;
+  transition: all 250ms ease-in-out;
+
   &:hover {
     background-image: $chroma-gradient;
-    border: 0.125rem solid $chroma-purple;
   }
 
   &:focus-within {

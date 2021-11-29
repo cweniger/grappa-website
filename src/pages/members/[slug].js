@@ -36,15 +36,16 @@ export default function Member({ entry, preview }) {
           </div>
         </div>
 
-        <div className={classnames(card.container, "container--flex")}>
+        <div className={classnames(card.projectContainer)}>
           {researchAreas.length > 0 && (
             <div>
-              <h2 className="text--underscore text--underscore--small">
+              <h2 className="text--underscore text--underscore--sm">
                 Research Areas
               </h2>
               <div className={classnames(card.container, "container--flex")}>
                 {researchAreas.map((area) => (
                   <Card
+                    small
                     title={area.title}
                     image={area.image}
                     slug={`/research#${area.slug}`}
@@ -55,10 +56,10 @@ export default function Member({ entry, preview }) {
           )}
           {projects.length > 0 && (
             <div>
-              <h2 className="text--underscore text--underscore--small">
+              <h2 className="text--underscore text--underscore--sm">
                 Masters Thesis Projects
               </h2>
-              <div className="">
+              <div>
                 {projects.map((area) => (
                   <p key={area.title} area={area}>
                     <a href={`/education/msc-thesis-projects#${area.slug}`}>
