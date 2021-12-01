@@ -12,7 +12,7 @@ import groupBy from "lodash.groupby";
 
 import research from "../../styles/components/Research.module.scss";
 export default function Research({ entry, heroEntry }) {
-  const researchByType = groupBy(entry, (area) => {
+  const researchByType = groupBy(entry?.researchCollection?.items, (area) => {
     if (area.researchType == "Research Theme") {
       return "theme";
     } else {
@@ -102,7 +102,7 @@ export async function getStaticProps({ preview = false }) {
 
   const data = await contentfulApi(query, { preview });
   const heroData = await contentfulApi(heroQuery, { preview });
-  const entry = data?.researchCollection?.items ?? null;
+  const entry = data;
   const heroEntry = heroData;
   return {
     props: {

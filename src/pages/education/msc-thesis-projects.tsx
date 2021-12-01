@@ -14,7 +14,7 @@ export default function MScTrackOverview({ entry, heroEntry }) {
       <SecondaryHero heroEntry={heroEntry.hero} />
 
       <section className={layout.container__main}>
-        {entry.projects.items.map((project) => (
+        {entry?.mScThesisProjects?.projects.items.map((project) => (
           <ResearchGrid area={project} />
         ))}
       </section>
@@ -60,7 +60,7 @@ export async function getStaticProps({ preview = false }) {
 
   const data = await contentfulApi(query, { preview });
   const heroData = await contentfulApi(heroQuery);
-  const entry = data?.mScThesisProjects ?? null;
+  const entry = data;
   const heroEntry = heroData;
 
   return {

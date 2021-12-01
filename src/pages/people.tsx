@@ -13,7 +13,7 @@ import React from "react";
 
 export default function People({ persons, heroEntry }) {
   // get alumni and visitors, has end date
-  const grappaMembers = groupBy(persons, (person) => {
+  const grappaMembers = groupBy(persons?.items, (person) => {
     if (person.omitProfile === true) {
       return "nonmember";
     } else {
@@ -163,8 +163,8 @@ export async function getStaticProps({ preview = false }) {
   const data = await contentfulApi(query, { preview });
   const peopleData = await contentfulApi(peopleQuery, { preview });
   const heroData = await contentfulApi(heroQuery, { preview });
-  const entry = data?.researchCollection?.items ?? null;
-  const persons = peopleData?.persons?.items ?? null;
+  const entry = data;
+  const persons = peopleData;
   const heroEntry = heroData;
   return {
     props: {
