@@ -49,7 +49,7 @@ export default function People({ persons, heroEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <SecondaryHero heroEntry={heroEntry} />
+      <SecondaryHero heroEntry={heroEntry.hero} />
       <section className={classnames(layout.container__main)}>
         {Object.keys(sortedCurrent).map((key) => {
           const boxCheck = sortedCurrent[key].length > 3;
@@ -165,7 +165,7 @@ export async function getStaticProps({ preview = false }) {
   const heroData = await contentfulApi(heroQuery, { preview });
   const entry = data?.researchCollection?.items ?? null;
   const persons = peopleData?.persons?.items ?? null;
-  const heroEntry = heroData?.hero ?? null;
+  const heroEntry = heroData;
   return {
     props: {
       entry,

@@ -11,7 +11,7 @@ export default function MScTrackOverview({ entry, heroEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <SecondaryHero heroEntry={heroEntry} />
+      <SecondaryHero heroEntry={heroEntry.hero} />
 
       <section className={layout.container__main}>
         {entry.projects.items.map((project) => (
@@ -61,7 +61,7 @@ export async function getStaticProps({ preview = false }) {
   const data = await contentfulApi(query, { preview });
   const heroData = await contentfulApi(heroQuery);
   const entry = data?.mScThesisProjects ?? null;
-  const heroEntry = heroData?.hero ?? null;
+  const heroEntry = heroData;
 
   return {
     props: {

@@ -15,11 +15,11 @@ export default function Events({ heroEntry }) {
     <Layout>
       <BasicMeta url={"/"} />
       <div className={layout.container__main}>
-        {heroEntry.headline && (
-          <h1 className="text--eyebrow__grey">{heroEntry.headline}</h1>
+        {heroEntry.hero.headline && (
+          <h1 className="text--eyebrow__grey">{heroEntry.hero.headline}</h1>
         )}
-        {heroEntry.subheader && (
-          <p className="text--header">{heroEntry.subheader}</p>
+        {heroEntry.hero.subheader && (
+          <p className="text--header">{heroEntry.hero.subheader}</p>
         )}
         {/* GRAPPA Colloquia bi-weekly, Mondays, 11am – 12pm GRAPPA Journal Club
         weekly, Mondays, 1:30pm – 2:30pm sign-up sheet for papers ML for
@@ -106,7 +106,7 @@ export async function getStaticProps({ preview = false }) {
   `;
 
   const heroData = await contentfulApi(heroQuery, { preview });
-  const heroEntry = heroData?.hero ?? null;
+  const heroEntry = heroData;
   return {
     props: {
       heroEntry,

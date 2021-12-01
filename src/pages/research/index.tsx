@@ -22,7 +22,7 @@ export default function Research({ entry, heroEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <SecondaryHero heroEntry={heroEntry} />
+      <SecondaryHero heroEntry={heroEntry.hero} />
 
       <section
         className={classnames(
@@ -103,7 +103,7 @@ export async function getStaticProps({ preview = false }) {
   const data = await contentfulApi(query, { preview });
   const heroData = await contentfulApi(heroQuery, { preview });
   const entry = data?.researchCollection?.items ?? null;
-  const heroEntry = heroData?.hero ?? null;
+  const heroEntry = heroData;
   return {
     props: {
       entry,
