@@ -49,6 +49,7 @@ export async function fetchNewsEntry() {
         featuredArticle {
           headline
           date
+          slug
           summary
           image {
             url
@@ -58,6 +59,7 @@ export async function fetchNewsEntry() {
           items {
             headline
             date
+            slug
             summary
             image {
               url

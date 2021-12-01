@@ -1,5 +1,6 @@
 import React from "react";
 import news from "../styles/components/NewsHero.module.scss";
+import Link from "next/link";
 
 export default function NewsHero({ featuredNewsEntry }) {
   const formattedDate = new Date(featuredNewsEntry.date).toLocaleDateString(
@@ -23,9 +24,11 @@ export default function NewsHero({ featuredNewsEntry }) {
       {featuredNewsEntry.headline && (
         <>
           <p className="text--underscore--md">Featured</p>
-          <h2 className="text--featured text__headline__2">
-            {featuredNewsEntry.headline}
-          </h2>
+          <Link href={`/news/${featuredNewsEntry.slug}`}>
+            <h2 className="text--featured text__headline__2">
+              {featuredNewsEntry.headline}
+            </h2>
+          </Link>
           {formattedDate && (
             <time className="text--detail">{formattedDate}</time>
           )}
