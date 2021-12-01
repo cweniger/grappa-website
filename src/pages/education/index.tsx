@@ -3,8 +3,6 @@ import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
 import layout from "../../styles/components/Layout.module.scss";
 import { gql } from "@apollo/client";
-import client from "../../../apollo-client";
-import ReactMarkdown from "react-markdown";
 import SecondaryHero from "../../components/SecondaryHero";
 import { contentfulApi } from "../../lib/contentful";
 import React from "react";
@@ -62,12 +60,11 @@ export async function getStaticProps({ preview = false }) {
   const data = await contentfulApi(query, { preview });
   const entry = data?.textBlock ?? null;
   const heroData = await contentfulApi(heroQuery);
-  const heroEntry = heroData?.hero ?? null;
 
   return {
     props: {
       entry,
-      heroEntry,
+      heroEntry: heroData?.hero ?? null,
       preview,
     },
   };
