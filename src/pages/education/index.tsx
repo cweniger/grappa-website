@@ -11,7 +11,7 @@ export default function Education({ heroEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <SecondaryHero heroEntry={heroEntry} />
+      <SecondaryHero heroEntry={heroEntry.hero} />
 
       <section className={layout.container__main}>
         <h2>GRAPPA Msc</h2>
@@ -62,7 +62,7 @@ export async function getStaticProps({ preview = false }) {
   const data = await contentfulApi(query, { preview });
   const heroData = await contentfulApi(heroQuery, { preview });
   const entry = data?.textBlock ?? null;
-  const heroEntry = heroData?.hero ?? null;
+  const heroEntry = heroData;
 
   return {
     props: {
