@@ -1,5 +1,7 @@
 import card from "../styles/components/Card.module.scss";
 import Link from "./Link";
+import React from "react";
+
 interface Props {
   title?: string;
   image?: {

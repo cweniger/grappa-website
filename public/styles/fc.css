@@ -1,0 +1,86 @@
+/* Overrides FullCalendar on events page. */
+
+.fc-daygrid-dot-event {
+  background: #f9dc7b !important;
+  margin-bottom: 0.5em !important;
+}
+
+.fc-day-today {
+  outline: 1px solid #b374e5;
+}
+
+.fc-daygrid-day-number {
+  font-family: Termina W05;
+}
+
+.fc-daygrid-day-top {
+  flex-direction: row !important;
+  font-size: 1em;
+}
+
+.fc-daygrid-day.fc-day-today {
+  background-color: white !important;
+}
+
+.fc-toolbar-title {
+  font-family: Termina W05;
+  font-weight: 300;
+}
+
+.fc-button-primary,
+.fc-button-primary:disabled {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.fc-prev-button,
+.fc-next-button {
+  color: #b374e5 !important;
+  border-radius: 0 !important;
+}
+
+.fc-today-button {
+  outline: 1px solid #b374e5;
+  color: #b374e5 !important;
+  border-radius: 0 !important;
+  background: transparent;
+  font-size: 0.8em !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+}
+
+.fc-event-title {
+  font-size: 0.75em;
+  font-weight: 300 !important;
+}
+
+.fc-event-time,
+.fc-daygrid-dot-event {
+  font-weight: 600 !important;
+  font-family: Termina W05;
+  font-size: 0.5em;
+}
+
+.fc-daygrid-event {
+  font-family: "Azeret Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 300;
+  white-space: normal !important;
+  padding: 0.5em !important;
+}
+
+.fc-daygrid-event-dot {
+  border: 0 !important;
+}
+
+.fc-event {
+  display: block !important;
+  height: 100%;
+}
+
+.fc-col-header-cell-cushion {
+  text-transform: uppercase !important;
+  font-family: "Azeret Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 300 !important;
+}

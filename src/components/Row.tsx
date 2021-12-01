@@ -1,5 +1,7 @@
 import row from "../styles/components/Row.module.scss";
 import Link from "./Link";
+import React from "react";
+
 interface Props {
   title?: string;
   image?: {

@@ -9,6 +9,7 @@ import * as _ from "lodash";
 import { gql } from "graphql-request";
 import { contentfulApi } from "../lib/contentful";
 import SecondaryHero from "../components/SecondaryHero";
+import React from "react";
 
 export default function People({ persons, heroEntry }) {
   // get alumni and visitors, has end date

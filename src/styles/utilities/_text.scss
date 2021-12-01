@@ -99,6 +99,13 @@
   }
 }
 
+.text--header {
+  font-size: 1rem;
+  font-weight: 300;
+  font-family: $font-family--heading;
+  max-width: 40ch;
+}
+
 .text--featured {
   font-family: $font-family--heading;
   font-weight: 300;

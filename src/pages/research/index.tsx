@@ -7,7 +7,7 @@ import { contentfulApi } from "../../lib/contentful";
 import classnames from "classnames";
 import Card from "../../components/Card";
 import Row from "../../components/Row";
-
+import React from "react";
 import groupBy from "lodash.groupby";
 
 import research from "../../styles/components/Research.module.scss";

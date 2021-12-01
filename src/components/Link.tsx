@@ -1,6 +1,7 @@
 import NextLink from "next/link";
 import classname from "classnames";
 import link from "../styles/components/Link.module.scss";
+import React from "react";
 
 interface Props {
   href: string;

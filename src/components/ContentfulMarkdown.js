@@ -3,6 +3,7 @@ import markdown from "../styles/components/ContentfulMarkdown.module.scss";
 import Image from "next/image";
 import Link from "./Link";
 import ReactMarkdown from "react-markdown";
+import React from "react";
 
 const MarkdownComponents = {
   // Convert Markdown img to next/image component and set height, width and priority

@@ -6,6 +6,7 @@ import ResearchGrid from "../../components/ResearchGrid";
 import { getAllResearchSlugs } from "../../lib/contentful";
 import { contentfulApi } from "../../lib/contentful";
 import { gql } from "graphql-request";
+import React from "react";
 
 export default function ResearchTemplate({ entry }) {
   return (

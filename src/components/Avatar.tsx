@@ -1,5 +1,6 @@
 import Link from "next/link";
 import people from "../styles/components/PeopleGrid.module.scss";
+import React from "react";
 
 export default function Avatar({ person, small }) {
   const image = person.profilePicture ? (

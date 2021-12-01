@@ -2,6 +2,7 @@ import { NextPage, GetStaticProps } from "next";
 import Layout from "../components/Layout";
 import { gql } from "graphql-request";
 import { contentfulApi } from "../lib/contentful";
+import React from "react";
 
 import { Hero } from "../components/Hero";
 import { FeaturedTeasers } from "../components/FeaturedTeasers";

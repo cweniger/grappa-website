@@ -5,7 +5,7 @@ import styles from "../styles/components/Navigation.module.scss";
 import layout from "../styles/components/Layout.module.scss";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
-
+import React from "react";
 export default function Navigation() {
   const [toggle, setToggle] = useState(false);
   const [active, setActive] = useState(false);
