@@ -4,6 +4,8 @@ import layout from "../../styles/components/Layout.module.scss";
 import { gql } from "@apollo/client";
 import SecondaryHero from "../../components/SecondaryHero";
 import { contentfulApi } from "../../lib/contentful";
+import React from "react";
+
 import ResearchGrid from "../../components/ResearchGrid";
 export default function MScTrackOverview({ entry, heroEntry }) {
   return (

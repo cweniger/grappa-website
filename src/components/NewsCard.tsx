@@ -1,5 +1,6 @@
 import Link from "next/link";
 import card from "../styles/components/NewsCard.module.scss";
+import React from "react";
 
 interface Props {
   title?: string;

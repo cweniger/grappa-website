@@ -1,4 +1,5 @@
 import NewsCard from "../components/NewsCard";
+import React from "react";
 
 export default function NewsRail({ news }) {
   return (

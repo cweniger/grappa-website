@@ -1,6 +1,7 @@
 import { gql } from "graphql-request";
 import layout from "../../styles/components/Layout.module.scss";
 import classnames from "classnames";
+import React from "react";
 
 import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";

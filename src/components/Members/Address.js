@@ -1,4 +1,5 @@
 import people from "../../styles/components/Address.module.scss";
+import React from "react";
 
 export default function Address({ entry }) {
   return (

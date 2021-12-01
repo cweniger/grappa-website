@@ -2,6 +2,8 @@ import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
 import layout from "../../styles/components/Layout.module.scss";
 import ReactMarkdown from "react-markdown";
+import React from "react";
+
 export default function News({ article }) {
   return (
     <Layout>

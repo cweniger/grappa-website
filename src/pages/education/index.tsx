@@ -7,6 +7,7 @@ import client from "../../../apollo-client";
 import ReactMarkdown from "react-markdown";
 import SecondaryHero from "../../components/SecondaryHero";
 import { contentfulApi } from "../../lib/contentful";
+import React from "react";
 
 export default function Education({ entry, preview, heroEntry }) {
   return (

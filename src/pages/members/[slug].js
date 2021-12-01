@@ -2,6 +2,7 @@ import Layout from "../../components/Layout";
 import Card from "../../components/Card";
 import BasicMeta from "../../components/meta/BasicMeta";
 import people from "../../styles/components/PeopleGrid.module.scss";
+import React from "react";
 
 import { gql } from "graphql-request";
 import layout from "../../styles/components/Layout.module.scss";

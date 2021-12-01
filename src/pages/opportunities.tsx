@@ -3,6 +3,7 @@ import Link from "next/link";
 import BasicMeta from "../components/meta/BasicMeta";
 import layout from "../styles/components/Layout.module.scss";
 import groupBy from "lodash.groupby";
+import React from "react";
 
 export default function Opportunities({ jobs }) {
   const jobsByExpiration = groupBy(jobs, (job) => {
