@@ -7,11 +7,12 @@ import SecondaryHero from "../../components/SecondaryHero";
 import { contentfulApi } from "../../lib/contentful";
 import React from "react";
 
-export default function Education({ entry, preview, heroEntry }) {
+export default function Education({ heroEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
       <SecondaryHero heroEntry={heroEntry} />
+
       <section className={layout.container__main}>
         <h2>GRAPPA Msc</h2>
         <ul>
@@ -57,14 +58,16 @@ export async function getStaticProps({ preview = false }) {
       }
     }
   `;
+
   const data = await contentfulApi(query, { preview });
+  const heroData = await contentfulApi(heroQuery, { preview });
   const entry = data?.textBlock ?? null;
-  const heroData = await contentfulApi(heroQuery);
+  const heroEntry = heroData?.hero ?? null;
 
   return {
     props: {
       entry,
-      heroEntry: heroData?.hero ?? null,
+      heroEntry,
       preview,
     },
   };
