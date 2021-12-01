@@ -61,7 +61,7 @@ export async function getStaticProps({ preview = false }) {
 
   const data = await contentfulApi(query, { preview });
   const heroData = await contentfulApi(heroQuery, { preview });
-  const entry = data?.textBlock ?? null;
+  const entry = data;
   const heroEntry = heroData;
 
   return {
