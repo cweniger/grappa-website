@@ -52,39 +52,49 @@
   font-style: italic;
 }
 
-.text--eyebrow {
+.text__heavy {
   font-weight: 600;
-  font-family: $font-family--heading;
+  font-family: $font-family__heading;
+}
+
+.text__eyebrow {
+  font-weight: 600;
+  font-family: $font-family__heading;
   text-transform: uppercase;
   font-size: 1rem;
   letter-spacing: 0.4em;
   color: $chroma-yellow;
 
   &__grey {
-    @extend .text--eyebrow;
+    @extend .text__eyebrow;
     color: $neutral-gray-03;
     &Sm {
-      @extend .text--eyebrow__grey;
+      @extend .text__eyebrow__grey;
       font-size: 0.7rem;
     }
   }
 
   &__white {
-    @extend .text--eyebrow;
+    @extend .text__eyebrow;
     color: $white;
     &Sm {
-      @extend .text--eyebrow__white;
+      @extend .text__eyebrow__white;
       font-size: 0.7rem;
     }
   }
 }
 
-.text--detail {
+.text__detail {
   font-family: $font-family--accent;
   color: $neutral-gray-04;
   text-transform: uppercase;
   font-size: 0.8rem;
   margin: 1rem 0;
+  &__job {
+    @extend .text__detail;
+    margin: 2em 0 0 0;
+    color: initial;
+  }
 }
 
 .text--hero {
@@ -99,7 +109,7 @@
   }
 }
 
-.text--header {
+.text__subheader {
   font-size: 1rem;
   font-weight: 300;
   font-family: $font-family--heading;
@@ -112,10 +122,11 @@
   margin: 0 0 1rem 0;
 }
 
-.text--news {
+.text__news {
   font-family: $font-family--heading;
   font-weight: 300;
   margin: 1rem 0 0;
+  line-height: 0.9;
 }
 
 .text--teasers {
@@ -141,15 +152,31 @@
   }
 }
 
-.text--underscore {
+.text__accent {
+  font-weight: 600;
+  font-family: $font-family--base;
+  text-transform: uppercase;
+
+  &__sm {
+    @extend .text__accent;
+    font-size: 0.75rem;
+    color: $chroma-purple;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    margin-bottom: 0.25em;
+  }
+}
+
+.text__underscore {
   font-family: $font-family--accent;
   margin: 0 0 2rem;
   display: inline-block;
   padding: 0 0.75rem 0.75rem 0;
   box-shadow: 10px 10px 0 0 $chroma-yellow;
 
-  &--sm {
-    @extend .text--underscore;
+  &__sm {
+    @extend .text__underscore;
     color: $chroma-purple;
     font-size: 0.65rem;
     text-transform: uppercase;
@@ -157,8 +184,8 @@
     box-shadow: 1px 1px 0 0 $chroma-purple;
   }
 
-  &--md {
-    @extend .text--underscore;
+  &__md {
+    @extend .text__underscore;
     color: $chroma-purple;
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -166,4 +193,8 @@
     box-shadow: 1px 1px 0 0 $chroma-purple;
     margin-top: 1rem;
   }
+}
+
+.list__none {
+  list-style-type: none;
 }

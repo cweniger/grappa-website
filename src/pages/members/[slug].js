@@ -22,7 +22,7 @@ export default function Member({ entry, preview }) {
             <p className="text--eyebrow__grey">{entry.jobTitle.title}</p>
           )}
           {entry.visitor && <p className="text--eyebrow__grey">Visitor</p>}
-          <div className="container--flex container--flex--col">
+          <div className="container__flex container__flex--col">
             <Address entry={entry} />
 
             {entry.profilePicture ? (
@@ -43,7 +43,7 @@ export default function Member({ entry, preview }) {
               <h2 className="text--underscore text--underscore--sm">
                 Research Areas
               </h2>
-              <div className={classnames(card.container, "container--flex")}>
+              <div className={classnames(card.container, "container__flex")}>
                 {researchAreas.map((area) => (
                   <Card
                     small
