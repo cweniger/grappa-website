@@ -22,7 +22,7 @@ export default function News({ newsEntry }) {
             <h1 className="text--research text__headline__2">
               {newsEntry.headline}
             </h1>
-            <time className="text--detail">{formattedDate}</time>
+            <time className="text__detail">{formattedDate}</time>
             <ReactMarkdown>{newsEntry.bodyCopy}</ReactMarkdown>
             {/* {article.abstract && (
               <p className={research.blurb}>{article.abstract}</p>
@@ -32,8 +32,8 @@ export default function News({ newsEntry }) {
       </section>
       {/* <section className="container__main container__right">
         <div className="container__medium">
-          <h1 className="text--news">{article.headline}</h1>
-          <time className="text--detail">{formattedDate}</time>
+          <h1 className="text__news">{article.headline}</h1>
+          <time className="text__detail">{formattedDate}</time>
           <ReactMarkdown>{article.bodyCopy}</ReactMarkdown>
         </div>
       </section> */}

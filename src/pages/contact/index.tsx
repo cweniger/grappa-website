@@ -1,7 +1,6 @@
 import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
 import layout from "../../styles/components/Layout.module.scss";
-// import ReactMarkdown from "react-markdown";
 import { gql } from "@apollo/client";
 import client from "../../../apollo-client";
 import ReactMarkdown from "react-markdown";
@@ -11,13 +10,21 @@ export default function Contact({ content }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <main className={layout.container__main}>
-        <section>
-          <h1>Contact</h1>
+      <section className="container__main container__flex">
+        <div>
+          {/* {heroEntry.hero.headline && (
+          <h1 className="text__eyebrow__grey">{heroEntry.hero.headline}</h1>
+        )} */}
           <h2>{content.title}</h2>
           <ReactMarkdown>{content.text}</ReactMarkdown>
-        </section>
-      </main>
+        </div>
+        <aside className="container__aside">
+          GRAPPA Contacts GRAPPA spokesperson: Samaya Nissanke GRAPPA MSc track
+          coordinator: Shin'ichiro Ando Administrative contact: Jiřina Šálková
+          See the people page to find all GRAPPA cohorts Please feel free to
+          contact any of the staff members for questions!
+        </aside>
+      </section>
     </Layout>
   );
 }

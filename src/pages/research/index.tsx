@@ -28,7 +28,7 @@ export default function Research({ entry, heroEntry }) {
         className={classnames(
           layout.container__main,
           research.container,
-          "container--flex container--flex--space-between"
+          "container__flex container__flex--space-between"
         )}
       >
         {researchByType.theme.map((area) => (
@@ -46,7 +46,7 @@ export default function Research({ entry, heroEntry }) {
           We also have major areas of experimentation.
         </p>
         <div
-          className={classnames("container--flex container--flex--colstatic")}
+          className={classnames("container__flex container__flex--colstatic")}
         >
           {researchByType.experiment.map((area) => (
             <Row

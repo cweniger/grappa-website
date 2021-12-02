@@ -14,12 +14,12 @@ export default function Events({ heroEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <div className={layout.container__main}>
+      <div className="container__main">
         {heroEntry.hero.headline && (
-          <h1 className="text--eyebrow__grey">{heroEntry.hero.headline}</h1>
+          <h1 className="text__eyebrow__grey">{heroEntry.hero.headline}</h1>
         )}
         {heroEntry.hero.subheader && (
-          <p className="text--header">{heroEntry.hero.subheader}</p>
+          <p className="text__subheader">{heroEntry.hero.subheader}</p>
         )}
         {/* GRAPPA Colloquia bi-weekly, Mondays, 11am – 12pm GRAPPA Journal Club
         weekly, Mondays, 1:30pm – 2:30pm sign-up sheet for papers ML for

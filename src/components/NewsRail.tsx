@@ -3,7 +3,7 @@ import React from "react";
 
 export default function NewsRail({ news }) {
   return (
-    <section className="container--flex container--flex--colstatic">
+    <section className="container__flex container__flex--colstatic">
       {news.map((article) => (
         <NewsCard
           rail
