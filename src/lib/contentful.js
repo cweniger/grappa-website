@@ -37,7 +37,7 @@ export async function getAllMembersSlugs() {
       }
     `
   );
-  return personData?.personCollection?.items;
+  return personData;
 }
 export async function getAllNewsSlugs() {
   const newsData = await contentfulApi(
@@ -51,7 +51,7 @@ export async function getAllNewsSlugs() {
       }
     `
   );
-  return newsData?.newsCollection?.items;
+  return newsData;
 }
 
 export async function fetchNews() {
