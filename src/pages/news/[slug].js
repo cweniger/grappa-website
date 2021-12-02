@@ -2,7 +2,7 @@ import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
 import ReactMarkdown from "react-markdown";
 import React from "react";
-import { fetchNewsEntry } from "../lib/contentful";
+import { fetchNewsEntry, getAllNewsSlugs } from "../../lib/contentful";
 export default function News({ newsEntry }) {
   const formattedDate = new Date(newsEntry.date).toLocaleDateString("en-GB", {
     year: "numeric",
