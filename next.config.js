@@ -8,20 +8,23 @@ const withTM = require("next-transpile-modules")([
 module.exports = withTM({
   webpack5: true,
   webpack(config) {
-    config.module.rules.push(
-      ...[
-        {
-          test: /\.md$/,
-          loader: "frontmatter-markdown-loader",
-        },
-        {
-          test: /\.yml$/,
-          type: "json",
-          use: "yaml-loader",
-        },
-      ]
-    );
-    return config;
+    return {
+      ...config,
+      module: {
+        ...config.module,
+        rules: config.module.rules.concat([
+          {
+            test: /\.md$/,
+            loader: "frontmatter-markdown-loader",
+          },
+          {
+            test: /\.yml$/,
+            type: "json",
+            use: "yaml-loader",
+          },
+        ]),
+      },
+    };
   },
   images: {
     domains: ["images.ctfassets.net"],
