@@ -43,7 +43,7 @@ export default function News({ article }) {
 
 export async function getStaticPaths() {
   const posts = await getAllNewsSlugs();
-  const paths = posts?.newsCollection?.items.map((page) => {
+  const paths = posts.newsCollection.items.map((page) => {
     return { params: { slug: page.slug } };
   });
   return {

@@ -24,7 +24,7 @@ export default function Index({
       <Hero hero={hero} />
       <FeaturedTeasers homepageTeasers={homepageTeasers} />
       <FeaturedTestimonial testimonials={testimonials} />
-      <FeaturedNews newsEntry={newsEntry?.newsPage.highlights?.items} />
+      <FeaturedNews newsEntry={newsEntry.newsPage.highlights.items} />
     </Layout>
   );
 }
@@ -99,7 +99,7 @@ async function fetchTestimonials() {
     });
 
     const studentImage = testimonials.includes.Asset.find((studentImage) => {
-      return student.fields?.profilePicture?.sys?.id === studentImage.sys.id;
+      return student.fields.profilePicture.sys.id === studentImage.sys.id;
     });
 
     return {

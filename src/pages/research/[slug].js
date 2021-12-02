@@ -10,7 +10,7 @@ export default function ResearchTemplate({ entry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <ResearchGrid area={entry?.researchCollection.items[0]} />
+      <ResearchGrid area={entry.researchCollection.items[0]} />
     </Layout>
   );
 }
@@ -70,7 +70,7 @@ export async function getStaticProps({ params, preview = false }) {
 
 export async function getStaticPaths() {
   const posts = await getAllResearchSlugs();
-  const paths = posts?.researchCollection?.items?.map((page) => {
+  const paths = posts.researchCollection.items.map((page) => {
     return { params: { slug: page.slug } };
   });
   return {

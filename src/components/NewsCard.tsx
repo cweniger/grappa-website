@@ -31,11 +31,8 @@ const NewsCard: React.FC<Props> = (props) => {
               key={props.slug}
             >
               <>
-                {props?.image && (
-                  <img
-                    src={props?.image?.url}
-                    alt={props?.image?.description}
-                  />
+                {props.image && (
+                  <img src={props.image.url} alt={props.image.description} />
                 )}
 
                 {props.title && (

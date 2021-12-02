@@ -28,7 +28,7 @@ export default function Opportunities({ jobs }) {
 
         <h2>Current Opportunities</h2>
         <ul>
-          {jobsByExpiration.current?.map((job) => {
+          {jobsByExpiration.current.map((job) => {
             return (
               <li key={job.id}>
                 <Link href={job.listingUrl}>
@@ -89,7 +89,7 @@ export default function Opportunities({ jobs }) {
 
         <h2>Expired Opportunities</h2>
         <ul>
-          {jobsByExpiration.expired?.map((job) => {
+          {jobsByExpiration.expired.map((job) => {
             return (
               <li key={job.id}>
                 {job.position} in {job.subject}

@@ -12,7 +12,7 @@ import groupBy from "lodash.groupby";
 
 import research from "../../styles/components/Research.module.scss";
 export default function Research({ entry, heroEntry }) {
-  const researchByType = groupBy(entry?.researchCollection?.items, (area) => {
+  const researchByType = groupBy(entry.researchCollection.items, (area) => {
     if (area.researchType == "Research Theme") {
       return "theme";
     } else {

@@ -8,7 +8,7 @@ export function FeaturedNews({ newsEntry }) {
   console.log(newsEntry);
   return (
     <section className={classnames(layout.container__main, card.container)}>
-      {newsEntry?.newsPage?.highlights?.items?.map((article) => (
+      {newsEntry.newsPage.highlights.items.map((article) => (
         <NewsCard
           grid
           date={article.date}

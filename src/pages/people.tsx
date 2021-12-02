@@ -13,7 +13,7 @@ import React from "react";
 
 export default function People({ persons, heroEntry }) {
   // get alumni and visitors, has end date
-  const grappaMembers = groupBy(persons?.items, (person) => {
+  const grappaMembers = groupBy(persons.items, (person) => {
     if (person.omitProfile === true) {
       return "nonmember";
     } else {
@@ -68,8 +68,8 @@ export default function People({ persons, heroEntry }) {
                     {fields.profilePicture ? (
                       <Link href={`/members/${fields.slug}`}>
                         <img
-                          src={fields?.profilePicture?.url}
-                          alt={fields?.fullName}
+                          src={fields.profilePicture.url}
+                          alt={fields.fullName}
                         />
                       </Link>
                     ) : (

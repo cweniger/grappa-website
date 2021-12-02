@@ -14,7 +14,7 @@ export default function MScTrackOverview({ entry, heroEntry }) {
       <SecondaryHero heroEntry={heroEntry.hero} />
 
       <section className={layout.container__main}>
-        {entry?.mScThesisProjects?.projects.items.map((project) => (
+        {entry.mScThesisProjects.projects.items.map((project) => (
           <ResearchGrid area={project} />
         ))}
       </section>

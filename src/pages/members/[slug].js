@@ -11,7 +11,7 @@ import classnames from "classnames";
 import Address from "../../components/Members/Address";
 import { contentfulApi, getAllMembersSlugs } from "../../lib/contentful";
 export default function Member({ entry, preview }) {
-  const researchAreas = entry?.linkedFrom?.researchCollection?.items ?? [];
+  const researchAreas = entry.linkedFrom.researchCollection.items ?? [];
   const projects = entry.linkedFrom.thesisProjectCollection.items ?? [];
   return (
     <Layout preview={preview}>
@@ -129,7 +129,7 @@ export async function getStaticProps({ params, preview = false }) {
     }
   );
 
-  const entry = peopleData?.personCollection.items[0] ?? [];
+  const entry = peopleData.personCollection.items[0] ?? [];
 
   if (!entry) {
     return { notFound: true };
@@ -145,7 +145,7 @@ export async function getStaticProps({ params, preview = false }) {
 }
 export async function getStaticPaths() {
   const posts = await getAllMembersSlugs();
-  const paths = posts?.personCollection?.items.map((page) => {
+  const paths = posts.personCollection.items.map((page) => {
     return { params: { slug: page.slug } };
   });
   return {

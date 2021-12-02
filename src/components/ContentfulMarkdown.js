@@ -13,9 +13,9 @@ const MarkdownComponents = {
 
     if (node.children[0].tagName === "img") {
       const image = node.children[0];
-      const alt = image.properties.alt?.replace(/ *\{[^)]*\} */g, "");
+      const alt = image.properties.alt.replace(/ *\{[^)]*\} */g, "");
       const isPriority = image.properties.alt
-        ?.toLowerCase()
+        .toLowerCase()
         .includes("{priority}");
       const metaWidth = image.properties.alt.match(/{([^}]+)x/);
       const metaHeight = image.properties.alt.match(/x([^}]+)}/);
