@@ -6,7 +6,8 @@ const withTM = require("next-transpile-modules")([
   "@fullcalendar/daygrid",
 ]);
 module.exports = withTM({
-  webpack: (config) => {
+  webpack5: true,
+  webpack(config) {
     config.module.rules.push(
       ...[
         {

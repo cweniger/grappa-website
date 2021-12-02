@@ -70,7 +70,7 @@ export async function getStaticProps({ params, preview = false }) {
 
 export async function getStaticPaths() {
   const posts = await getAllResearchSlugs();
-  const paths = posts?.map((page) => {
+  const paths = posts?.researchCollection?.items?.map((page) => {
     return { params: { slug: page.slug } };
   });
   return {

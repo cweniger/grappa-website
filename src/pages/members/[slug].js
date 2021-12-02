@@ -145,7 +145,6 @@ export async function getStaticProps({ params, preview = false }) {
 }
 export async function getStaticPaths() {
   const posts = await getAllMembersSlugs();
-  console.log(posts);
   const paths = posts?.personCollection?.items.map((page) => {
     return { params: { slug: page.slug } };
   });
