@@ -2,9 +2,9 @@ import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
 import ReactMarkdown from "react-markdown";
 import React from "react";
-
-export default function News({ article }) {
-  const formattedDate = new Date(article.date).toLocaleDateString("en-GB", {
+import { fetchNewsEntry } from "../lib/contentful";
+export default function News({ newsEntry }) {
+  const formattedDate = new Date(newsEntry.date).toLocaleDateString("en-GB", {
     year: "numeric",
     month: "numeric",
     day: "numeric",
@@ -20,10 +20,10 @@ export default function News({ article }) {
 
           <div className="container__small">
             <h1 className="text--research text__headline__2">
-              {article.headline}
+              {newsEntry.headline}
             </h1>
             <time className="text--detail">{formattedDate}</time>
-            <ReactMarkdown>{article.bodyCopy}</ReactMarkdown>
+            <ReactMarkdown>{newsEntry.bodyCopy}</ReactMarkdown>
             {/* {article.abstract && (
               <p className={research.blurb}>{article.abstract}</p>
             )} */}
@@ -49,5 +49,15 @@ export async function getStaticPaths() {
   return {
     paths,
     fallback: "blocking",
+  };
+}
+
+export async function getStaticProps({ preview = false }) {
+  const [newsEntry] = await Promise.all([fetchNewsEntry()]);
+  return {
+    props: {
+      newsEntry,
+      preview,
+    },
   };
 }

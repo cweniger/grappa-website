@@ -127,3 +127,40 @@ export async function getArticleData({ params }) {
     }
   );
 }
+
+export async function fetchNewsEntry() {
+  const newsQuery = gql`
+    query newsPageEntryQuery {
+      newsPage(id: "3KdcDIWELV45lOUp4IYusR") {
+        sys {
+          id
+        }
+        title
+        featuredArticle {
+          headline
+          date
+          slug
+          summary
+          image {
+            url
+          }
+        }
+        highlights: highlightArticlesCollection(limit: 3) {
+          items {
+            headline
+            date
+            slug
+            summary
+            image {
+              url
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const newsData = await contentfulApi(newsQuery);
+
+  return newsData;
+}
