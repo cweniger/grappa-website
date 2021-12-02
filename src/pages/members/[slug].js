@@ -129,7 +129,7 @@ export async function getStaticProps({ params, preview = false }) {
     }
   );
 
-  const entry = peopleData.personCollection.items[0] ?? [];
+  const entry = peopleData.personCollection.items[0];
 
   if (!entry) {
     return { notFound: true };
