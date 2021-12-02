@@ -1,5 +1,6 @@
 import Head from "next/head";
 import config from "../../lib/config";
+import React from "react";
 
 type Props = {
   title?: string;

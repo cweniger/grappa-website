@@ -1,3 +1,5 @@
+import React from "react";
+
 import footer from "../styles/components/Footer.module.scss";
 import layout from "../styles/components/Layout.module.scss";
 import classnames from "classnames";

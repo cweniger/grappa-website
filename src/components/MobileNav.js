@@ -1,3 +1,5 @@
+import React from "react";
+
 import styles from "../styles/components/Navigation.module.scss";
 import Link from "next/link";
 

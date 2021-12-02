@@ -1,4 +1,6 @@
 import Head from "next/head";
+import React from "react";
+
 import Navigation from "./Navigation";
 import header from "../styles/components/Header.module.scss";
 import Footer from "./Footer";
@@ -25,6 +27,7 @@ export default function Layout({ children }: Props) {
           href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200&family=Epilogue&display=swap"
           rel="stylesheet"
         />
+        <link href="/styles/fc.css" rel="stylesheet" />
       </Head>
 
       <Navigation />

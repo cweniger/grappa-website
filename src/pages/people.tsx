@@ -9,10 +9,11 @@ import * as _ from "lodash";
 import { gql } from "graphql-request";
 import { contentfulApi } from "../lib/contentful";
 import SecondaryHero from "../components/SecondaryHero";
+import React from "react";
 
 export default function People({ persons, heroEntry }) {
   // get alumni and visitors, has end date
-  const grappaMembers = groupBy(persons, (person) => {
+  const grappaMembers = groupBy(persons.persons.items, (person) => {
     if (person.omitProfile === true) {
       return "nonmember";
     } else {
@@ -20,7 +21,8 @@ export default function People({ persons, heroEntry }) {
     }
   });
 
-  console.log(grappaMembers);
+  console.log(persons);
+
   const personsHasEndDate = groupBy(grappaMembers.member, (person) => {
     let todayRaw = new Date();
     const today = todayRaw.toISOString();
@@ -49,7 +51,7 @@ export default function People({ persons, heroEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <SecondaryHero heroEntry={heroEntry} />
+      <SecondaryHero heroEntry={heroEntry.hero} />
       <section className={classnames(layout.container__main)}>
         {Object.keys(sortedCurrent).map((key) => {
           const boxCheck = sortedCurrent[key].length > 3;
@@ -68,8 +70,8 @@ export default function People({ persons, heroEntry }) {
                     {fields.profilePicture ? (
                       <Link href={`/members/${fields.slug}`}>
                         <img
-                          src={fields?.profilePicture?.url}
-                          alt={fields?.fullName}
+                          src={fields.profilePicture.url}
+                          alt={fields.fullName}
                         />
                       </Link>
                     ) : (
@@ -163,9 +165,9 @@ export async function getStaticProps({ preview = false }) {
   const data = await contentfulApi(query, { preview });
   const peopleData = await contentfulApi(peopleQuery, { preview });
   const heroData = await contentfulApi(heroQuery, { preview });
-  const entry = data?.researchCollection?.items ?? null;
-  const persons = peopleData?.persons?.items ?? null;
-  const heroEntry = heroData?.hero ?? null;
+  const entry = data;
+  const persons = peopleData;
+  const heroEntry = heroData;
   return {
     props: {
       entry,

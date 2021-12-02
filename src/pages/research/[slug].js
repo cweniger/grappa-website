@@ -1,17 +1,16 @@
 import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
-import layout from "../../styles/components/Layout.module.scss";
-import ReactMarkdown from "react-markdown";
 import ResearchGrid from "../../components/ResearchGrid";
 import { getAllResearchSlugs } from "../../lib/contentful";
 import { contentfulApi } from "../../lib/contentful";
 import { gql } from "graphql-request";
+import React from "react";
 
 export default function ResearchTemplate({ entry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <ResearchGrid area={entry} />
+      <ResearchGrid area={entry.researchCollection.items[0]} />
     </Layout>
   );
 }
@@ -54,7 +53,7 @@ export async function getStaticProps({ params, preview = false }) {
     }
   );
 
-  const entry = researchData?.researchCollection.items[0] ?? [];
+  const entry = researchData;
 
   if (!entry) {
     return { notFound: true };
@@ -71,7 +70,7 @@ export async function getStaticProps({ params, preview = false }) {
 
 export async function getStaticPaths() {
   const posts = await getAllResearchSlugs();
-  const paths = posts?.map((page) => {
+  const paths = posts.researchCollection.items.map((page) => {
     return { params: { slug: page.slug } };
   });
   return {

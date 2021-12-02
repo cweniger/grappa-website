@@ -4,6 +4,7 @@ import people from "../styles/components/PeopleGrid.module.scss";
 import Avatar from "../components/Avatar";
 import ContentfulMarkdown from "../components/ContentfulMarkdown";
 import classnames from "classnames";
+import React from "react";
 
 export default function ResearchGrid({ area }) {
   return (

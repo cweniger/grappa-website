@@ -8,7 +8,7 @@ export function FeaturedTeasers({ homepageTeasers }) {
   return (
     <>
       <section className={layout.container__main}>
-        {homepageTeasers.map((teaser) => (
+        {homepageTeasers.homepageTeasersCollection.items.map((teaser) => (
           <div className={zigzag.container__zigzag} key={teaser.id}>
             <div className={zigzag.item}>
               <h3 className="text--news">{teaser.headline}</h3>
@@ -18,7 +18,7 @@ export function FeaturedTeasers({ homepageTeasers }) {
             </div>
             <div className={zigzag.item}>
               <Image
-                src={teaser.teaserImage}
+                src={teaser.image.url}
                 alt="Space stuff"
                 layout="responsive"
                 width="100%"

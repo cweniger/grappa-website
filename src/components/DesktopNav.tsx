@@ -1,5 +1,6 @@
 import styles from "../styles/components/Navigation.module.scss";
 import Link from "next/link";
+import React from "react";
 
 export default function DesktopNav() {
   return (

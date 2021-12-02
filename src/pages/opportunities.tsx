@@ -3,6 +3,7 @@ import Link from "next/link";
 import BasicMeta from "../components/meta/BasicMeta";
 import layout from "../styles/components/Layout.module.scss";
 import groupBy from "lodash.groupby";
+import React from "react";
 
 export default function Opportunities({ jobs }) {
   const jobsByExpiration = groupBy(jobs, (job) => {
@@ -15,7 +16,7 @@ export default function Opportunities({ jobs }) {
       return "expired";
     }
   });
-
+  console.log(jobsByExpiration);
   return (
     <Layout>
       <BasicMeta url={"/"} />
@@ -25,20 +26,24 @@ export default function Opportunities({ jobs }) {
           related to gravitational waves, fundamental physics and cosmology.
         </p>
 
-        <h2>Current Opportunities</h2>
-        <ul>
-          {jobsByExpiration.current?.map((job) => {
-            return (
-              <li key={job.id}>
-                <Link href={job.listingUrl}>
-                  <a>
-                    {job.position} in {job.subject}
-                  </a>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        {jobsByExpiration.current && (
+          <>
+            <h2>Current Opportunities</h2>
+            <ul>
+              {jobsByExpiration.current.map((job) => {
+                return (
+                  <li key={job.id}>
+                    <Link href={job.listingUrl}>
+                      <a>
+                        {job.position} in {job.subject}
+                      </a>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </>
+        )}
         <h2>Independent Postdoctoral Fellowships </h2>
         <p>
           Besides regular postdoctoral jobs, we have various other
@@ -88,7 +93,7 @@ export default function Opportunities({ jobs }) {
 
         <h2>Expired Opportunities</h2>
         <ul>
-          {jobsByExpiration.expired?.map((job) => {
+          {jobsByExpiration.expired.map((job) => {
             return (
               <li key={job.id}>
                 {job.position} in {job.subject}

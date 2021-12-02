@@ -4,6 +4,7 @@ import layout from "../../styles/components/Layout.module.scss";
 import { gql } from "@apollo/client";
 import client from "../../../apollo-client";
 import ReactMarkdown from "react-markdown";
+import React from "react";
 
 export default function MScTrackOverview({ content }) {
   return (

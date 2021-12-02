@@ -22,7 +22,7 @@ export async function getAllResearchSlugs() {
       }
     `
   );
-  return researchData?.researchCollection?.items;
+  return researchData;
 }
 
 export async function getAllMembersSlugs() {
@@ -37,7 +37,7 @@ export async function getAllMembersSlugs() {
       }
     `
   );
-  return personData?.personCollection?.items;
+  return personData;
 }
 export async function getAllNewsSlugs() {
   const newsData = await contentfulApi(
@@ -51,7 +51,7 @@ export async function getAllNewsSlugs() {
       }
     `
   );
-  return newsData?.newsCollection?.items;
+  return newsData;
 }
 
 export async function fetchNews() {
@@ -75,7 +75,7 @@ export async function fetchNews() {
 
   const data = await contentfulApi(query);
 
-  return data?.newsCollection?.items ?? [];
+  return data;
 }
 
 export async function fetchArticle() {
@@ -100,7 +100,7 @@ export async function fetchArticle() {
     slug: params.slug,
   });
 
-  return data?.newsCollection?.items ?? [];
+  return data;
 }
 
 export async function getArticleData({ params }) {
@@ -126,4 +126,41 @@ export async function getArticleData({ params }) {
       preview,
     }
   );
+}
+
+export async function fetchNewsEntry() {
+  const newsQuery = gql`
+    query newsPageEntryQuery {
+      newsPage(id: "3KdcDIWELV45lOUp4IYusR") {
+        sys {
+          id
+        }
+        title
+        featuredArticle {
+          headline
+          date
+          slug
+          summary
+          image {
+            url
+          }
+        }
+        highlights: highlightArticlesCollection(limit: 3) {
+          items {
+            headline
+            date
+            slug
+            summary
+            image {
+              url
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const newsData = await contentfulApi(newsQuery);
+
+  return newsData;
 }

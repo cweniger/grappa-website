@@ -3,16 +3,16 @@ import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
 import layout from "../../styles/components/Layout.module.scss";
 import { gql } from "@apollo/client";
-import client from "../../../apollo-client";
-import ReactMarkdown from "react-markdown";
 import SecondaryHero from "../../components/SecondaryHero";
 import { contentfulApi } from "../../lib/contentful";
+import React from "react";
 
-export default function Education({ entry, preview, heroEntry }) {
+export default function Education({ heroEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <SecondaryHero heroEntry={heroEntry} />
+      <SecondaryHero heroEntry={heroEntry.hero} />
+
       <section className={layout.container__main}>
         <h2>GRAPPA Msc</h2>
         <ul>
@@ -58,10 +58,11 @@ export async function getStaticProps({ preview = false }) {
       }
     }
   `;
+
   const data = await contentfulApi(query, { preview });
-  const entry = data?.textBlock ?? null;
-  const heroData = await contentfulApi(heroQuery);
-  const heroEntry = heroData?.hero ?? null;
+  const heroData = await contentfulApi(heroQuery, { preview });
+  const entry = data;
+  const heroEntry = heroData;
 
   return {
     props: {

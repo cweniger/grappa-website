@@ -1,5 +1,5 @@
 import { AuthorContent } from "../lib/authors";
-
+import React from "react";
 type Props = {
   author: AuthorContent;
 };
