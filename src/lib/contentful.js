@@ -100,7 +100,7 @@ export async function fetchArticle() {
     slug: params.slug,
   });
 
-  return data?.newsCollection?.items ?? [];
+  return data;
 }
 
 export async function getArticleData({ params }) {
