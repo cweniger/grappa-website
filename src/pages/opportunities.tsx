@@ -16,7 +16,7 @@ export default function Opportunities({ jobs }) {
       return "expired";
     }
   });
-
+  console.log(jobsByExpiration);
   return (
     <Layout>
       <BasicMeta url={"/"} />
@@ -26,20 +26,24 @@ export default function Opportunities({ jobs }) {
           related to gravitational waves, fundamental physics and cosmology.
         </p>
 
-        <h2>Current Opportunities</h2>
-        <ul>
-          {jobsByExpiration.current.map((job) => {
-            return (
-              <li key={job.id}>
-                <Link href={job.listingUrl}>
-                  <a>
-                    {job.position} in {job.subject}
-                  </a>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        {jobsByExpiration.current && (
+          <>
+            <h2>Current Opportunities</h2>
+            <ul>
+              {jobsByExpiration.current.map((job) => {
+                return (
+                  <li key={job.id}>
+                    <Link href={job.listingUrl}>
+                      <a>
+                        {job.position} in {job.subject}
+                      </a>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </>
+        )}
         <h2>Independent Postdoctoral Fellowships </h2>
         <p>
           Besides regular postdoctoral jobs, we have various other

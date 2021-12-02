@@ -29,37 +29,37 @@ export default function Index({
 
 async function fetchHero() {
   const heroData = await contentfulApi(gql`
-  query heroEntryQuery {
-    hero(id: "2xGHilZov5iOIqcCbeoLoy") {
-      headline
-      subheader
-      primaryCtaUrl
-      primaryCtaCopy
-      backgroundImage {
-        url
-        description
+    query heroEntryQuery {
+      hero(id: "2xGHilZov5iOIqcCbeoLoy") {
+        headline
+        subheader
+        primaryCtaUrl
+        primaryCtaCopy
+        backgroundImage {
+          url
+          description
+        }
       }
     }
-  }
-}`);
+  `);
   return heroData;
 }
 
 async function fetchHomepageTeasers() {
   const homepageTeaserData = await contentfulApi(gql`
-  query homepageTeasersCollectionQuery {
-    homepageTeasersCollection {
-      items {
-        image {
-          url
-          description
+    query homepageTeasersCollectionQuery {
+      homepageTeasersCollection {
+        items {
+          image {
+            url
+            description
+          }
+          headline
+          bodyCopy
         }
-        headline
-        bodyCopy 
       }
     }
-  }
-}`);
+  `);
   return homepageTeaserData;
 }
 
@@ -68,6 +68,9 @@ async function fetchTestimonials() {
     query testimonialCollectionQuery {
       testimonialCollection {
         items {
+          sys {
+            id
+          }
           student {
             fullName
             profilePicture {

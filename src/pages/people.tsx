@@ -13,13 +13,15 @@ import React from "react";
 
 export default function People({ persons, heroEntry }) {
   // get alumni and visitors, has end date
-  const grappaMembers = groupBy(persons.items, (person) => {
+  const grappaMembers = groupBy(persons.persons.items, (person) => {
     if (person.omitProfile === true) {
       return "nonmember";
     } else {
       return "member";
     }
   });
+
+  console.log(persons);
 
   const personsHasEndDate = groupBy(grappaMembers.member, (person) => {
     let todayRaw = new Date();
