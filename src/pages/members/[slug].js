@@ -11,8 +11,8 @@ import classnames from "classnames";
 import Address from "../../components/Members/Address";
 import { contentfulApi, getAllMembersSlugs } from "../../lib/contentful";
 export default function Member({ entry, preview }) {
-  const researchAreas = entry?.linkedFrom?.researchCollection?.items ?? [];
-  const projects = entry.linkedFrom.thesisProjectCollection.items ?? [];
+  const researchAreas = entry.linkedFrom.researchCollection.items;
+  const projects = entry.linkedFrom.thesisProjectCollection.items;
   return (
     <Layout preview={preview}>
       <BasicMeta url={"/"} />
