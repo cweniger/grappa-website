@@ -24,14 +24,14 @@ export default function Index({ news, newsEntry }) {
       >
         <div>
           {newsEntry.title && (
-            <h1 className="text--eyebrow__grey">{newsEntry.title}</h1>
+            <h1 className="text--eyebrow__grey">{newsEntry?.newsPage.title}</h1>
           )}
-          <NewsHero featuredNewsEntry={newsEntry.featuredArticle} />
+          <NewsHero featuredNewsEntry={newsEntry?.newsPage.featuredArticle} />
           <NewsGrid news={news} />
         </div>
         <aside>
           <p className="text--underscore--sm">Highlights</p>
-          <NewsRail news={newsEntry.highlights.items} />
+          <NewsRail news={newsEntry?.newsPage.highlights.items} />
         </aside>
       </section>
     </Layout>
@@ -72,7 +72,7 @@ export async function fetchNewsEntry() {
 
   const newsData = await contentfulApi(newsQuery);
 
-  return newsData?.newsPage ?? [];
+  return newsData;
 }
 
 export async function getStaticProps({ preview = false }) {
