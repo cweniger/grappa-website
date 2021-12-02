@@ -22,7 +22,7 @@ export async function getAllResearchSlugs() {
       }
     `
   );
-  return researchData?.researchCollection?.items;
+  return researchData;
 }
 
 export async function getAllMembersSlugs() {
