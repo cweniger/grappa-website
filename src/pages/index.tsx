@@ -24,7 +24,7 @@ export default function Index({
       <Hero hero={hero} />
       <FeaturedTeasers homepageTeasers={homepageTeasers} />
       <FeaturedTestimonial testimonials={testimonials} />
-      <FeaturedNews newsEntry={newsEntry} />
+      <FeaturedNews newsEntry={newsEntry?.newsPage.highlights?.items} />
     </Layout>
   );
 }

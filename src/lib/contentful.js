@@ -75,7 +75,7 @@ export async function fetchNews() {
 
   const data = await contentfulApi(query);
 
-  return data?.newsCollection?.items ?? [];
+  return data;
 }
 
 export async function fetchArticle() {
