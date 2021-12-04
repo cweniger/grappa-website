@@ -9,14 +9,13 @@ import React from "react";
 import HeaderText from "../../components/HeaderText";
 import Sidebar from "../../components/Sidebar";
 export default function Contact({ entry }) {
-  console.log(entry, " hi");
   return (
     <Layout>
       <BasicMeta url={"/"} />
       <section className="container__main container__sidebar">
         <div>
           <HeaderText header={entry.hero} />
-          <h2>{entry.directions.title}</h2>
+          {entry.directions.title && <h2>{entry.directions.title}</h2>}
           {entry.directions.text && (
             <ReactMarkdown className="text--research">
               {entry.directions.text}
