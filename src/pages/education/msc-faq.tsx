@@ -5,7 +5,8 @@ import { gql } from "@apollo/client";
 import client from "../../../apollo-client";
 import ReactMarkdown from "react-markdown";
 import React from "react";
-
+import remarkGfm from "remark-gfm";
+import FAQ from "../../components/FAQ";
 export default function MScFAQ({ content }) {
   return (
     <Layout>
@@ -13,13 +14,12 @@ export default function MScFAQ({ content }) {
 
       <main className={layout.container__main}>
         <h1>{content.title}</h1>
-        <ReactMarkdown>{content.description}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {content.description}
+        </ReactMarkdown>
         <ul>
           {content.faqSectionCollection.items.map((faq) => (
-            <li key={faq.question}>
-              <h3>{faq.question}</h3>
-              <ReactMarkdown>{faq.answer}</ReactMarkdown>
-            </li>
+            <FAQ summary={faq.question} details={faq.answer} />
           ))}
         </ul>
       </main>

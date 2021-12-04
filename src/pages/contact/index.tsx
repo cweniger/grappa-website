@@ -2,7 +2,8 @@ import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
 import { gql } from "graphql-request";
 import { contentfulApi } from "../../lib/contentful";
-import remarkGfm from "remark-gfm";
+
+import FAQ from "../../components/FAQ";
 import ReactMarkdown from "react-markdown";
 import React from "react";
 import HeaderText from "../../components/HeaderText";
@@ -22,12 +23,7 @@ export default function Contact({ entry }) {
             </ReactMarkdown>
           )}
           {entry.campusDirectionsCollection.items.map((card) => (
-            <details className="details__directions" key={card.title}>
-              <summary>{card.title}</summary>
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {card.text}
-              </ReactMarkdown>
-            </details>
+            <FAQ summary={card.title} details={card.text} />
           ))}
         </div>
         <Sidebar contacts={entry.sidebarCollection.items} />
