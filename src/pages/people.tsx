@@ -21,8 +21,6 @@ export default function People({ persons, heroEntry }) {
     }
   });
 
-  console.log(persons);
-
   const personsHasEndDate = groupBy(grappaMembers.member, (person) => {
     let todayRaw = new Date();
     const today = todayRaw.toISOString();

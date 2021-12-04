@@ -67,6 +67,12 @@ $width--large-x: $space--x-large;
   gap: 3rem;
 }
 
+.container__sidebar {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 3rem;
+}
+
 .container--grid {
   display: grid;
 
@@ -170,5 +176,14 @@ $width--large-x: $space--x-large;
   &__banner {
     // background: $chroma-yellow;
     margin: 0;
+  }
+}
+
+.details__directions {
+  padding: 1em;
+  summary {
+    outline: 1px solid $neutral-gray-03;
+    padding: 1em;
+    margin: 1em -1em 0;
   }
 }

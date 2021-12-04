@@ -24,7 +24,7 @@ export default function Layout({ children }: Props) {
           crossOrigin="true"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200&family=Epilogue&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200;600&family=Epilogue&display=swap"
           rel="stylesheet"
         />
         <link href="/styles/fc.css" rel="stylesheet" />
