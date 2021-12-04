@@ -2,7 +2,7 @@ import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
 import { gql } from "graphql-request";
 import { contentfulApi } from "../../lib/contentful";
-
+import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
 import React from "react";
 import HeaderText from "../../components/HeaderText";
@@ -17,15 +17,16 @@ export default function Contact({ entry }) {
           <HeaderText header={entry.hero} />
           <h2>{entry.directions.title}</h2>
           {entry.directions.text && (
-            <ReactMarkdown
-              className="text--research"
-              source={entry.directions.text}
-            />
+            <ReactMarkdown className="text--research">
+              {entry.directions.text}
+            </ReactMarkdown>
           )}
           {entry.campusDirectionsCollection.items.map((card) => (
             <details className="details__directions" key={card.title}>
               <summary>{card.title}</summary>
-              <ReactMarkdown source={card.text} />
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {card.text}
+              </ReactMarkdown>
             </details>
           ))}
         </div>
