@@ -7,8 +7,8 @@ export default function NavLinks({ toggle }) {
     <div className={toggle ? styles.mobileNavContainer : undefined}>
       <ul className={toggle ? styles.mobileLinks : styles.navLinks}>
         {NAV_LINKS?.map((link) => (
-          <li key={link?.href}>
-            <Link href={link?.href}>
+          <li key={link.href}>
+            <Link href={link.href}>
               <a>{link.copy}</a>
             </Link>
           </li>
