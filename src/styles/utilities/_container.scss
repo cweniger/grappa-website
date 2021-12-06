@@ -53,6 +53,19 @@ $width--large-x: $space--x-large;
   }
 }
 
+.container__nav {
+  max-width: calc(70rem - 4em);
+  padding: 1em 2em;
+  width: calc(100% - 4em);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (min-width: 70em) {
+    max-width: calc(70rem);
+  }
+}
+
 .container__right {
   display: flex;
   justify-content: flex-end;

@@ -1,9 +1,9 @@
 @import "../theme/theme";
 
-// TODO: Refactor
+$bar-uva-height: calc(28px + 2rem);
+$bar-grappa-height: calc(60px + 2rem);
 
 .navigation {
-  background-color: white;
   width: 100%;
   position: sticky;
   top: 0;
@@ -14,28 +14,18 @@
   cursor: pointer;
   max-width: 10rem;
   width: 100%;
+  z-index: 20;
 }
 
-.navContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.grappa__bar {
+  background-color: $white;
+  height: $bar-grappa-height;
 }
 
 .uva__bar {
   background-color: $black;
   color: $white;
-  display: block;
-  z-index: 0;
-  width: calc(100% - 4em);
-  padding: 1em 2em;
-}
-
-.uva__wrapper {
-  align-items: center;
-  max-width: 70rem;
-  margin: 0 auto;
-  border: 1px solid red;
+  height: $bar-uva-height;
 }
 
 .navLinks {
@@ -92,46 +82,43 @@
   font-family: $font-family--heading;
   text-decoration: none;
   font-size: 1.25rem;
-  margin-bottom: 1.5rem;
-  display: block;
-}
-
-.desktopNavContainer {
-  display: none;
 }
 
 .mobileNavContainer {
-  margin-top: 75px;
-  width: 100vw;
-  height: calc(100vh - 75px);
+  width: calc(100vw);
   background-color: white;
   overflow: hidden;
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
+  bottom: 0;
+  z-index: 5;
   display: flex;
   align-items: center;
+  padding: 0 2em;
 }
 
 .mobileNavContainer ul {
-  padding: 0 1.5rem;
+  height: calc(100vh - $bar-uva-height - $bar-grappa-height - 8em);
+  margin: 0;
+  padding: 4em 0;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @media screen and (min-width: 1240px) {
   .logo {
     max-width: 13rem;
   }
-  .menuToggle {
-    display: none;
-  }
-  .desktopNavContainer {
-    display: block;
-  }
-  .mobileNavContainer {
-    display: none;
-  }
+  // .menuToggle {
+  //   display: none;
+  // }
+  // .desktopNavContainer {
+  //   display: block;
+  // }
+  // .mobileNavContainer {
+  //   display: none;
+  // }
 }
 
 .menuToggle {
@@ -153,4 +140,44 @@
 .menuToggle:focus:not(:focus-visible) {
   background-color: $black;
   outline: 0 transparent solid;
+}
+
+.buttons {
+  z-index: 20;
+}
+
+.burger {
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  position: relative;
+}
+
+.meat {
+  position: absolute;
+  width: 28px;
+  height: 2px;
+  background: #000;
+  top: calc(50% - 2px / 2);
+  left: calc(50% - 28px / 2);
+  transition: all 150ms ease-in;
+  &:nth-of-type(1) {
+    transform: translateY(-10px);
+    &.active {
+      transform: rotate(45deg);
+    }
+  }
+  &:nth-of-type(2) {
+    &.active {
+      opacity: 0;
+    }
+  }
+  &:nth-of-type(3) {
+    transform: translateY(10px);
+    &.active {
+      transform: rotate(-45deg);
+    }
+  }
 }

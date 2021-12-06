@@ -1,12 +1,13 @@
 import React from "react";
 
 import footer from "../styles/components/Footer.module.scss";
+import nav from "../styles/components/Navigation.module.scss";
 import classnames from "classnames";
 import Link from "../components/Link";
 export default function Footer() {
   return (
     <footer className={classnames(footer.container)}>
-      <nav className="container__main container--grid--cols--3">
+      <nav className="container__nav container--grid--cols--3">
         <div>
           <p className="text__headline__4">
             GRAPPA is a centre of excellence of the University of Amsterdam,
