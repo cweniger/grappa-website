@@ -4,11 +4,12 @@
   background-color: black;
   color: white;
   width: 100%;
-  font-size: .8rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .link {
-  color: $neutral-gray-04;
+  color: $neutral-gray-07;
   text-decoration: none;
   &:hover {
     color: $white;
@@ -18,8 +19,7 @@
 
 .list {
   list-style-type: none;
-  margin: 1rem 0 2rem 0;
-  padding: 0;
+  padding: 1rem 0 2rem 0;
   li {
     margin-bottom: 1rem;
   }

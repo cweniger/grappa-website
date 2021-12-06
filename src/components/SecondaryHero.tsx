@@ -1,16 +1,14 @@
 import React from "react";
-import layout from "../styles/components/Layout.module.scss";
-import classnames from "classnames";
 
 export default function SecondaryHero({ heroEntry }) {
   return (
-    <section className={layout.container__full__black}>
-      <div className={classnames(layout.container__main)}>
+    <section className="container__full__black">
+      <div className="container__main">
         {heroEntry.headline && (
-          <h1 className="text--eyebrow">{heroEntry.headline}</h1>
+          <h1 className="text__eyebrow">{heroEntry.headline}</h1>
         )}
         {heroEntry.subheader && (
-          <p className="text--hero text__headline__2">{heroEntry.subheader}</p>
+          <p className="text__hero text__headline__2">{heroEntry.subheader}</p>
         )}
       </div>
     </section>

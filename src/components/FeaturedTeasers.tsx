@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown";
 export function FeaturedTeasers({ homepageTeasers }) {
   return (
     <>
-      <section className={layout.container__main}>
+      <section className="container__main">
         {homepageTeasers.homepageTeasersCollection.items.map((teaser) => (
           <div className={zigzag.container__zigzag} key={teaser.id}>
             <div className={zigzag.item}>
@@ -18,6 +18,7 @@ export function FeaturedTeasers({ homepageTeasers }) {
             </div>
             <div className={zigzag.item}>
               <Image
+                className="object-fit"
                 src={teaser.image.url}
                 alt="Space stuff"
                 layout="responsive"

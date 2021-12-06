@@ -5,7 +5,6 @@ import people from "../../styles/components/PeopleGrid.module.scss";
 import React from "react";
 
 import { gql } from "graphql-request";
-import layout from "../../styles/components/Layout.module.scss";
 import card from "../../styles/components/Card.module.scss";
 import classnames from "classnames";
 import Address from "../../components/Members/Address";
@@ -16,12 +15,12 @@ export default function Member({ entry, preview }) {
   return (
     <Layout preview={preview}>
       <BasicMeta url={"/"} />
-      <section className={layout.container__main}>
+      <section className="container__main">
         <div>
           {entry.jobTitle && (
-            <p className="text--eyebrow__grey">{entry.jobTitle.title}</p>
+            <p className="text__eyebrow__grey">{entry.jobTitle.title}</p>
           )}
-          {entry.visitor && <p className="text--eyebrow__grey">Visitor</p>}
+          {entry.visitor && <p className="text__eyebrow__grey">Visitor</p>}
           <div className="container__flex container__flex--col">
             <Address entry={entry} />
 
@@ -40,7 +39,7 @@ export default function Member({ entry, preview }) {
         <div className={classnames(card.projectContainer)}>
           {researchAreas.length > 0 && (
             <div>
-              <h2 className="text--underscore text--underscore--sm">
+              <h2 className="text--underscore text__underscore__sm">
                 Research Areas
               </h2>
               <div className={classnames(card.container, "container__flex")}>
@@ -57,7 +56,7 @@ export default function Member({ entry, preview }) {
           )}
           {projects.length > 0 && (
             <div>
-              <h2 className="text--underscore text--underscore--sm">
+              <h2 className="text--underscore text__underscore__sm">
                 Masters Thesis Projects
               </h2>
               <div>

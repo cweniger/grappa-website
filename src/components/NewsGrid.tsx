@@ -1,12 +1,9 @@
-import layout from "../styles/components/Layout.module.scss";
 import NewsCard from "../components/NewsCard";
-import classnames from "classnames";
-import card from "../styles/components/Card.module.scss";
 import React from "react";
 
 export default function NewsGrid({ news }) {
   return (
-    <section className={classnames(layout.container__main, card.container)}>
+    <section className="container__grid__cols__3">
       {news.map((article) => {
         if (article.hideFromList) {
           return null;

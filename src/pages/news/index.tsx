@@ -1,5 +1,3 @@
-import layout from "../../styles/components/Layout.module.scss";
-import classnames from "classnames";
 import React from "react";
 
 import Layout from "../../components/Layout";
@@ -14,22 +12,16 @@ export default function Index({ news, newsEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <section
-        className={classnames(
-          layout.container__main,
-          layout.container__news,
-          "container--flex"
-        )}
-      >
+      <section className="container__main container__news">
         <div>
-          {newsEntry.title && (
-            <h1 className="text--eyebrow__grey">{newsEntry.newsPage.title}</h1>
+          {newsEntry.newsPage.title && (
+            <h1 className="text__eyebrow__grey">{newsEntry.newsPage.title}</h1>
           )}
           <NewsHero featuredNewsEntry={newsEntry.newsPage.featuredArticle} />
           <NewsGrid news={news.newsCollection.items} />
         </div>
         <aside>
-          <p className="text--underscore--sm">Highlights</p>
+          <p className="text__underscore__sm">Highlights</p>
           <NewsRail news={newsEntry.newsPage.highlights.items} />
         </aside>
       </section>

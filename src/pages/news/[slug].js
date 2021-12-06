@@ -15,7 +15,7 @@ export default function News({ newsEntry }) {
       <section className="container__main">
         <div className="container__research">
           <div className="container__aside">
-            {/* <h2 className="text--eyebrow__grey">Team</h2> */}
+            {/* <h2 className="text__eyebrow__grey">Team</h2> */}
           </div>
 
           <div className="container__small">

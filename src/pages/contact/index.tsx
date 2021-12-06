@@ -1,52 +1,82 @@
 import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
-import layout from "../../styles/components/Layout.module.scss";
-import { gql } from "@apollo/client";
-import client from "../../../apollo-client";
+import { gql } from "graphql-request";
+import { contentfulApi } from "../../lib/contentful";
+import remarkGfm from "remark-gfm";
+
+import FAQ from "../../components/FAQ";
 import ReactMarkdown from "react-markdown";
 import React from "react";
-
-export default function Contact({ content }) {
+import HeaderText from "../../components/HeaderText";
+import Sidebar from "../../components/Sidebar";
+export default function Contact({ entry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <section className="container__main container__flex">
+      <section className="container__main container__news">
         <div>
-          {/* {heroEntry.hero.headline && (
-          <h1 className="text__eyebrow__grey">{heroEntry.hero.headline}</h1>
-        )} */}
-          <h2>{content.title}</h2>
-          <ReactMarkdown>{content.text}</ReactMarkdown>
+          <HeaderText header={entry.hero} />
+          {entry.directions.title && <h2>{entry.directions.title}</h2>}
+          {entry.directions.text && (
+            <ReactMarkdown
+              className="text--research"
+              remarkPlugins={[remarkGfm]}
+            >
+              {entry.directions.text}
+            </ReactMarkdown>
+          )}
+          {entry.campusDirectionsCollection.items.map((card) => (
+            <FAQ summary={card.title} details={card.text} />
+          ))}
         </div>
-        <aside className="container__aside">
-          GRAPPA Contacts GRAPPA spokesperson: Samaya Nissanke GRAPPA MSc track
-          coordinator: Shin'ichiro Ando Administrative contact: Jiřina Šálková
-          See the people page to find all GRAPPA cohorts Please feel free to
-          contact any of the staff members for questions!
-        </aside>
+        <Sidebar contacts={entry.sidebarCollection.items} />
       </section>
+      <section className="container__main "></section>
     </Layout>
   );
 }
 
-export async function getStaticProps() {
-  const { data } = await client.query({
-    query: gql`
-      query ContactPage {
-        textBlock(id: "1j0QoaJxhq6z12pEvldYqY") {
-          sys {
-            id
-          }
+export async function getStaticProps({ preview = false }) {
+  const query = gql`
+    query contactPageEntryQuery {
+      contactPage(id: "35zoePxFOyuxRdUhdR52vw") {
+        metaData {
           title
+          description
+        }
+        hero {
+          headline
+          subheader
+        }
+        directions {
           text
+          title
+        }
+        sidebarCollection(limit: 10) {
+          items {
+            ... on Person {
+              fullName
+              slug
+              contactTitle
+            }
+          }
+        }
+        campusDirectionsCollection {
+          items {
+            ... on TextBlock {
+              title
+              text
+            }
+          }
         }
       }
-    `,
-  });
-
+    }
+  `;
+  const data = await contentfulApi(query, { preview });
+  const entry = data.contactPage;
   return {
     props: {
-      content: data.textBlock,
+      entry,
     },
   };
 }

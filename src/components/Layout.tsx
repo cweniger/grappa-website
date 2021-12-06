@@ -2,7 +2,6 @@ import Head from "next/head";
 import React from "react";
 
 import Navigation from "./Navigation";
-import header from "../styles/components/Header.module.scss";
 import Footer from "./Footer";
 type Props = {
   children: React.ReactNode;
@@ -24,14 +23,14 @@ export default function Layout({ children }: Props) {
           crossOrigin="true"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200&family=Epilogue&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200;600&family=Epilogue&display=swap"
           rel="stylesheet"
         />
         <link href="/styles/fc.css" rel="stylesheet" />
       </Head>
 
       <Navigation />
-      <main className={header.container__full}>{children}</main>
+      <main>{children}</main>
       <Footer />
     </div>
   );

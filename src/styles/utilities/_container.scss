@@ -40,11 +40,29 @@ $width--large-x: $space--x-large;
 
 .container__main {
   margin: $site-container--center;
-  max-width: 70rem;
-  width: 100%;
-  padding: 5rem 0 0;
-  &:last-of-type {
+  max-width: calc($site-container - 4em);
+  padding: 5em 2em;
+  width: calc(100% - 4em);
+
+  &:last-of-type:not(:only-child) {
     padding-bottom: 10rem;
+  }
+  @media (min-width: $site-container) {
+    max-width: $site-container;
+  }
+}
+
+.container__nav {
+  max-width: calc($site-container - 4em);
+  padding: 1em 2em;
+  width: calc(100% - 4em);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (min-width: $site-container) {
+    max-width: $site-container;
+    margin: $site-container--center;
   }
 }
 
@@ -54,37 +72,53 @@ $width--large-x: $space--x-large;
 }
 
 .container__full {
-  padding: 10rem 1rem 1rem;
-
   &__black {
+    padding: 2rem 0;
     background-color: $black;
   }
 }
 
 .container__news {
   display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  padding-top: 0;
+  @media (min-width: $site-container) {
+    grid-template-columns: 3fr 1fr;
+  }
+}
+
+.container__sidebar {
+  display: grid;
   grid-template-columns: 3fr 1fr;
   gap: 3rem;
 }
 
-.container--grid {
+.container__grid {
   display: grid;
+  gap: 2rem;
 
-  &--cols--2 {
-    @extend .container--grid;
+  &__cols__2 {
+    @extend .container__grid;
     grid-template-columns: repeat(2, 1fr);
   }
-  &--cols--3 {
-    @extend .container--grid;
+  &__cols__3 {
+    @extend .container__grid;
 
     @media (min-width: 600px) {
       gap: 120px;
       grid-template-columns: repeat(3, 1fr);
     }
+
+    // @media (min-width: 600px) {
+    //   flex-direction: row;
+    //   flex-wrap: wrap;
+    //   grid-template-columns: 1fr 1fr 1fr;
+    // }
   }
 
-  &--cols--4 {
-    @extend .container--grid;
+  &__cols__4 {
+    @extend .container__grid;
     grid-template-columns: repeat(4, 1fr);
   }
 }
@@ -164,11 +198,20 @@ $width--large-x: $space--x-large;
   padding: 1em;
   font-weight: bold;
 
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-between;
   &__banner {
-    // background: $chroma-yellow;
     margin: 0;
   }
+}
+
+.details__directions {
+  padding: 1em;
+  font-family: summary {
+    outline: 1px solid $neutral-gray-05;
+    padding: 1em;
+    margin: 1em -1em 0;
+  }
+}
+
+.object-cover {
+  object-fit: contain;
 }
