@@ -62,6 +62,7 @@ $width--large-x: $space--x-large;
 
   @media (min-width: $site-container) {
     max-width: $site-container;
+    margin: $site-container--center;
   }
 }
 
