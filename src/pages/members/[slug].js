@@ -5,7 +5,6 @@ import people from "../../styles/components/PeopleGrid.module.scss";
 import React from "react";
 
 import { gql } from "graphql-request";
-import layout from "../../styles/components/Layout.module.scss";
 import card from "../../styles/components/Card.module.scss";
 import classnames from "classnames";
 import Address from "../../components/Members/Address";

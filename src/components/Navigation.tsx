@@ -9,7 +9,6 @@ export default function Navigation() {
   const [toggle, setToggle] = useState(false);
   const size = useWindowSize();
   const fullMenu = size.width > 1200;
-  console.log(size, "testsize");
   return (
     <nav className={nav.navigation}>
       <div className={classNames(nav.uva__bar, nav.buttons)}>
