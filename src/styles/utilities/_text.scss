@@ -146,12 +146,6 @@
 .text--research {
   font-family: $font-family--heading;
   font-weight: 300;
-
-  @media (min-width: 600px) {
-    max-width: 60rem;
-    min-width: 24rem;
-    margin-right: 2rem;
-  }
 }
 
 .text__name {

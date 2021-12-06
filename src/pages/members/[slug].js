@@ -40,7 +40,7 @@ export default function Member({ entry, preview }) {
         <div className={classnames(card.projectContainer)}>
           {researchAreas.length > 0 && (
             <div>
-              <h2 className="text--underscore text--underscore--sm">
+              <h2 className="text--underscore text__underscore__sm">
                 Research Areas
               </h2>
               <div className={classnames(card.container, "container__flex")}>
@@ -57,7 +57,7 @@ export default function Member({ entry, preview }) {
           )}
           {projects.length > 0 && (
             <div>
-              <h2 className="text--underscore text--underscore--sm">
+              <h2 className="text--underscore text__underscore__sm">
                 Masters Thesis Projects
               </h2>
               <div>

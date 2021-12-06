@@ -7,7 +7,7 @@ import Link from "../components/Link";
 export default function Footer() {
   return (
     <footer className={classnames(footer.container)}>
-      <nav className="container__main container--grid--cols--3">
+      <nav className="container__main container__grid__cols__3">
         <div>
           <p className="text__headline__4">
             GRAPPA is a centre of excellence of the University of Amsterdam,

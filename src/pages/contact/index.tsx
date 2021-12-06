@@ -2,6 +2,7 @@ import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
 import { gql } from "graphql-request";
 import { contentfulApi } from "../../lib/contentful";
+import remarkGfm from "remark-gfm";
 
 import FAQ from "../../components/FAQ";
 import ReactMarkdown from "react-markdown";
@@ -12,12 +13,15 @@ export default function Contact({ entry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <section className="container__main container__sidebar">
+      <section className="container__main container__news">
         <div>
           <HeaderText header={entry.hero} />
           {entry.directions.title && <h2>{entry.directions.title}</h2>}
           {entry.directions.text && (
-            <ReactMarkdown className="text--research">
+            <ReactMarkdown
+              className="text--research"
+              remarkPlugins={[remarkGfm]}
+            >
               {entry.directions.text}
             </ReactMarkdown>
           )}

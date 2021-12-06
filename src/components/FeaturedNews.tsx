@@ -2,11 +2,10 @@ import React from "react";
 import NewsCard from "../components/NewsCard";
 import classnames from "classnames";
 import card from "../styles/components/Card.module.scss";
-import layout from "../styles/components/Layout.module.scss";
 
 export function FeaturedNews({ newsEntry }) {
   return (
-    <section className={classnames("container__main", card.container)}>
+    <section className="container__main container__grid__cols__3">
       {newsEntry.map((article) => (
         <NewsCard
           grid

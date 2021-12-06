@@ -23,7 +23,7 @@ export default function NewsHero({ featuredNewsEntry }) {
 
       {featuredNewsEntry.headline && (
         <>
-          <p className="text--underscore--md">Featured</p>
+          <p className="text__underscore__md">Featured</p>
           <Link href={`/news/${featuredNewsEntry.slug}`}>
             <h2 className="text--featured text__headline__2">
               {featuredNewsEntry.headline}

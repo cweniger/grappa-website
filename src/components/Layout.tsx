@@ -30,7 +30,7 @@ export default function Layout({ children }: Props) {
       </Head>
 
       <Navigation />
-      <main className="container__full">{children}</main>
+      <main>{children}</main>
       <Footer />
     </div>
   );
