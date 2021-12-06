@@ -50,7 +50,7 @@ export default function People({ persons, heroEntry }) {
     <Layout>
       <BasicMeta url={"/"} />
       <SecondaryHero heroEntry={heroEntry.hero} />
-      <section className={classnames(layout.container__main)}>
+      <section className="container__main">
         {Object.keys(sortedCurrent).map((key) => {
           const boxCheck = sortedCurrent[key].length > 3;
           return (
@@ -59,7 +59,7 @@ export default function People({ persons, heroEntry }) {
                 layout.container__main,
                 !boxCheck && people.peopleSection
               )}
-              /*className={classnames(layout.container__main)}*/
+              /*className="container__main"*/
             >
               <h2 className="text--underscore text__headline__4">{key}</h2>
               <div className={boxCheck ? people.peopleGrid : people.smallDept}>
@@ -90,7 +90,7 @@ export default function People({ persons, heroEntry }) {
             </section>
           );
         })}
-        <section className={classnames(layout.container__main)}>
+        <section className="container__main">
           <h2 className="text--underscore text__headline__4">Alumni</h2>
           <ul className={people.alumni}>
             {sortedAlumni.map((fields) => (

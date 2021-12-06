@@ -1,10 +1,11 @@
 import Link from "next/link";
 // import Burger from "./Burger";
 import { useState } from "react";
-import styles from "../styles/components/Navigation.module.scss";
+import nav from "../styles/components/Navigation.module.scss";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import React from "react";
+import classNames from "classnames";
 export default function Navigation() {
   const [toggle, setToggle] = useState(false);
   const [active, setActive] = useState(false);
@@ -14,9 +15,9 @@ export default function Navigation() {
   //   setActive(!active);
   // }
   return (
-    <nav className={styles.navigation}>
-      <div className={styles.uva__bar}>
-        <div className={styles.uva__wrapper}>
+    <nav className={classNames(nav.navigation, "")}>
+      <div className={nav.uva__bar}>
+        <div className={nav.uva__wrapper}>
           <a href="https://www.uva.nl">
             <img
               src="/images/uva-logo.svg"
@@ -27,10 +28,10 @@ export default function Navigation() {
           </a>
         </div>
       </div>
-      <div className={styles.navContainer}>
+      <div className={classNames(nav.uva__wrapper)}>
         <Link href="/">
           <img
-            className={styles.logo}
+            className={nav.logo}
             src="/images/grappa-logo.svg"
             alt="GRAPPA"
           />

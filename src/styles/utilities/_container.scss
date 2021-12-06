@@ -40,11 +40,16 @@ $width--large-x: $space--x-large;
 
 .container__main {
   margin: $site-container--center;
-  max-width: 70rem;
-  width: 100%;
-  padding: 5rem 0 0;
-  &:last-of-type {
+  max-width: calc(70rem - 4em);
+  padding: 3em 2em;
+  width: calc(100% - 4em);
+
+  &:last-of-type:not(:only-child) {
     padding-bottom: 10rem;
+  }
+  @media (min-width: 70em) {
+    padding: 5rem 0 0;
+    max-width: calc(70rem);
   }
 }
 

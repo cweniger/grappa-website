@@ -12,7 +12,7 @@ export default function MScFAQ({ content }) {
     <Layout>
       <BasicMeta url={"/"} />
 
-      <main className={layout.container__main}>
+      <main className="container__main">
         <h1>{content.title}</h1>
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {content.description}

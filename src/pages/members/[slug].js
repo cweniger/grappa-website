@@ -16,12 +16,12 @@ export default function Member({ entry, preview }) {
   return (
     <Layout preview={preview}>
       <BasicMeta url={"/"} />
-      <section className={layout.container__main}>
+      <section className="container__main">
         <div>
           {entry.jobTitle && (
-            <p className="text--eyebrow__grey">{entry.jobTitle.title}</p>
+            <p className="text__eyebrow__grey">{entry.jobTitle.title}</p>
           )}
-          {entry.visitor && <p className="text--eyebrow__grey">Visitor</p>}
+          {entry.visitor && <p className="text__eyebrow__grey">Visitor</p>}
           <div className="container__flex container__flex--col">
             <Address entry={entry} />
 

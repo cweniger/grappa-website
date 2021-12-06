@@ -13,7 +13,7 @@ export default function Education({ heroEntry }) {
       <BasicMeta url={"/"} />
       <SecondaryHero heroEntry={heroEntry.hero} />
 
-      <section className={layout.container__main}>
+      <section className="container__main">
         <h2>GRAPPA Msc</h2>
         <ul>
           <li>

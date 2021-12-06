@@ -21,7 +21,7 @@ export function FeaturedTestimonial({ testimonials }) {
                 height={100}
               />
             ) : null}
-            <h4 className="text--eyebrow--sm text--eyebrow__greySm">
+            <h4 className="text__eyebrow--sm text__eyebrow__greySm">
               {testimonial.student.fullName}
             </h4>
           </div>

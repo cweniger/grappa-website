@@ -97,14 +97,16 @@
   }
 }
 
-.text--hero {
+.text__hero {
+  @extend .text__headline__1;
   font-family: $font-family--heading;
-  font-weight: 300;
-  margin: 0 0 5rem 0;
+  font-weight: 500;
+  margin: 0 auto 0.5em;
   color: $white;
   max-width: 60rem;
+
   &__grey {
-    @extend .text--hero;
+    @extend .text__hero;
     color: $neutral-gray-03;
   }
 }

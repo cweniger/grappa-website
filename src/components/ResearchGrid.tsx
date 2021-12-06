@@ -8,10 +8,10 @@ import React from "react";
 
 export default function ResearchGrid({ area }) {
   return (
-    <section key={area.title} id={area.slug} className={layout.container__main}>
+    <section key={area.title} id={area.slug} className="container__main">
       <div className={classnames(research.container)}>
         <div className={research.summary}>
-          <h2 className="text--eyebrow__grey">Team</h2>
+          <h2 className="text__eyebrow__grey">Team</h2>
           <ul className={people.miniPeopleGrid}>
             {area.team.items.map((member) => (
               <Avatar small person={member} key={member.fullName} />

@@ -41,7 +41,7 @@ export default function Research({ entry, heroEntry }) {
         ))}
       </section>
 
-      <section className={classnames(layout.container__main)}>
+      <section className="container__main">
         <p className="text__headline__1">
           We also have major areas of experimentation.
         </p>

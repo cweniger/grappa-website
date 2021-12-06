@@ -13,7 +13,7 @@ export default function MScTrackOverview({ entry, heroEntry }) {
       <BasicMeta url={"/"} />
       <SecondaryHero heroEntry={heroEntry.hero} />
 
-      <section className={layout.container__main}>
+      <section className="container__main">
         {entry.mScThesisProjects.projects.items.map((project) => (
           <ResearchGrid area={project} />
         ))}

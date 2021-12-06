@@ -1,18 +1,12 @@
 import React from "react";
 
 import footer from "../styles/components/Footer.module.scss";
-import layout from "../styles/components/Layout.module.scss";
 import classnames from "classnames";
 import Link from "../components/Link";
 export default function Footer() {
   return (
     <footer className={classnames(footer.container)}>
-      <nav
-        className={classnames(
-          layout.container__main,
-          "container--grid--cols--3"
-        )}
-      >
+      <nav className="container__main container--grid--cols--3">
         <div>
           <p className="text__headline__4">
             GRAPPA is a centre of excellence of the University of Amsterdam,
@@ -40,7 +34,7 @@ export default function Footer() {
                 Opportunities
               </Link>
             </li>
-            <h4 className="text--eyebrow__whiteSm">Contact</h4>
+            <h4 className="text__eyebrow__whiteSm">Contact</h4>
             <li>
               <Link href="/contact" className={footer.link}>
                 Contact GRAPPA
@@ -67,9 +61,9 @@ export default function Footer() {
           />
         </div>
         <div>
-          <h3 className="text--eyebrow__white">Research</h3>
+          <h3 className="text__eyebrow__white">Research</h3>
 
-          <h4 className="text--eyebrow__whiteSm">Themes</h4>
+          <h4 className="text__eyebrow__whiteSm">Themes</h4>
           <ul className={footer.list}>
             <li>
               <Link
@@ -98,7 +92,7 @@ export default function Footer() {
               </Link>
             </li>
           </ul>
-          <h4 className="text--eyebrow__whiteSm">Experiments</h4>
+          <h4 className="text__eyebrow__whiteSm">Experiments</h4>
           <ul className={footer.list}>
             <li>
               <Link href="/research/experimental-lhc" className={footer.link}>
@@ -141,8 +135,8 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h3 className="text--eyebrow__white">Education</h3>
-          <h4 className="text--eyebrow__whiteSm">MSC</h4>
+          <h3 className="text__eyebrow__white">Education</h3>
+          <h4 className="text__eyebrow__whiteSm">MSC</h4>
           <ul className={footer.list}>
             <li>
               <Link
@@ -166,7 +160,7 @@ export default function Footer() {
               </Link>
             </li>
           </ul>
-          <h4 className="text--eyebrow__whiteSm">PhD</h4>
+          <h4 className="text__eyebrow__whiteSm">PhD</h4>
           <ul className={footer.list}>
             <li>
               <Link
