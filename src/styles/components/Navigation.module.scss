@@ -1,7 +1,7 @@
 @import "../theme/theme";
 
 $bar-uva-height: calc(28px + 2rem);
-$bar-grappa-height: calc(60px + 2rem);
+$bar-grappa-height: calc(80px + 2rem);
 
 .navigation {
   width: 100%;
@@ -110,15 +110,6 @@ $bar-grappa-height: calc(60px + 2rem);
   .logo {
     max-width: 13rem;
   }
-  // .menuToggle {
-  //   display: none;
-  // }
-  // .desktopNavContainer {
-  //   display: block;
-  // }
-  // .mobileNavContainer {
-  //   display: none;
-  // }
 }
 
 .menuToggle {

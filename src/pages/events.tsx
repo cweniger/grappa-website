@@ -27,7 +27,7 @@ export default function Events({ heroEntry }) {
         month, 10:30am – 11:30am */}
       </div>
       <div
-        className={classNames(layout.container__main, "text__headline_4")}
+        className="container__main text__headline_4"
         suppressHydrationWarning={true}
       >
         {process.browser && (

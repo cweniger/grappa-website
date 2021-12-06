@@ -40,29 +40,25 @@ $width--large-x: $space--x-large;
 
 .container__main {
   margin: $site-container--center;
-  max-width: calc(70rem - 4em);
-  padding: 3em 2em;
-  width: calc(100% - 4em);
+  max-width: $site-container;
+  padding: 5em 1em;
+  width: calc(100% - 2em);
 
   &:last-of-type:not(:only-child) {
     padding-bottom: 10rem;
   }
-  @media (min-width: 70em) {
-    padding: 5rem 0 0;
-    max-width: calc(70rem);
-  }
 }
 
 .container__nav {
-  max-width: calc(70rem - 4em);
+  max-width: calc($site-container - 4em);
   padding: 1em 2em;
   width: calc(100% - 4em);
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  @media (min-width: 70em) {
-    max-width: calc(70rem);
+  @media (min-width: $site-container) {
+    max-width: $site-container;
   }
 }
 

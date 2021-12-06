@@ -1,5 +1,3 @@
-import layout from "../../styles/components/Layout.module.scss";
-import classnames from "classnames";
 import React from "react";
 
 import Layout from "../../components/Layout";
@@ -14,13 +12,7 @@ export default function Index({ news, newsEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <section
-        className={classnames(
-          layout.container__main,
-          layout.container__news,
-          "container--flex"
-        )}
-      >
+      <section className="container--flex container__main container__news">
         <div>
           {newsEntry.title && (
             <h1 className="text__eyebrow__grey">{newsEntry.newsPage.title}</h1>

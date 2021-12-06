@@ -2,7 +2,6 @@ import Head from "next/head";
 import React from "react";
 
 import Navigation from "./Navigation";
-import header from "../styles/components/Header.module.scss";
 import Footer from "./Footer";
 type Props = {
   children: React.ReactNode;
@@ -31,7 +30,7 @@ export default function Layout({ children }: Props) {
       </Head>
 
       <Navigation />
-      <main className={header.container__full}>{children}</main>
+      <main className="container__full">{children}</main>
       <Footer />
     </div>
   );

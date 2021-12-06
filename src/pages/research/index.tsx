@@ -26,9 +26,8 @@ export default function Research({ entry, heroEntry }) {
 
       <section
         className={classnames(
-          layout.container__main,
           research.container,
-          "container__flex container__flex--space-between"
+          "container__main container__flex container__flex--space-between"
         )}
       >
         {researchByType.theme.map((area) => (

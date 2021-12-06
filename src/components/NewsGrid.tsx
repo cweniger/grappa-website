@@ -6,7 +6,7 @@ import React from "react";
 
 export default function NewsGrid({ news }) {
   return (
-    <section className={classnames(layout.container__main, card.container)}>
+    <section className={classnames("container__main", card.container)}>
       {news.map((article) => {
         if (article.hideFromList) {
           return null;

@@ -6,7 +6,7 @@ import layout from "../styles/components/Layout.module.scss";
 
 export function FeaturedNews({ newsEntry }) {
   return (
-    <section className={classnames(layout.container__main, card.container)}>
+    <section className={classnames("container__main", card.container)}>
       {newsEntry.map((article) => (
         <NewsCard
           grid

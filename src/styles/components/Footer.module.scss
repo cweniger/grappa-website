@@ -4,11 +4,12 @@
   background-color: black;
   color: white;
   width: 100%;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .link {
-  color: $neutral-gray-04;
+  color: $neutral-gray-07;
   text-decoration: none;
   &:hover {
     color: $white;

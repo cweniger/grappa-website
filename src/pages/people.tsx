@@ -1,7 +1,6 @@
-import Link from "next/link";
 import Layout from "../components/Layout";
 import BasicMeta from "../components/meta/BasicMeta";
-import layout from "../styles/components/Layout.module.scss";
+import PeopleAvatar from "../components/PeopleAvatar";
 import groupBy from "lodash.groupby";
 import people from "../styles/components/PeopleGrid.module.scss";
 import classnames from "classnames";
@@ -53,59 +52,43 @@ export default function People({ persons, heroEntry }) {
       <section className="container__main">
         {Object.keys(sortedCurrent).map((key) => {
           const boxCheck = sortedCurrent[key].length > 3;
+
+          if (boxCheck) {
+            return (
+              <>
+                <h2 className="text--underscore text__headline__4">{key}</h2>
+                <div
+                  className={boxCheck ? people.peopleGrid : people.smallDept}
+                >
+                  {sortedCurrent[key].map((fields) => (
+                    <PeopleAvatar fields={fields} />
+                  ))}
+                </div>
+              </>
+            );
+          }
           return (
-            <section
-              className={classnames(
-                layout.container__main,
-                !boxCheck && people.peopleSection
-              )}
-              /*className="container__main"*/
-            >
+            <div className={people.peopleSection}>
               <h2 className="text--underscore text__headline__4">{key}</h2>
               <div className={boxCheck ? people.peopleGrid : people.smallDept}>
                 {sortedCurrent[key].map((fields) => (
-                  <figure className={people.box} key={fields.fullName}>
-                    {fields.profilePicture ? (
-                      <Link href={`/members/${fields.slug}`}>
-                        <img
-                          src={fields.profilePicture.url}
-                          alt={fields.fullName}
-                        />
-                      </Link>
-                    ) : (
-                      <Link href={`/members/${fields.slug}`}>
-                        <div className={people.planet} />
-                      </Link>
-                    )}
-                    {fields.slug ? (
-                      <Link href={`/members/${fields.slug}`}>
-                        <a className={people.nameCentred}>{fields.fullName}</a>
-                      </Link>
-                    ) : (
-                      <p className={people.nameCentred}>{fields.fullName}</p>
-                    )}
-                  </figure>
+                  <PeopleAvatar fields={fields} />
                 ))}
               </div>
-            </section>
+            </div>
           );
         })}
-        <section className="container__main">
-          <h2 className="text--underscore text__headline__4">Alumni</h2>
-          <ul className={people.alumni}>
-            {sortedAlumni.map((fields) => (
-              <li key={fields.fullName}>
-                {fields.slug ? (
-                  // <Link href={`/members/${fields.slug}`}>
-                  <p className={people.name}>{fields.fullName}</p>
-                ) : (
-                  // </Link>
-                  <p className={people.name}>{fields.fullName}</p>
-                )}
-              </li>
-            ))}
-          </ul>
-        </section>
+
+        <h2 className="text--underscore text__headline__4">Alumni</h2>
+        <ul className={people.alumni}>
+          {sortedAlumni.map((fields) => (
+            <li key={fields.fullName}>
+              {fields.fullName && (
+                <p className={people.name}>{fields.fullName}</p>
+              )}
+            </li>
+          ))}
+        </ul>
       </section>
     </Layout>
   );

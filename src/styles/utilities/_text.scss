@@ -100,8 +100,8 @@
 .text__hero {
   @extend .text__headline__1;
   font-family: $font-family--heading;
-  font-weight: 500;
-  margin: 0 auto 0.5em;
+  font-weight: 300;
+  margin: 0 0 0.5em;
   color: $white;
   max-width: 60rem;
 
