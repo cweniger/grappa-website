@@ -1,37 +1,20 @@
 import Link from "next/link";
 import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
-import layout from "../../styles/components/Layout.module.scss";
+
+import Sidebar from "../../components/Sidebar";
 import { gql } from "@apollo/client";
-import SecondaryHero from "../../components/SecondaryHero";
 import { contentfulApi } from "../../lib/contentful";
 import React from "react";
-
-export default function Education({ heroEntry }) {
+import HeaderText from "../../components/HeaderText";
+export default function Education({ entry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <SecondaryHero heroEntry={heroEntry.hero} />
+      <section className="container__main container__news">
+        <HeaderText header={entry.hero} />
 
-      <section className="container__main">
-        <h2>GRAPPA Msc</h2>
-        <ul>
-          <li>
-            <Link href="/education/msc-track-overview">MSc Track Overview</Link>
-          </li>
-          <li>
-            <Link href="/education/msc-faq">MSc FAQ</Link>
-          </li>
-          <li>
-            <Link href="/education/msc-thesis-projects">
-              MSc Thesis Projects
-            </Link>
-          </li>
-        </ul>
-        <h2>GRAPPA Ph.D. Program</h2>
-        <p>
-          <Link href="/education/phd-track-overview">Ph.D. Track Overview</Link>
-        </p>
+        <Sidebar contact={false} items={entry.sidebarCollection.items} />
       </section>
     </Layout>
   );
@@ -39,35 +22,32 @@ export default function Education({ heroEntry }) {
 
 export async function getStaticProps({ preview = false }) {
   const query = gql`
-    query EducationPage($preview: Boolean!) {
-      textBlock(id: "74Q2vQC0Y2EGsgzM2Y1Onu", preview: $preview) {
-        sys {
-          id
-        }
+    query educationMainPageEntryQuery {
+      educationMainPage(id: "7eIBFLa5SMxR8ZCKqIXNCd") {
         title
-        text
-      }
-    }
-  `;
-
-  const heroQuery = gql`
-    query educationHero {
-      hero(id: "6BxX4EtJcnKPEmSCGlMcnG") {
-        headline
-        subheader
+        hero {
+          headline
+          subheader
+        }
+        sidebarCollection {
+          items {
+            ... on TextBlock {
+              title
+              text
+            }
+          }
+        }
       }
     }
   `;
 
   const data = await contentfulApi(query, { preview });
-  const heroData = await contentfulApi(heroQuery, { preview });
-  const entry = data;
-  const heroEntry = heroData;
+
+  const entry = data.educationMainPage;
 
   return {
     props: {
       entry,
-      heroEntry,
       preview,
     },
   };

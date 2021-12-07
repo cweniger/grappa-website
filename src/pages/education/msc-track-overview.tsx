@@ -1,6 +1,5 @@
 import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
-import layout from "../../styles/components/Layout.module.scss";
 import { gql } from "@apollo/client";
 import client from "../../../apollo-client";
 import ReactMarkdown from "react-markdown";
@@ -11,8 +10,10 @@ export default function MScTrackOverview({ content }) {
     <Layout>
       <BasicMeta url={"/"} />
       <main className="container__main">
-        <h1>{content.title}</h1>
-        <ReactMarkdown>{content.text}</ReactMarkdown>
+        <h1 className="text__eyebrow__grey">{content.title}</h1>
+        <ReactMarkdown className="text__subheader">
+          {content.text}
+        </ReactMarkdown>
       </main>
     </Layout>
   );

@@ -21,7 +21,7 @@ const Row: React.FC<Props> = (props: Props) => {
           <img src={props.image.url} alt={props.image.description} />
         )} */}
 
-        <p className="text__headline__3">{props.title}</p>
+        <p className="text__headline__4">{props.title}</p>
       </figure>
     </Link>
   );

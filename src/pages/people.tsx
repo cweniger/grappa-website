@@ -56,7 +56,7 @@ export default function People({ persons, heroEntry }) {
           if (boxCheck) {
             return (
               <>
-                <h2 className="text--underscore text__headline__4">{key}</h2>
+                <h2 className="text__underscore text__headline__4">{key}</h2>
                 <div
                   className={boxCheck ? people.peopleGrid : people.smallDept}
                 >
@@ -69,7 +69,7 @@ export default function People({ persons, heroEntry }) {
           }
           return (
             <div className={people.peopleSection}>
-              <h2 className="text--underscore text__headline__4">{key}</h2>
+              <h2 className="text__underscore text__headline__4">{key}</h2>
               <div className={boxCheck ? people.peopleGrid : people.smallDept}>
                 {sortedCurrent[key].map((fields) => (
                   <PeopleAvatar fields={fields} />
@@ -79,7 +79,7 @@ export default function People({ persons, heroEntry }) {
           );
         })}
 
-        <h2 className="text--underscore text__headline__4">Alumni</h2>
+        <h2 className="text__underscore text__headline__4">Alumni</h2>
         <ul className={people.alumni}>
           {sortedAlumni.map((fields) => (
             <li key={fields.fullName}>

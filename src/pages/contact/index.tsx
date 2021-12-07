@@ -29,7 +29,7 @@ export default function Contact({ entry }) {
             <FAQ summary={card.title} details={card.text} />
           ))}
         </div>
-        <Sidebar contacts={entry.sidebarCollection.items} />
+        <Sidebar contact={true} items={entry.sidebarCollection.items} />
       </section>
       <section className="container__main "></section>
     </Layout>
