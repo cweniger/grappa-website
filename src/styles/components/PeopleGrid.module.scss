@@ -78,7 +78,16 @@
 
 .box {
   justify-self: center;
-  &:focus-within,
+
+  span {
+    @extend .name;
+    text-align: center;
+    margin-top: 1em;
+    text-align: center;
+    display: block;
+  }
+
+  &:focus-within:not(:focus-visible),
   &:hover {
     cursor: pointer;
 
@@ -87,9 +96,8 @@
       box-shadow: 0.5rem 0.5rem $chroma-yellow, 0.5rem -0.5rem $chroma-red,
         -0.5rem 0.5rem $chroma-purple;
     }
-  }
-  &:focus-within {
-    a {
+
+    span {
       background-color: $black;
       color: $white;
     }
@@ -148,13 +156,6 @@
   text-decoration: none;
   font-weight: 300;
   margin-bottom: 0.5rem;
-}
-
-.nameCentred {
-  @extend .name;
-  margin: 1rem 0;
-  text-align: center;
-  display: block;
 }
 
 .alumni {

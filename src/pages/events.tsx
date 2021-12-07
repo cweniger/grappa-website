@@ -7,7 +7,6 @@ import { gql } from "graphql-request";
 import FullCalendar from "@fullcalendar/react";
 import googleCalendarPlugin from "@fullcalendar/google-calendar";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import classNames from "classnames";
 import { contentfulApi } from "../lib/contentful";
 
 export default function Events({ heroEntry }) {

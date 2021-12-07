@@ -179,10 +179,10 @@
 
 .text__underscore {
   font-family: $font-family--accent;
-  margin: 0 0 2rem;
+  margin: 0 0 2em;
   display: inline-block;
   padding: 0 0.75rem 0.75rem 0;
-  box-shadow: 10px 10px 0 0 $chroma-yellow;
+  box-shadow: 2px 2px 0 0 $chroma-yellow;
 
   &__sm {
     @extend .text__underscore;
@@ -200,7 +200,7 @@
     text-transform: uppercase;
     letter-spacing: 0.4em;
     box-shadow: 1px 1px 0 0 $chroma-purple;
-    margin-top: 1rem;
+    margin: 1em 0 0.5em;
   }
 }
 

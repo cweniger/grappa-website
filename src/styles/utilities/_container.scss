@@ -205,7 +205,8 @@ $width--large-x: $space--x-large;
 
 .details__directions {
   padding: 1em;
-  font-family: summary {
+  font-family: $font-family--base;
+  summary {
     outline: 1px solid $neutral-gray-05;
     padding: 1em;
     margin: 1em -1em 0;
