@@ -48,12 +48,13 @@ async function fetchHero() {
 async function fetchHomepageTeasers() {
   const homepageTeaserData = await contentfulApi(gql`
     query homepageTeasersCollectionQuery {
-      homepageTeasersCollection {
+      homepageTeasersCollection(order: order_ASC) {
         items {
           image {
             url
             description
           }
+          order
           headline
           bodyCopy
         }
@@ -73,6 +74,9 @@ async function fetchTestimonials() {
           }
           student {
             fullName
+            jobTitle {
+              title
+            }
             profilePicture {
               url
             }

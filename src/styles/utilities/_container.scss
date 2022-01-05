@@ -54,7 +54,6 @@ $width--large-x: $space--x-large;
 
 .container__nav {
   max-width: calc($site-container - 4em);
-  padding: 1em 2em;
   width: calc(100% - 4em);
   display: flex;
   align-items: center;
@@ -64,6 +63,16 @@ $width--large-x: $space--x-large;
     max-width: $site-container;
     margin: $site-container--center;
   }
+  &__sm {
+    padding: 0.5rem 2em;
+  }
+  &__lg {
+    padding: 1rem 2em;
+  }
+}
+
+.container__line {
+  line-height: 0.5;
 }
 
 .container__right {
@@ -204,12 +213,14 @@ $width--large-x: $space--x-large;
 }
 
 .details__directions {
-  padding: 1em;
+  width: calc(100% - 2em);
+  // padding: 1em;
   font-family: $font-family--base;
   summary {
     outline: 1px solid $neutral-gray-05;
     padding: 1em;
     margin: 1em -1em 0;
+    width: max-content;
   }
 }
 

@@ -14,7 +14,7 @@ export default function Contact({ entry }) {
     <Layout>
       <BasicMeta url={"/"} />
       <section className="container__main container__news">
-        <div>
+        <div className="container__flex container__flex--colstatic">
           <HeaderText header={entry.hero} />
           {entry.directions.title && <h2>{entry.directions.title}</h2>}
           {entry.directions.text && (
@@ -31,7 +31,6 @@ export default function Contact({ entry }) {
         </div>
         <Sidebar contact={true} items={entry.sidebarCollection.items} />
       </section>
-      <section className="container__main "></section>
     </Layout>
   );
 }
