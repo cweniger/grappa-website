@@ -1,32 +1,115 @@
 @import "../theme/theme";
 
 .container {
-  border-top: $space--small solid;
+  --clamp: clamp(1em, 10vw, 10em);
+  border-bottom: $space--small solid;
+  border-top: 1px solid;
   border-image: $chroma-gradient-pr;
   border-image-slice: 1;
-  background-color: $chroma-yellow;
   margin: $site-container--center;
-  padding: 2rem 0 0;
+  padding: 5vh var(--clamp);
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 2 * var(--clamp));
+  max-width: 35em;
+}
+
+.wrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .quote {
   color: $black;
-  font-family: $font-family--heading;
   font-weight: 400;
-  max-width: 60ch;
+  max-width: 40ch;
   margin: auto;
   width: 100%;
-  font-size: 1rem;
+  font-size: clamp(0.75em, 2vw, 1rem);
 }
 
 .avatar {
-  background-image: linear-gradient(
-    180deg,
-    $chroma-yellow calc(50% - 20px),
-    white 0%
-  );
   text-align: center;
   img {
     border-radius: 50%;
   }
+}
+
+.content {
+  display: grid;
+  margin: auto;
+  position: relative;
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+  transition: all 200ms linear;
+
+  grid-template-columns: repeat(7, 100%);
+
+  max-width: 100vw;
+  -ms-overflow-style: none; /* hide scrollbar in IE and Edge */
+  scrollbar-width: none; /* hide scrollbar in Firefox */
+  transform: translate3d(calc(var(--transformValue) * -100%), 0, 0);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  height: 100%;
+}
+
+.right,
+.left {
+  --arrow: 1em;
+  height: var(--arrow);
+  width: var(--arrow);
+  background: transparent;
+  border-style: solid;
+  border-image: $chroma-gradient-pr;
+  border-image-slice: 1;
+  border-width: 0.1em 0.1em 0 0;
+  position: absolute;
+  top: calc(50%);
+
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.right {
+  right: calc(-2 * var(--arrow));
+  transform: rotate(45deg);
+}
+
+.left {
+  left: calc(-2 * var(--arrow));
+  transform: rotate(-135deg);
+}
+
+.name {
+  font-family: $font-family--accent;
+  font-size: 0.75rem;
+  text-decoration: none;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
 }

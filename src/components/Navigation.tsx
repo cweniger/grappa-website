@@ -12,22 +12,23 @@ export default function Navigation() {
   return (
     <nav className={nav.navigation}>
       <div className={classNames(nav.uva__bar, nav.buttons)}>
-        <div className="container__nav">
-          <a href="https://www.uva.nl">
+        <div className="container__nav container__nav__sm">
+          <a className="container__line" href="https://www.uva.nl">
             <img
               src="/images/uva-logo.svg"
               alt="University of Amsterdam"
-              height="28px"
+              height="22px"
               width="auto"
             />
           </a>
         </div>
       </div>
       <div className={nav.grappa__bar}>
-        <div className="container__nav container__flex">
+        <div className="container__nav container__nav__lg container__flex">
           <Link href="/">
             <img
               className={nav.logo}
+              height="77px"
               src="/images/grappa-logo.svg"
               alt="GRAPPA"
             />
