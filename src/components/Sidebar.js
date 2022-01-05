@@ -4,7 +4,6 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 export default function Sidebar({ contact, items }) {
-  console.log(items, "testitems");
   return (
     <aside className="container__aside">
       {contact ? (

@@ -49,8 +49,10 @@ export function FeaturedTestimonial({ testimonials }) {
       name={testimonials.testimonialCollection.items[0].student.fullName}
       index={currentIndex === -1}
       avatar={
-        testimonials.testimonialCollection?.items[0]?.student?.profilePicture
-          ?.url
+        testimonials.testimonialCollection.items[0].student.profilePicture
+          ? testimonials.testimonialCollection.items[0].student.profilePicture
+              .url
+          : undefined
       }
     />
   );
@@ -76,8 +78,12 @@ export function FeaturedTestimonial({ testimonials }) {
       index={currentIndex === testimonials.testimonialCollection.items.length}
       avatar={
         testimonials.testimonialCollection.items[
-          testimonials.testimonialCollection?.items?.length - 1
-        ].student?.profilePicture?.url
+          testimonials.testimonialCollection.items.length - 1
+        ].student.profilePicture
+          ? testimonials.testimonialCollection.items[
+              testimonials.testimonialCollection.items.length - 1
+            ].student.profilePicture.url
+          : undefined
       }
       style={{
         transform: `translate3d(-100%, 0, 0)`,
@@ -117,7 +123,11 @@ export function FeaturedTestimonial({ testimonials }) {
                       name={testimonial.student.fullName}
                       index={currentIndex === i + 1}
                       title={testimonial.student.jobTitle.title}
-                      avatar={testimonial.student?.profilePicture?.url}
+                      avatar={
+                        testimonial.student.profilePicture
+                          ? testimonial.student.profilePicture.url
+                          : undefined
+                      }
                     />
                   );
                 }
