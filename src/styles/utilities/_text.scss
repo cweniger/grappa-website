@@ -145,6 +145,7 @@
 
 .text--research {
   font-family: $font-family--heading;
+  font-size: 0.8rem;
   font-weight: 300;
 }
 
@@ -206,10 +207,6 @@
 
 .list__none {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
-
-// .details {
-//   // &::marker {
-//   //   list-style-type: none;
-//   // }
-// }
