@@ -13,30 +13,33 @@ export default function NewsHero({ featuredNewsEntry }) {
   );
   return (
     <div>
-      {featuredNewsEntry.image && (
-        <img
-          className={news.image}
-          src={featuredNewsEntry.image.url}
-          width="100%"
-        />
-      )}
-
-      {featuredNewsEntry.headline && (
+      <Link href={`/news/${featuredNewsEntry.slug}`}>
         <>
+          {featuredNewsEntry.image && (
+            <img
+              className={news.image}
+              src={featuredNewsEntry.image.url}
+              width="100%"
+            />
+          )}
+
           <p className="text__underscore__md">Featured</p>
-          <Link href={`/news/${featuredNewsEntry.slug}`}>
+
+          {featuredNewsEntry.headline && (
             <h2 className="text--featured text__headline__2">
               {featuredNewsEntry.headline}
             </h2>
-          </Link>
+          )}
+
           {formattedDate && (
-            <time className="text--detail">{formattedDate}</time>
+            <time className="text__detail">{formattedDate}</time>
+          )}
+
+          {featuredNewsEntry.summary && (
+            <p className={news.blurb}>{featuredNewsEntry.summary}</p>
           )}
         </>
-      )}
-      {featuredNewsEntry.summary && (
-        <p className={news.blurb}>{featuredNewsEntry.summary}</p>
-      )}
+      </Link>
     </div>
   );
 }

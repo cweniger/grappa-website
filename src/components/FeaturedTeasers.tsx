@@ -12,7 +12,7 @@ export function FeaturedTeasers({ homepageTeasers }) {
           <div className={zigzag.container__zigzag} key={teaser.id}>
             <div className={zigzag.item}>
               <h3 className="text--news">{teaser.headline}</h3>
-              <ReactMarkdown className="text--teasers">
+              <ReactMarkdown className="text__teaser">
                 {teaser.bodyCopy}
               </ReactMarkdown>
             </div>
