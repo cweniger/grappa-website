@@ -131,11 +131,18 @@
   line-height: 0.9;
 }
 
-.text--teasers {
+.text__teaser {
   font-family: $font-family--accent;
   font-weight: 200;
   font-size: 0.8rem;
-  margin: 1rem 0 0;
+}
+
+.text__figcaption {
+  font-family: $font-family--accent;
+  font-weight: 200;
+  font-size: 0.8rem;
+  text-align: center;
+  margin: 1em 0 0;
 }
 
 .text--attr {

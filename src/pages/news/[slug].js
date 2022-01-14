@@ -75,6 +75,9 @@ export async function getStaticProps({ params, preview = false }) {
           }
           members: membersCollection(limit: 4) {
             items {
+              sys {
+                id
+              }
               fullName
               slug
               profilePicture {

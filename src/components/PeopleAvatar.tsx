@@ -4,17 +4,21 @@ import React from "react";
 import people from "../styles/components/PeopleGrid.module.scss";
 export default function PeopleAvatar({ fields }) {
   return (
-    <Link href={`/members/${fields.slug}`}>
-      <a>
-        <figure className={people.box}>
-          {fields.profilePicture ? (
+    <figure className={people.box}>
+      {fields.profilePicture ? (
+        <Link href={`/members/${fields.slug}`}>
+          <a>
             <img src={fields.profilePicture.url} alt={fields.fullName} />
-          ) : (
-            <div className={people.planet} />
-          )}
-          <figcaption>{fields.fullName}</figcaption>
-        </figure>
-      </a>
-    </Link>
+          </a>
+        </Link>
+      ) : (
+        <div className={people.planet} />
+      )}
+      <figcaption>
+        <Link href={`/members/${fields.slug}`}>
+          <a>{fields.fullName} </a>
+        </Link>
+      </figcaption>
+    </figure>
   );
 }

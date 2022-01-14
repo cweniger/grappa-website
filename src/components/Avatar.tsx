@@ -9,16 +9,22 @@ export default function Avatar({ person, small }) {
     <figure className={people.planet} />
   );
   return (
-    <figure className={small ? people.hBox : people.box} key={person.slug}>
+    <figure className={small ? people.hBox : people.box}>
       {person.slug && !person.omitProfile ? (
-        <Link href={`/members/${person.slug}`}>
-          <>
-            {image}
-            <p>{person.fullName}</p>
-          </>
-        </Link>
+        <>
+          <Link href={`/members/${person.slug}`}>
+            <a>{image}</a>
+          </Link>
+          <Link href={`/members/${person.slug}`}>
+            <a>
+              <figcaption className="text__teaser">
+                {person.fullName}
+              </figcaption>
+            </a>
+          </Link>
+        </>
       ) : (
-        <p>{person.fullName}</p>
+        <figcaption className="text__detail">{person.fullName}</figcaption>
       )}
     </figure>
   );
