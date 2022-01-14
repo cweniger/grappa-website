@@ -82,7 +82,7 @@ export default function People({ persons, heroEntry }) {
         <h2 className="text__underscore text__headline__4">Alumni</h2>
         <ul className={people.alumni}>
           {sortedAlumni.map((fields) => (
-            <li key={fields?.sys?.id}>
+            <li key={fields.sys.id}>
               {fields.fullName && (
                 <p className={people.name}>{fields.fullName}</p>
               )}
