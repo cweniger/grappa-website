@@ -22,9 +22,9 @@ export default function News({ newsEntry }) {
         <div className="container__research">
           <div className="container__aside">
             <h2 className="text__eyebrow__grey">Featured</h2>
-            <ul className={people?.miniPeopleGrid}>
-              {newsEntry?.members?.items?.map((member) => (
-                <Avatar small person={member} key={member?.fullName} />
+            <ul className={people.miniPeopleGrid}>
+              {newsEntry.members.items.map((member) => (
+                <Avatar small person={member} key={member.fullName} />
               ))}
             </ul>
           </div>
@@ -32,7 +32,7 @@ export default function News({ newsEntry }) {
           <div className="container__small">
             <time className="text__detail">{formattedDate}</time>
             <h1 className="text--featured text__headline__3">
-              {newsEntry?.headline}
+              {newsEntry.headline}
             </h1>
 
             <p className={classNames(news.blurb, "text__grey")}>
@@ -45,7 +45,7 @@ export default function News({ newsEntry }) {
                 width="100%"
               />
             )}
-            <ReactMarkdown>{newsEntry?.bodyCopy}</ReactMarkdown>
+            <ReactMarkdown>{newsEntry.bodyCopy}</ReactMarkdown>
           </div>
         </div>
       </section>
@@ -95,7 +95,7 @@ export async function getStaticProps({ params, preview = false }) {
     slug: params.slug,
   });
 
-  const newsEntry = data?.newsCollection?.items[0];
+  const newsEntry = data.newsCollection.items[0];
 
   if (!newsEntry) {
     return { notFound: true };
