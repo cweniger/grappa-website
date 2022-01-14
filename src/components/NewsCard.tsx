@@ -38,7 +38,7 @@ const NewsCard: React.FC<Props> = (props) => {
                 {props.title && (
                   <p className="text--news text__headline__5">{props.title}</p>
                 )}
-                <time className="text--name">{formattedDate}</time>
+                <time className="text__detail">{formattedDate}</time>
               </>
             </div>
           </a>
