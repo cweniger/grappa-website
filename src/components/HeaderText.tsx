@@ -1,6 +1,8 @@
 import React from "react";
 
 export default function HeaderText({ header, image, sideLayout }) {
+  // Optional chaining isn't working so we have to do this ridiculous check.
+  const imageVar = header.backgroundImage ? header.backgroundImage.url : null;
   return (
     <div className={sideLayout ? "container__grid__cols__2" : undefined}>
       <header>
@@ -11,7 +13,7 @@ export default function HeaderText({ header, image, sideLayout }) {
           <p className="text__subheader">{header.subheader}</p>
         )}
       </header>
-      {image && (
+      {imageVar && (
         <img
           className="image-secondary-hero"
           src={header.backgroundImage.url}

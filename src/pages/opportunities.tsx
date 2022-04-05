@@ -22,47 +22,66 @@ export default function Opportunities({ entry }) {
       return "expired";
     }
   });
-
+  // Optional chaining isn't working so we have to do this ridiculous check.
+  const image = entry.hero.backgroundImage
+    ? entry.hero.backgroundImage.url
+    : null;
   return (
     <Layout>
       <BasicMeta url={"/opportunities"} />
-      <section className="container__main">
-        <HeaderText header={entry.hero} image={false} sideLayout={false} />
-      </section>
-      <section className="container__main">
-        {jobsByExpiration.current ? (
-          <ul className="card__container">
-            {jobsByExpiration.current.map((job) => {
-              const formattedDate = new Date(
-                job.closingDate
-              ).toLocaleDateString("en-GB", {
-                year: "numeric",
-                month: "numeric",
-                day: "numeric",
-              });
+      <section className="container__main container__grid__cols__2">
+        <div>
+          <header>
+            {entry.hero.headline && (
+              <h1 className="text__eyebrow__grey">{entry.hero.headline}</h1>
+            )}
+            {entry.hero.subheader && (
+              <p className="text__subheader">{entry.hero.subheader}</p>
+            )}
+          </header>
+          {jobsByExpiration.current ? (
+            <ul className="card__container">
+              {jobsByExpiration.current.map((job) => {
+                const formattedDate = new Date(
+                  job.closingDate
+                ).toLocaleDateString("en-GB", {
+                  year: "numeric",
+                  month: "numeric",
+                  day: "numeric",
+                });
 
-              return (
-                <li key={job.sys.id} className="list__none link__none">
-                  <Link href={job.listingUrl}>
-                    <a>
-                      <p className="text__accent__sm card__job__banner">
-                        {job.position}
-                      </p>
-                      <div className="card__job">
-                        <span className="text__news">{job.subject}</span>
-                        <p className="text__detail__job">
-                          Apply by
-                          <span className="text__heavy">{formattedDate}</span>
+                return (
+                  <li key={job.sys.id} className="list__none link__none">
+                    <Link href={job.listingUrl}>
+                      <a>
+                        <p className="text__accent__sm card__job__banner">
+                          {job.position}
                         </p>
-                      </div>
-                    </a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        ) : (
-          <p className="text__subheader">{entry.noOpportunitiesDescription}</p>
+                        <div className="card__job">
+                          <span className="text__news">{job.subject}</span>
+                          <p className="text__detail__job">
+                            Apply by
+                            <span className="text__heavy">{formattedDate}</span>
+                          </p>
+                        </div>
+                      </a>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <p className="text__subheader">
+              {entry.noOpportunitiesDescription}
+            </p>
+          )}
+        </div>
+        {image && (
+          <img
+            className="image-secondary-hero"
+            src={entry.hero.backgroundImage.url}
+            width="500"
+          />
         )}
       </section>
       {/* <section className="container__main">

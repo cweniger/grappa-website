@@ -10,12 +10,16 @@ import React from "react";
 import HeaderText from "../../components/HeaderText";
 import Sidebar from "../../components/Sidebar";
 export default function Contact({ entry }) {
+  const image = entry.hero.backgroundImage
+    ? entry.hero.backgroundImage.url
+    : null;
+
   return (
     <Layout>
       <BasicMeta url={"/"} />
       <section className="container__main container__sidebar">
         <div className="container__flex container__flex--colstatic">
-          <HeaderText header={entry.hero} sideLayout={false} image={false} />
+          <HeaderText header={entry.hero} sideLayout={false} image />
           {entry.directions.title && <h2>{entry.directions.title}</h2>}
           {entry.directions.text && (
             <ReactMarkdown
@@ -25,6 +29,14 @@ export default function Contact({ entry }) {
               {entry.directions.text}
             </ReactMarkdown>
           )}
+          {image ? (
+            <img
+              className="image"
+              src={entry.hero.backgroundImage.url}
+              width="1024"
+              height="542"
+            />
+          ) : undefined}
           {entry.campusDirectionsCollection.items.map((card) => (
             <FAQ summary={card.title} details={card.text} />
           ))}
@@ -46,6 +58,9 @@ export async function getStaticProps({ preview = false }) {
         hero {
           headline
           subheader
+          backgroundImage {
+            url
+          }
         }
         directions {
           text
