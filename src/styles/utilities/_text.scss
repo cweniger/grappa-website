@@ -227,9 +227,14 @@
   }
 }
 
-.list__tight {
+.list__tight, .list__tight ul {
   list-style-type: none;
+  margin: 0;
   padding: 0;
+
+  li:first-of-type {
+    margin-top: 1em;
+  }
   li {
     margin-bottom: 2em;
   }

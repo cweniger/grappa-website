@@ -35,7 +35,9 @@ export default function Footer() {
                 Opportunities
               </Link>
             </li>
-            <h4 className="text__eyebrow__whiteSm">Contact</h4>
+          </ul>
+          <h4 className="text__eyebrow__white">Contact</h4>
+          <ul className={footer.list}>
             <li>
               <Link href="/contact" className={footer.link}>
                 Contact GRAPPA

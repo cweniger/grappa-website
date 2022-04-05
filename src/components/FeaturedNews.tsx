@@ -3,7 +3,7 @@ import NewsCard from "../components/NewsCard";
 
 export function FeaturedNews({ newsEntry }) {
   return (
-    <section className="container__main ">
+    <section className="container__main">
       <p className="text__underscore__home">GRAPPA in the news</p>
       <div className="container__grid__cols__3">
         {newsEntry.map((article) => (

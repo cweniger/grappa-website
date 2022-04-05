@@ -4,6 +4,7 @@ import BasicMeta from "../components/meta/BasicMeta";
 import layout from "../styles/components/Layout.module.scss";
 import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
+import HeaderText from "../components/HeaderText";
 
 import groupBy from "lodash.groupby";
 import React from "react";
@@ -26,12 +27,7 @@ export default function Opportunities({ entry }) {
     <Layout>
       <BasicMeta url={"/opportunities"} />
       <section className="container__main">
-        {entry.hero.headline && (
-          <h1 className="text__eyebrow__grey">{entry.hero.headline}</h1>
-        )}
-        {entry.hero.subheader && (
-          <p className="text__subheader">{entry.hero.subheader}</p>
-        )}
+        <HeaderText header={entry.hero} />
       </section>
       <section className="container__main">
         {jobsByExpiration.current ? (
@@ -69,11 +65,11 @@ export default function Opportunities({ entry }) {
           <p className="text__subheader">{entry.noOpportunitiesDescription}</p>
         )}
       </section>
-      <section className="container__main">
+      {/* <section className="container__main">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {entry.postdoctoralDescription}
         </ReactMarkdown>
-      </section>
+      </section> */}
     </Layout>
   );
 }
@@ -90,6 +86,9 @@ export async function getStaticProps({ preview = false }) {
         hero {
           headline
           subheader
+          backgroundImage {
+            url
+          }
         }
         postdoctoralDescription
         noOpportunitiesDescription

@@ -35,12 +35,3 @@ export default function Sidebar({ contact, items }) {
     </aside>
   );
 }
-
-{
-  /* items.map((item) => (
-          <Fragment key={item.title}>
-            <h2>{item.title}</h2>
-            {/* <ReactMarkdown>{item.text}</ReactMarkdown> 
-          </Fragment>
-        )) */
-}

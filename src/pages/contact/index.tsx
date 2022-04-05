@@ -13,7 +13,7 @@ export default function Contact({ entry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <section className="container__main container__news">
+      <section className="container__main container__sidebar">
         <div className="container__flex container__flex--colstatic">
           <HeaderText header={entry.hero} />
           {entry.directions.title && <h2>{entry.directions.title}</h2>}

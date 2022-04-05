@@ -3,30 +3,18 @@ import BasicMeta from "../components/meta/BasicMeta";
 import layout from "../styles/components/Layout.module.scss";
 import React from "react";
 import { gql } from "graphql-request";
-
 import FullCalendar from "@fullcalendar/react";
 import googleCalendarPlugin from "@fullcalendar/google-calendar";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import { contentfulApi } from "../lib/contentful";
+import HeaderText from "../components/HeaderText";
 
 export default function Events({ heroEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <div className="container__main container__grid__cols__2">
-        <div>
-          {heroEntry.hero.headline && (
-            <h1 className="text__eyebrow__grey">{heroEntry.hero.headline}</h1>
-          )}
-          {heroEntry.hero.subheader && (
-            <p className="text__subheader">{heroEntry.hero.subheader}</p>
-          )}
-        </div>
-        <img
-          className="image"
-          src={heroEntry.hero.backgroundImage.url}
-          width="500"
-        />
+      <div className="container__main">
+        <HeaderText header={heroEntry.hero} sideLayout image />
       </div>
       <div
         className="container__main text__headline_4"
