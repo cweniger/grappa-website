@@ -30,14 +30,14 @@ const NewsCard: React.FC<Props> = (props) => {
   const cardStyle = cardStyleMap[props.type];
 
   return (
-    <div className={cardStyle} key={props?.slug}>
-      {props?.slug && (
-        <Link href={props?.slug}>
+    <div className={cardStyle} key={props.slug}>
+      {props.slug && (
+        <Link href={props.slug}>
           <a>
-            {props?.image ? (
+            {props.image ? (
               <img
-                src={props?.image?.url}
-                alt={props?.image?.description}
+                src={props.image.url}
+                alt={props.image.description}
                 width="500"
                 height="280"
               />
@@ -48,9 +48,9 @@ const NewsCard: React.FC<Props> = (props) => {
         </Link>
       )}
       <div>
-        <Link href={props?.slug}>
+        <Link href={props.slug}>
           <a>
-            <p className="text__headline__5">{props?.title}</p>
+            <p className="text__headline__5">{props.title}</p>
           </a>
         </Link>
         <time className="text__detail">{formattedDate}</time>

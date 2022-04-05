@@ -114,12 +114,12 @@ export function FeaturedTestimonial({ testimonials }) {
             >
               {renderExtraLast}
 
-              {testimonials?.testimonialCollection?.items?.map(
+              {testimonials.testimonialCollection.items.map(
                 (testimonial, i) => {
                   return (
                     <TestimonialCard
                       copy={testimonial.testimonialCopy}
-                      key={testimonial?.sys?.id}
+                      key={testimonial.sys.id}
                       name={testimonial.student.fullName}
                       index={currentIndex === i + 1}
                       title={testimonial.student.jobTitle.title}

@@ -7,9 +7,9 @@ import ReactMarkdown from "react-markdown";
 export function FeaturedTeasers({ homepageTeasers }) {
   return (
     <section className="container__main">
-      {homepageTeasers?.homepageTeasersCollection?.items?.map((teaser) => {
+      {homepageTeasers.homepageTeasersCollection.items.map((teaser) => {
         return (
-          <div className={zigzag.container__zigzag} key={teaser?.sys?.id}>
+          <div className={zigzag.container__zigzag} key={teaser.sys.id}>
             <div className={zigzag.item}>
               <h3 className="text--news">{teaser.headline}</h3>
               <ReactMarkdown className="text--teasers">

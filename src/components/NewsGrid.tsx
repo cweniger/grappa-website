@@ -4,8 +4,8 @@ import React from "react";
 export default function NewsGrid({ news }) {
   return (
     <section className="container__grid__cols__3">
-      {news?.map((article) => {
-        if (article?.hideFromList) {
+      {news.map((article) => {
+        if (article.hideFromList) {
           return null;
         } else {
           return (

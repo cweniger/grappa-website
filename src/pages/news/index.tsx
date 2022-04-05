@@ -17,7 +17,7 @@ export default function Index({ news, newsEntry }) {
           {newsEntry.newsPage.title && (
             <h1 className="text__eyebrow__grey">{newsEntry.newsPage.title}</h1>
           )}
-          <NewsHero featuredNewsEntry={newsEntry?.newsPage?.featuredArticle} />
+          <NewsHero featuredNewsEntry={newsEntry.newsPage.featuredArticle} />
           <NewsGrid news={news.newsCollection.items} />
         </div>
         <aside>

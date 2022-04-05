@@ -16,20 +16,20 @@ export default function Contact({ entry }) {
       <section className="container__main container__news">
         <div className="container__flex container__flex--colstatic">
           <HeaderText header={entry.hero} />
-          {entry?.directions?.title && <h2>{entry.directions.title}</h2>}
-          {entry?.directions?.text && (
+          {entry.directions.title && <h2>{entry.directions.title}</h2>}
+          {entry.directions.text && (
             <ReactMarkdown
               className="text--research"
               remarkPlugins={[remarkGfm]}
             >
-              {entry?.directions?.text}
+              {entry.directions.text}
             </ReactMarkdown>
           )}
-          {entry?.campusDirectionsCollection?.items.map((card) => (
-            <FAQ summary={card?.title} details={card?.text} />
+          {entry.campusDirectionsCollection.items.map((card) => (
+            <FAQ summary={card.title} details={card.text} />
           ))}
         </div>
-        <Sidebar contact={true} items={entry?.sidebarCollection?.items} />
+        <Sidebar contact={true} items={entry.sidebarCollection.items} />
       </section>
     </Layout>
   );

@@ -26,7 +26,7 @@ export default function Opportunities({ entry }) {
     <Layout>
       <BasicMeta url={"/opportunities"} />
       <section className="container__main">
-        {entry?.hero?.headline && (
+        {entry.hero.headline && (
           <h1 className="text__eyebrow__grey">{entry.hero.headline}</h1>
         )}
         {entry.hero.subheader && (
@@ -34,9 +34,9 @@ export default function Opportunities({ entry }) {
         )}
       </section>
       <section className="container__main">
-        {jobsByExpiration?.current ? (
+        {jobsByExpiration.current ? (
           <ul className="card__container">
-            {jobsByExpiration?.current?.map((job) => {
+            {jobsByExpiration.current.map((job) => {
               const formattedDate = new Date(
                 job.closingDate
               ).toLocaleDateString("en-GB", {
@@ -46,14 +46,14 @@ export default function Opportunities({ entry }) {
               });
 
               return (
-                <li key={job?.sys?.id} className="list__none link__none">
-                  <Link href={job?.listingUrl}>
+                <li key={job.sys.id} className="list__none link__none">
+                  <Link href={job.listingUrl}>
                     <a>
                       <p className="text__accent__sm card__job__banner">
-                        {job?.position}
+                        {job.position}
                       </p>
                       <div className="card__job">
-                        <span className="text__news">{job?.subject}</span>
+                        <span className="text__news">{job.subject}</span>
                         <p className="text__detail__job">
                           Apply by
                           <span className="text__heavy">{formattedDate}</span>
@@ -66,12 +66,12 @@ export default function Opportunities({ entry }) {
             })}
           </ul>
         ) : (
-          <p className="text__subheader">{entry?.noOpportunitiesDescription}</p>
+          <p className="text__subheader">{entry.noOpportunitiesDescription}</p>
         )}
       </section>
       <section className="container__main">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {entry?.postdoctoralDescription}
+          {entry.postdoctoralDescription}
         </ReactMarkdown>
       </section>
     </Layout>

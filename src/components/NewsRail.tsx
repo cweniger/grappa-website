@@ -7,11 +7,11 @@ export default function NewsRail({ news }) {
       {news.map((article) => (
         <NewsCard
           type="rail"
-          key={article?.headline}
-          title={article?.headline}
-          image={article?.image}
-          date={article?.date}
-          slug={`/news/${article?.slug}`}
+          key={article.headline}
+          title={article.headline}
+          image={article.image}
+          date={article.date}
+          slug={`/news/${article.slug}`}
         />
       ))}
     </section>

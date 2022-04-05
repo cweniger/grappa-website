@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import React from "react";
 import { fetchArticle, getAllNewsSlugs } from "../../lib/contentful";
 export default function News({ newsEntry }) {
-  const formattedDate = new Date(newsEntry?.date).toLocaleDateString("en-GB", {
+  const formattedDate = new Date(newsEntry.date).toLocaleDateString("en-GB", {
     year: "numeric",
     month: "numeric",
     day: "numeric",
@@ -23,7 +23,7 @@ export default function News({ newsEntry }) {
           </p>
           <img
             className="image"
-            src={newsEntry?.image?.url}
+            src={newsEntry.image.url}
             width="1024"
             height="542"
           />
@@ -33,8 +33,8 @@ export default function News({ newsEntry }) {
             {newsEntry.bodyCopy}
           </ReactMarkdown>
         )}
-        {newsEntry?.abstract && (
-          <p className={research?.blurb}>{newsEntry.abstract}</p>
+        {newsEntry.abstract && (
+          <p className={research.blurb}>{newsEntry.abstract}</p>
         )}
       </section>
     </Layout>
@@ -43,8 +43,8 @@ export default function News({ newsEntry }) {
 
 export async function getStaticPaths() {
   const posts = await getAllNewsSlugs();
-  const paths = posts.newsCollection?.items?.map((page) => {
-    return { params: { slug: page?.slug } };
+  const paths = posts.newsCollection.items.map((page) => {
+    return { params: { slug: page.slug } };
   });
   return {
     paths,

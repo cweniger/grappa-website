@@ -10,10 +10,10 @@ export default function Sidebar({ contact, items }) {
         <ul className="list__tight">
           {items.map((person) => (
             <li key={person.slug}>
-              <p className="text__title">{person?.contactTitle}</p>
-              <Link href={person?.slug}>
+              <p className="text__title">{person.contactTitle}</p>
+              <Link href={person.slug}>
                 <a>
-                  <p className="text__name">{person?.fullName}</p>
+                  <p className="text__name">{person.fullName}</p>
                 </a>
               </Link>
             </li>

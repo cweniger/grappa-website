@@ -104,7 +104,7 @@ export async function fetchArticle({ params }) {
     slug: params.slug,
   });
 
-  const finalData = data?.newsCollection?.items[0];
+  const finalData = data.newsCollection.items[0];
 
   return finalData;
 }
