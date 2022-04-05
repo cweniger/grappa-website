@@ -14,8 +14,10 @@ $white: #ffffff;
 $chroma-red: #dd5a53;
 $chroma-yellow: #f5bf10;
 $chroma-purple: #b374e5;
+$chroma-purple-10: #b374e510;
 
 // Chromatic gradients
 $chroma-gradient: linear-gradient(270deg, $chroma-yellow 24%, $chroma-purple 61%);
 $chroma-gradient-py: linear-gradient(270deg, $chroma-yellow 24%, $chroma-purple 61%);
 $chroma-gradient-pr: linear-gradient(270deg, $chroma-red 24%, $chroma-purple 61%);
+$chroma-gradient-ang: linear-gradient(45deg, $chroma-red 0%, $chroma-purple 100%);

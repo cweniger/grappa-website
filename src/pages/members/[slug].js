@@ -82,9 +82,6 @@ export async function getStaticProps({ params, preview = false }) {
       query personCollectionQuery($slug: String!, $preview: Boolean!) {
         personCollection(limit: 1, where: { slug: $slug }, preview: $preview) {
           items {
-            sys {
-              id
-            }
             jobTitle {
               title
               order

@@ -9,6 +9,7 @@
   margin: $space--large auto;
   padding: 12px 24px;
   transition: all 250ms ease-in-out;
+  text-decoration: none;
 
   &:hover {
     background-image: $chroma-gradient;

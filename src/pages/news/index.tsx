@@ -12,8 +12,8 @@ export default function Index({ news, newsEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <section className="container__main container__news">
-        <div>
+      <section className="container__main container__sidebar container__news">
+        <div className="container__flex--colstatic">
           {newsEntry.newsPage.title && (
             <h1 className="text__eyebrow__grey">{newsEntry.newsPage.title}</h1>
           )}

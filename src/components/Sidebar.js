@@ -7,14 +7,13 @@ export default function Sidebar({ contact, items }) {
   return (
     <aside className="container__aside">
       {contact ? (
-        <ul className="list__none">
+        <ul className="list__tight">
           {items.map((person) => (
-            <li className="text__title" key={person.slug}>
+            <li key={person.slug}>
+              <p className="text__title">{person.contactTitle}</p>
               <Link href={person.slug}>
                 <a>
-                  {person.contactTitle}
-                  <br />
-                  <span className="text__name">{person.fullName}</span>
+                  <p className="text__name">{person.fullName}</p>
                 </a>
               </Link>
             </li>
@@ -25,7 +24,7 @@ export default function Sidebar({ contact, items }) {
           <div key={item.title}>
             <h2 className="text__underscore__md">{item.title}</h2>
             <ReactMarkdown
-              className="list__none text__name"
+              className="list__tight text__name"
               remarkPlugins={[remarkGfm]}
             >
               {item.text}
@@ -35,13 +34,4 @@ export default function Sidebar({ contact, items }) {
       )}
     </aside>
   );
-}
-
-{
-  /* items.map((item) => (
-          <Fragment key={item.title}>
-            <h2>{item.title}</h2>
-            {/* <ReactMarkdown>{item.text}</ReactMarkdown> 
-          </Fragment>
-        )) */
 }

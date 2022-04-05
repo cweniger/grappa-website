@@ -6,13 +6,13 @@ import ReactMarkdown from "react-markdown";
 
 export function FeaturedTeasers({ homepageTeasers }) {
   return (
-    <>
-      <section className="container__main">
-        {homepageTeasers.homepageTeasersCollection.items.map((teaser) => (
-          <div className={zigzag.container__zigzag} key={teaser.id}>
+    <section className="container__main">
+      {homepageTeasers.homepageTeasersCollection.items.map((teaser) => {
+        return (
+          <div className={zigzag.container__zigzag} key={teaser.sys.id}>
             <div className={zigzag.item}>
               <h3 className="text--news">{teaser.headline}</h3>
-              <ReactMarkdown className="text__teaser">
+              <ReactMarkdown className="text--teasers">
                 {teaser.bodyCopy}
               </ReactMarkdown>
             </div>
@@ -27,8 +27,8 @@ export function FeaturedTeasers({ homepageTeasers }) {
               />
             </div>
           </div>
-        ))}
-      </section>
-    </>
+        );
+      })}
+    </section>
   );
 }

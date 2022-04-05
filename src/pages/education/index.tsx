@@ -11,8 +11,8 @@ export default function Education({ entry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <section className="container__main container__news">
-        <HeaderText header={entry.hero} />
+      <section className="container__main container__sidebar">
+        <HeaderText header={entry.hero} sideLayout={false} image />
 
         <Sidebar contact={false} items={entry.sidebarCollection.items} />
       </section>
@@ -28,6 +28,9 @@ export async function getStaticProps({ preview = false }) {
         hero {
           headline
           subheader
+          backgroundImage {
+            url
+          }
         }
         sidebarCollection {
           items {

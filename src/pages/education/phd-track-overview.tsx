@@ -10,8 +10,8 @@ export default function PhDTrackOverview({ content }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <main className="container__main">
-        <h1>{content.title}</h1>
+      <main className="container__main__medium">
+        <h1 className="text--featured text__headline__2">{content.title}</h1>
         <ReactMarkdown>{content.text}</ReactMarkdown>
       </main>
     </Layout>

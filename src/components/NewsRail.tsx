@@ -6,7 +6,7 @@ export default function NewsRail({ news }) {
     <section className="container__flex container__flex--colstatic">
       {news.map((article) => (
         <NewsCard
-          rail
+          type="rail"
           key={article.headline}
           title={article.headline}
           image={article.image}

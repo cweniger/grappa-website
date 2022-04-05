@@ -59,6 +59,9 @@ export async function fetchNews() {
     query newsCollectionQuery {
       newsCollection(order: date_DESC) {
         items {
+          sys {
+            id
+          }
           headline
           bodyCopy
           hideFromList
@@ -78,6 +81,60 @@ export async function fetchNews() {
   return data;
 }
 
+export async function fetchArticle({ params }) {
+  const query = gql`
+    query newsCollectionQuery($slug: String!) {
+      newsCollection(limit: 1, where: { slug: $slug }) {
+        items {
+          date
+          headline
+          bodyCopy
+          slug
+          summary
+          date
+          image {
+            url
+          }
+          caption
+        }
+      }
+    }
+  `;
+
+  const data = await contentfulApi(query, {
+    slug: params.slug,
+  });
+
+  const finalData = data.newsCollection.items[0];
+
+  return finalData;
+}
+
+export async function getArticleData({ params }) {
+  const peopleData = await contentfulApi(
+    gql`
+      query newsCollectionQuery($slug: String!) {
+        newsCollection(limit: 1, where: { slug: $slug }) {
+          items {
+            headline
+            bodyCopy
+            slug
+            summary
+            date
+            image {
+              url
+            }
+          }
+        }
+      }
+    `,
+    {
+      slug: params.slug,
+      preview,
+    }
+  );
+}
+
 export async function fetchNewsEntry() {
   const newsQuery = gql`
     query newsPageEntryQuery {
@@ -87,6 +144,9 @@ export async function fetchNewsEntry() {
         }
         title
         featuredArticle {
+          sys {
+            id
+          }
           headline
           date
           slug
@@ -97,6 +157,9 @@ export async function fetchNewsEntry() {
         }
         highlights: highlightArticlesCollection(limit: 3) {
           items {
+            sys {
+              id
+            }
             headline
             date
             slug

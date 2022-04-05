@@ -3,27 +3,18 @@ import BasicMeta from "../components/meta/BasicMeta";
 import layout from "../styles/components/Layout.module.scss";
 import React from "react";
 import { gql } from "graphql-request";
-
 import FullCalendar from "@fullcalendar/react";
 import googleCalendarPlugin from "@fullcalendar/google-calendar";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import { contentfulApi } from "../lib/contentful";
+import HeaderText from "../components/HeaderText";
 
 export default function Events({ heroEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
       <div className="container__main">
-        {heroEntry.hero.headline && (
-          <h1 className="text__eyebrow__grey">{heroEntry.hero.headline}</h1>
-        )}
-        {heroEntry.hero.subheader && (
-          <p className="text__subheader">{heroEntry.hero.subheader}</p>
-        )}
-        {/* GRAPPA Colloquia bi-weekly, Mondays, 11am – 12pm GRAPPA Journal Club
-        weekly, Mondays, 1:30pm – 2:30pm sign-up sheet for papers ML for
-        Physics/Astronomy Journal Club bi-weekly, 1st and 3rd Thursday each
-        month, 10:30am – 11:30am */}
+        <HeaderText header={heroEntry.hero} sideLayout image />
       </div>
       <div
         className="container__main text__headline_4"
@@ -100,6 +91,10 @@ export async function getStaticProps({ preview = false }) {
       hero(id: "67tCgUxz2RwyyNrk06FmpM") {
         headline
         subheader
+        backgroundImage {
+          url
+          description
+        }
       }
     }
   `;

@@ -3,12 +3,11 @@ import BasicMeta from "../components/meta/BasicMeta";
 import PeopleAvatar from "../components/PeopleAvatar";
 import groupBy from "lodash.groupby";
 import people from "../styles/components/PeopleGrid.module.scss";
-import classnames from "classnames";
 import * as _ from "lodash";
 import { gql } from "graphql-request";
 import { contentfulApi } from "../lib/contentful";
 import SecondaryHero from "../components/SecondaryHero";
-import React, { Fragment } from "react";
+import React from "react";
 
 export default function People({ persons, heroEntry }) {
   // get alumni and visitors, has end date
@@ -55,24 +54,24 @@ export default function People({ persons, heroEntry }) {
 
           if (boxCheck) {
             return (
-              <Fragment key={key}>
+              <>
                 <h2 className="text__underscore text__headline__4">{key}</h2>
                 <div
                   className={boxCheck ? people.peopleGrid : people.smallDept}
                 >
-                  {sortedCurrent[key].map((fields) => (
-                    <PeopleAvatar key={fields.sys.id} fields={fields} />
-                  ))}
+                  {sortedCurrent[key].map((fields) => {
+                    return <PeopleAvatar key={fields.sys.id} fields={fields} />;
+                  })}
                 </div>
-              </Fragment>
+              </>
             );
           }
           return (
-            <div className={people.peopleSection} key={key}>
+            <div className={people.peopleSection}>
               <h2 className="text__underscore text__headline__4">{key}</h2>
               <div className={boxCheck ? people.peopleGrid : people.smallDept}>
                 {sortedCurrent[key].map((fields) => (
-                  <PeopleAvatar key={fields.sys.id} fields={fields} />
+                  <PeopleAvatar fields={fields} />
                 ))}
               </div>
             </div>
@@ -82,7 +81,7 @@ export default function People({ persons, heroEntry }) {
         <h2 className="text__underscore text__headline__4">Alumni</h2>
         <ul className={people.alumni}>
           {sortedAlumni.map((fields) => (
-            <li key={fields.sys.id}>
+            <li key={fields.fullName}>
               {fields.fullName && (
                 <p className={people.name}>{fields.fullName}</p>
               )}

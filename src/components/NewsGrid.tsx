@@ -10,8 +10,8 @@ export default function NewsGrid({ news }) {
         } else {
           return (
             <NewsCard
-              grid
-              key={article.headline}
+              type="grid"
+              key={article.sys.id}
               title={article.headline}
               image={article.image}
               date={article.date}
