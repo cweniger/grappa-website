@@ -27,7 +27,7 @@ export default function Opportunities({ entry }) {
     <Layout>
       <BasicMeta url={"/opportunities"} />
       <section className="container__main">
-        <HeaderText header={entry.hero} />
+        <HeaderText header={entry.hero} image={false} sideLayout={false} />
       </section>
       <section className="container__main">
         {jobsByExpiration.current ? (

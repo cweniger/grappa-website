@@ -15,7 +15,7 @@ export default function Contact({ entry }) {
       <BasicMeta url={"/"} />
       <section className="container__main container__sidebar">
         <div className="container__flex container__flex--colstatic">
-          <HeaderText header={entry.hero} />
+          <HeaderText header={entry.hero} sideLayout={false} image={false} />
           {entry.directions.title && <h2>{entry.directions.title}</h2>}
           {entry.directions.text && (
             <ReactMarkdown
