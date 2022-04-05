@@ -20,7 +20,7 @@ export default function Events({ heroEntry }) {
         className="container__main text__headline_4"
         suppressHydrationWarning={true}
       >
-        {process?.browser && (
+        {process.browser && (
           <FullCalendar
             plugins={[googleCalendarPlugin, dayGridPlugin]}
             googleCalendarApiKey="AIzaSyATL3jXaI-KKhSiCRZWPtPGXaxyHCGWQVQ"

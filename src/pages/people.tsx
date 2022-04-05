@@ -59,7 +59,7 @@ export default function People({ persons, heroEntry }) {
                 <div
                   className={boxCheck ? people.peopleGrid : people.smallDept}
                 >
-                  {sortedCurrent[key]?.map((fields) => {
+                  {sortedCurrent[key].map((fields) => {
                     return <PeopleAvatar key={fields.sys.id} fields={fields} />;
                   })}
                 </div>
