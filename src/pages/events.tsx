@@ -13,23 +13,26 @@ export default function Events({ heroEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <div className="container__main">
-        {heroEntry.hero.headline && (
-          <h1 className="text__eyebrow__grey">{heroEntry.hero.headline}</h1>
-        )}
-        {heroEntry.hero.subheader && (
-          <p className="text__subheader">{heroEntry.hero.subheader}</p>
-        )}
-        {/* GRAPPA Colloquia bi-weekly, Mondays, 11am – 12pm GRAPPA Journal Club
-        weekly, Mondays, 1:30pm – 2:30pm sign-up sheet for papers ML for
-        Physics/Astronomy Journal Club bi-weekly, 1st and 3rd Thursday each
-        month, 10:30am – 11:30am */}
+      <div className="container__main container__grid__cols__2">
+        <div>
+          {heroEntry.hero.headline && (
+            <h1 className="text__eyebrow__grey">{heroEntry.hero.headline}</h1>
+          )}
+          {heroEntry.hero.subheader && (
+            <p className="text__subheader">{heroEntry.hero.subheader}</p>
+          )}
+        </div>
+        <img
+          className="image"
+          src={heroEntry.hero.backgroundImage.url}
+          width="500"
+        />
       </div>
       <div
         className="container__main text__headline_4"
         suppressHydrationWarning={true}
       >
-        {process.browser && (
+        {process?.browser && (
           <FullCalendar
             plugins={[googleCalendarPlugin, dayGridPlugin]}
             googleCalendarApiKey="AIzaSyATL3jXaI-KKhSiCRZWPtPGXaxyHCGWQVQ"
@@ -100,6 +103,10 @@ export async function getStaticProps({ preview = false }) {
       hero(id: "67tCgUxz2RwyyNrk06FmpM") {
         headline
         subheader
+        backgroundImage {
+          url
+          description
+        }
       }
     }
   `;

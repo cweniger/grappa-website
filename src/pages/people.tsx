@@ -59,9 +59,9 @@ export default function People({ persons, heroEntry }) {
                 <div
                   className={boxCheck ? people.peopleGrid : people.smallDept}
                 >
-                  {sortedCurrent[key].map((fields) => (
-                    <PeopleAvatar fields={fields} />
-                  ))}
+                  {sortedCurrent[key]?.map((fields) => {
+                    return <PeopleAvatar key={fields.sys.id} fields={fields} />;
+                  })}
                 </div>
               </>
             );
@@ -98,6 +98,9 @@ export async function getStaticProps({ preview = false }) {
     query personCollectionQuery($preview: Boolean!) {
       persons: personCollection(preview: $preview, limit: 500) {
         items {
+          sys {
+            id
+          }
           jobTitle {
             title
             order
