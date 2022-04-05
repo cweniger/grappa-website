@@ -29,7 +29,7 @@ export default function NewsHero({ featuredNewsEntry }) {
         <>
           <p className="text__underscore__md">Featured</p>
           <Link href={`/news/${featuredNewsEntry.slug}`}>
-            <a>
+            <a className="link__none">
               <h2 className="text--featured text__headline__2">
                 {featuredNewsEntry.headline}
               </h2>

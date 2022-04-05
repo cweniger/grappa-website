@@ -95,6 +95,7 @@ export async function fetchArticle({ params }) {
           image {
             url
           }
+          caption
         }
       }
     }

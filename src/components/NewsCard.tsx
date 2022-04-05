@@ -49,7 +49,7 @@ const NewsCard: React.FC<Props> = (props) => {
       )}
       <div>
         <Link href={props.slug}>
-          <a>
+          <a className="link__none">
             <p className="text__headline__5">{props.title}</p>
           </a>
         </Link>

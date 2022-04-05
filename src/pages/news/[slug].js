@@ -21,12 +21,17 @@ export default function News({ newsEntry }) {
           <p>
             <time className="text__detail">{formattedDate}</time>
           </p>
-          <img
-            className="image"
-            src={newsEntry.image.url}
-            width="1024"
-            height="542"
-          />
+          <figure>
+            <img
+              className="image"
+              src={newsEntry.image.url}
+              width="1024"
+              height="542"
+            />
+            <figcaption className="text__caption">
+              {newsEntry.caption}
+            </figcaption>
+          </figure>
         </div>
         {newsEntry.bodyCopy && (
           <ReactMarkdown className="container__small">

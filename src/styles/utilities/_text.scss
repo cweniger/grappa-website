@@ -84,6 +84,13 @@
   }
 }
 
+.text__caption {
+  font-family: $font-family--accent;
+  color: $neutral-gray-04;
+  font-size: 0.8rem;
+  margin: .5em auto 2em;
+}
+
 .text__detail {
   font-family: $font-family--accent;
   color: $neutral-gray-04;
@@ -219,15 +226,19 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+
 }
 
 .link__none {
+  text-decoration: none;
+
   a {
     text-decoration: none;
   }
 }
 
 .list__tight, .list__tight ul {
+  @extend .link__none;
   list-style-type: none;
   margin: 0;
   padding: 0;
