@@ -50,6 +50,9 @@ async function fetchHomepageTeasers() {
     query homepageTeasersCollectionQuery {
       homepageTeasersCollection(order: order_ASC) {
         items {
+          sys {
+            id
+          }
           image {
             url
             description

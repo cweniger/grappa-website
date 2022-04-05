@@ -89,7 +89,7 @@
   color: $neutral-gray-04;
   text-transform: uppercase;
   font-size: 0.8rem;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   &__job {
     @extend .text__detail;
     margin: 2em 0 0 0;
@@ -103,7 +103,6 @@
   font-weight: 300;
   margin: 0 auto 0.5em;
   color: $white;
-  max-width: 60rem;
 
   &__grey {
     @extend .text__hero;
@@ -131,18 +130,11 @@
   line-height: 0.9;
 }
 
-.text__teaser {
+.text--teasers {
   font-family: $font-family--accent;
   font-weight: 200;
   font-size: 0.8rem;
-}
-
-.text__figcaption {
-  font-family: $font-family--accent;
-  font-weight: 200;
-  font-size: 0.8rem;
-  text-align: center;
-  margin: 1em 0 0;
+  margin: 1rem 0 0;
 }
 
 .text--attr {
@@ -160,13 +152,14 @@
   font-family: $font-family--accent;
   text-decoration: none;
   font-weight: 300;
-  margin-bottom: 0.5rem;
+  margin-top: 0;
 }
 
 .text__title {
   font-family: $font-family--accent;
   font-weight: bold;
-  margin-bottom: 1em;
+  margin-bottom: .5em;
+  margin-top: 0;
 }
 
 .text__accent {
@@ -210,6 +203,16 @@
     box-shadow: 1px 1px 0 0 $chroma-purple;
     margin: 1em 0 0.5em;
   }
+
+  &__home {
+    @extend .text__underscore;
+    color: $chroma-purple;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    box-shadow: 1px 1px 0 0 $chroma-purple;
+    margin: 1em 0 2em;
+  }
 }
 
 .list__none {
@@ -218,6 +221,16 @@
   padding: 0;
 }
 
-.text__grey {
-  color: $neutral-gray-03;
+.link__none {
+  a {
+    text-decoration: none;
+  }
+}
+
+.list__tight {
+  list-style-type: none;
+  padding: 0;
+  li {
+    margin-bottom: 2em;
+  }
 }

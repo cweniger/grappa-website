@@ -12,6 +12,7 @@ interface Props {
   slug?: string;
   rail?: boolean;
   grid?: boolean;
+  type?: "rail" | "grid";
 }
 
 const NewsCard: React.FC<Props> = (props) => {
@@ -21,30 +22,40 @@ const NewsCard: React.FC<Props> = (props) => {
     day: "numeric",
   });
 
-  return (
-    <>
-      {props.slug && (
-        <Link href={props.slug}>
-          <a>
-            <div
-              className={props.grid ? card.gridBox : card.box}
-              key={props.slug}
-            >
-              <>
-                {props.image && (
-                  <img src={props.image.url} alt={props.image.description} />
-                )}
+  const cardStyleMap = {
+    rail: card.newsRailBox,
+    grid: card.newsGridBox,
+  };
 
-                {props.title && (
-                  <p className="text--news text__headline__5">{props.title}</p>
-                )}
-                <time className="text__detail">{formattedDate}</time>
-              </>
-            </div>
+  const cardStyle = cardStyleMap[props.type];
+
+  return (
+    <div className={cardStyle} key={props?.slug}>
+      {props?.slug && (
+        <Link href={props?.slug}>
+          <a>
+            {props?.image ? (
+              <img
+                src={props?.image?.url}
+                alt={props?.image?.description}
+                width="500"
+                height="280"
+              />
+            ) : (
+              <div className={card.emptyCard} />
+            )}
           </a>
         </Link>
       )}
-    </>
+      <div>
+        <Link href={props?.slug}>
+          <a>
+            <p className="text__headline__5">{props?.title}</p>
+          </a>
+        </Link>
+        <time className="text__detail">{formattedDate}</time>
+      </div>
+    </div>
   );
 };
 

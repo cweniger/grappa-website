@@ -1,16 +1,10 @@
 import Layout from "../../components/Layout";
-import { gql } from "graphql-request";
-import { contentfulApi } from "../../lib/contentful";
 import BasicMeta from "../../components/meta/BasicMeta";
-import classNames from "classnames";
 import ReactMarkdown from "react-markdown";
 import React from "react";
-import Avatar from "../../components/Avatar";
-import { getAllNewsSlugs } from "../../lib/contentful";
-import news from "../../styles/components/NewsHero.module.scss";
-import people from "../../styles/components/PeopleGrid.module.scss";
+import { fetchArticle, getAllNewsSlugs } from "../../lib/contentful";
 export default function News({ newsEntry }) {
-  const formattedDate = new Date(newsEntry.date).toLocaleDateString("en-GB", {
+  const formattedDate = new Date(newsEntry?.date).toLocaleDateString("en-GB", {
     year: "numeric",
     month: "numeric",
     day: "numeric",
@@ -19,103 +13,51 @@ export default function News({ newsEntry }) {
     <Layout>
       <BasicMeta url={"/"} />
       <section className="container__main">
-        <div className="container__research">
-          <div className="container__aside">
-            <h2 className="text__eyebrow__grey">Featured</h2>
-            <ul className={people.miniPeopleGrid}>
-              {newsEntry.members.items.map((member) => (
-                <Avatar small person={member} key={member.fullName} />
-              ))}
-            </ul>
-          </div>
-
-          <div className="container__small">
+        <div>
+          <p className="text__underscore__md">News</p>
+          <h1 className="text--featured text__headline__2">
+            {newsEntry.headline}
+          </h1>
+          <p>
             <time className="text__detail">{formattedDate}</time>
-            <h1 className="text--featured text__headline__3">
-              {newsEntry.headline}
-            </h1>
-
-            <p className={classNames(news.blurb, "text__grey")}>
-              {newsEntry.summary}
-            </p>
-            {newsEntry.image && (
-              <img
-                className={news.image}
-                src={newsEntry.image.url}
-                width="100%"
-              />
-            )}
-            <ReactMarkdown>{newsEntry.bodyCopy}</ReactMarkdown>
-          </div>
+          </p>
+          <img
+            className="image"
+            src={newsEntry?.image?.url}
+            width="1024"
+            height="542"
+          />
         </div>
+        {newsEntry.bodyCopy && (
+          <ReactMarkdown className="container__small">
+            {newsEntry.bodyCopy}
+          </ReactMarkdown>
+        )}
+        {newsEntry?.abstract && (
+          <p className={research?.blurb}>{newsEntry.abstract}</p>
+        )}
       </section>
-      {/* <section className="container__main container__right">
-        <div className="container__medium">
-          <h1 className="text__news">{article.headline}</h1>
-          <time className="text__detail">{formattedDate}</time>
-          <ReactMarkdown>{article.bodyCopy}</ReactMarkdown>
-        </div>
-      </section> */}
     </Layout>
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const query = gql`
-    query newsCollectionQuery($slug: String!) {
-      newsCollection(limit: 1, where: { slug: $slug }) {
-        items {
-          headline
-          bodyCopy
-          slug
-          summary
-          date
-          image {
-            url
-          }
-          members: membersCollection(limit: 4) {
-            items {
-              sys {
-                id
-              }
-              fullName
-              slug
-              profilePicture {
-                url
-                description
-              }
-            }
-          }
-        }
-      }
-    }
-  `;
-
-  const data = await contentfulApi(query, {
-    slug: params.slug,
+export async function getStaticPaths() {
+  const posts = await getAllNewsSlugs();
+  const paths = posts.newsCollection?.items?.map((page) => {
+    return { params: { slug: page?.slug } };
   });
+  return {
+    paths,
+    fallback: "blocking",
+  };
+}
 
-  const newsEntry = data.newsCollection.items[0];
-
-  if (!newsEntry) {
-    return { notFound: true };
-  }
-
+export async function getStaticProps({ params, preview = false }) {
+  const [newsEntry] = await Promise.all([fetchArticle({ params })]);
   return {
     props: {
       newsEntry,
       preview,
     },
-  };
-}
-
-export async function getStaticPaths() {
-  const posts = await getAllNewsSlugs();
-  const paths = posts.newsCollection.items.map((page) => {
-    return { params: { slug: page.slug } };
-  });
-  return {
-    paths,
-    fallback: "blocking",
   };
 }

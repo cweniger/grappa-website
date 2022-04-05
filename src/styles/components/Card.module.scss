@@ -20,7 +20,7 @@
     object-fit: cover;
   }
 
-  &:hover {
+  a:hover {
     transform: scale(1.05);
     box-shadow: 0.25rem 0.25rem $chroma-purple;
   }

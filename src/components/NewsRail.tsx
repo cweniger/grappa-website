@@ -6,12 +6,12 @@ export default function NewsRail({ news }) {
     <section className="container__flex container__flex--colstatic">
       {news.map((article) => (
         <NewsCard
-          rail
-          key={article.headline}
-          title={article.headline}
-          image={article.image}
-          date={article.date}
-          slug={`/news/${article.slug}`}
+          type="rail"
+          key={article?.headline}
+          title={article?.headline}
+          image={article?.image}
+          date={article?.date}
+          slug={`/news/${article?.slug}`}
         />
       ))}
     </section>

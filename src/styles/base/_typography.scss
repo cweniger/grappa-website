@@ -38,16 +38,8 @@ p {
 
 a {
   color: $link--base;
-  text-decoration: none;
-  // &:hover {
-  // Would love to do some sort of gradient hover here...
-  // }
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
 }
-
-// ol {
-
-// }
-
-// li {
-
-// }

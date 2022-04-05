@@ -20,7 +20,7 @@ export default function ResearchGrid({ area }) {
         </div>
 
         <div className={classnames(research.main)}>
-          <h1 className="text--research text__headline__2">{area.title}</h1>
+          <h1 className="text--featured text__headline__2">{area.title}</h1>
           {area.abstract && <p className={research.blurb}>{area.abstract}</p>}
           <ContentfulMarkdown className="" content={area.description} />
         </div>

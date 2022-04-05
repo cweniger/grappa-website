@@ -10,11 +10,9 @@ interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> {
   avatar?: any;
   title: string;
   name: string;
-  key?: number | string;
 }
 
 export const TestimonialCard: React.FunctionComponent<CarouselProps> = ({
-  key,
   name,
   avatar,
   copy,
@@ -22,7 +20,7 @@ export const TestimonialCard: React.FunctionComponent<CarouselProps> = ({
   title,
 }) => {
   return (
-    <div key={key} data-index={index} className={featured.card}>
+    <div data-index={index} className={featured.card}>
       <div className={classnames(featured.avatar)}>
         {avatar ? (
           <Image src={avatar} alt={name} width={100} height={100} />
