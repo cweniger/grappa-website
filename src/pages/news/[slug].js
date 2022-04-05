@@ -9,6 +9,9 @@ export default function News({ newsEntry }) {
     month: "numeric",
     day: "numeric",
   });
+
+  // Optional chaining isn't working so we have to do this ridiculous check.
+  const image = newsEntry.image ? newsEntry.image.url : null;
   return (
     <Layout>
       <BasicMeta url={"/"} />
@@ -22,12 +25,14 @@ export default function News({ newsEntry }) {
             <time className="text__detail">{formattedDate}</time>
           </p>
           <figure>
-            <img
-              className="image"
-              src={newsEntry.image.url}
-              width="1024"
-              height="542"
-            />
+            {image ? (
+              <img
+                className="image"
+                src={newsEntry.image.url}
+                width="1024"
+                height="542"
+              />
+            ) : undefined}
             <figcaption className="text__caption">
               {newsEntry.caption}
             </figcaption>
