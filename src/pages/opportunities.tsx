@@ -5,6 +5,7 @@ import layout from "../styles/components/Layout.module.scss";
 import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
 import HeaderText from "../components/HeaderText";
+import * as _ from "lodash";
 
 import groupBy from "lodash.groupby";
 import React from "react";
@@ -17,11 +18,13 @@ export default function Opportunities({ entry }) {
     const today = new Date();
 
     if (expiryDate > today) {
+      _.orderBy(expiryDate);
       return "current";
     } else {
       return "expired";
     }
   });
+
   // Optional chaining isn't working so we have to do this ridiculous check.
   const image = entry.hero.backgroundImage
     ? entry.hero.backgroundImage.url
