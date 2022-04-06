@@ -8,8 +8,6 @@ export default function NewsGrid({ news }) {
     let archiveDate = new Date("2019-12-31");
     const date = archiveDate.toISOString();
 
-    console.log(date, "date");
-
     if (article.date > date || article.date == null) {
       return "current";
     } else if (article.date < date) {
@@ -17,7 +15,6 @@ export default function NewsGrid({ news }) {
     }
   });
 
-  console.log(newsByDate.current);
   return (
     <>
       <section className="container__grid__cols__3">
