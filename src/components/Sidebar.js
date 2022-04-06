@@ -11,7 +11,7 @@ export default function Sidebar({ contact, items }) {
           {items.map((person) => (
             <li key={person.slug}>
               <p className="text__title">{person.contactTitle}</p>
-              <Link href={person.slug}>
+              <Link href={`/members/${person.slug}`}>
                 <a>
                   <p className="text__name">{person.fullName}</p>
                 </a>

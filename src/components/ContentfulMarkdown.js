@@ -1,7 +1,6 @@
 import classnames from "classnames";
 import markdown from "../styles/components/ContentfulMarkdown.module.scss";
 import Image from "next/image";
-import Link from "./Link";
 import ReactMarkdown from "react-markdown";
 import React from "react";
 

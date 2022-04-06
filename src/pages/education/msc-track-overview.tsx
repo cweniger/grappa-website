@@ -12,20 +12,18 @@ export default function MScTrackOverview({ entry, content }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <main className="container__main">
-        <section className="container__main container__sidebar">
-          <div>
-            <h1 className="text__eyebrow__grey">{content.title}</h1>
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              className="details__directions text__subheader"
-            >
-              {content.text}
-            </ReactMarkdown>
-          </div>
-          <Sidebar contact={false} items={entry.sidebarCollection.items} />
-        </section>
-      </main>
+      <section className="container__main container__sidebar">
+        <div>
+          <h1 className="text__eyebrow__grey">{content.title}</h1>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            className="details__directions text__subheader"
+          >
+            {content.text}
+          </ReactMarkdown>
+        </div>
+        <Sidebar contact={false} items={entry.sidebarCollection.items} />
+      </section>
     </Layout>
   );
 }

@@ -29,16 +29,9 @@ export default function Contact({ entry }) {
               {entry.directions.text}
             </ReactMarkdown>
           )}
-          {image ? (
-            <img
-              className="image"
-              src={entry.hero.backgroundImage.url}
-              width="1024"
-              height="542"
-            />
-          ) : undefined}
+
           {entry.campusDirectionsCollection.items.map((card) => (
-            <FAQ summary={card.title} details={card.text} />
+            <FAQ key={card.title} summary={card.title} details={card.text} />
           ))}
         </div>
         <Sidebar contact={true} items={entry.sidebarCollection.items} />

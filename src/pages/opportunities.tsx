@@ -111,7 +111,7 @@ export async function getStaticProps({ preview = false }) {
         }
         postdoctoralDescription
         noOpportunitiesDescription
-        jobs: jobsCollection {
+        jobs: jobsCollection(order: closingDate_ASC) {
           items {
             sys {
               id
