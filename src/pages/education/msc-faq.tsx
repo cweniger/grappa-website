@@ -1,8 +1,6 @@
 import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
-import layout from "../../styles/components/Layout.module.scss";
 import { gql } from "@apollo/client";
-import client from "../../../apollo-client";
 import ReactMarkdown from "react-markdown";
 import { contentfulApi } from "../../lib/contentful";
 
@@ -37,25 +35,25 @@ export default function MScFAQ({ content, sidebar }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const { data } = await client.query({
-    query: gql`
-      query mScFaqPageEntryQuery($preview: Boolean!) {
-        mScFaqPage(preview: $preview, id: "5WvpK0Q4Jt4y8KFhCvcVZb") {
-          sys {
-            id
-          }
-          title
-          description
-          faqSectionCollection {
-            items {
-              question
-              answer
-            }
+  const query = gql`
+    query mScFaqPageEntryQuery($preview: Boolean!) {
+      mScFaqPage(preview: $preview, id: "5WvpK0Q4Jt4y8KFhCvcVZb") {
+        sys {
+          id
+        }
+        title
+        description
+        faqSectionCollection {
+          items {
+            question
+            answer
           }
         }
       }
-    `,
-  });
+    }
+  `;
+
+  const data = await contentfulApi(query, { preview });
 
   const sidebarQuery = gql`
     query educationMainPageEntryQuery {
@@ -79,6 +77,7 @@ export async function getStaticProps({ preview = false }) {
     props: {
       sidebar,
       content: data.mScFaqPage,
+      preview,
     },
   };
 }
