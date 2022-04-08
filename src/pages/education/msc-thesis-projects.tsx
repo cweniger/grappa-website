@@ -11,7 +11,11 @@ export default function MScTrackOverview({ entry, heroEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <SecondaryHero heroEntry={heroEntry.hero} />
+      <SecondaryHero
+        heroEntry={heroEntry.hero}
+        className={null}
+        innerClassName={null}
+      />
 
       <section className="container__main">
         {entry.mScThesisProjects.projects.items.map((project) => (

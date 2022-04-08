@@ -1,6 +1,5 @@
 import Layout from "../components/Layout";
 import BasicMeta from "../components/meta/BasicMeta";
-import layout from "../styles/components/Layout.module.scss";
 import React from "react";
 import { gql } from "graphql-request";
 import FullCalendar from "@fullcalendar/react";
@@ -9,12 +8,12 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import { contentfulApi } from "../lib/contentful";
 import HeaderText from "../components/HeaderText";
 
-export default function Events({ heroEntry }) {
+export default function Events({ pageEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
       <div className="container__main">
-        <HeaderText header={heroEntry.hero} sideLayout image />
+        <HeaderText header={pageEntry.hero} sideLayout image />
       </div>
       <div
         className="container__main text__headline_4"
@@ -47,6 +46,28 @@ export default function Events({ heroEntry }) {
 }
 
 export async function getStaticProps({ preview = false }) {
+  const pageQuery = gql`
+    query eventsPageEntryQuery {
+      eventsPage(id: "VWt5TpothfZllTDMygdzD") {
+        sys {
+          id
+        }
+        hero {
+          headline
+          subheader
+          description
+          backgroundImage {
+            url
+          }
+        }
+        pageMetadata {
+          title
+          slug
+          description
+        }
+      }
+    }
+  `;
   const peopleQuery = gql`
     query personCollectionQuery($preview: Boolean!) {
       persons: personCollection(preview: $preview, limit: 500) {
@@ -67,43 +88,12 @@ export async function getStaticProps({ preview = false }) {
     }
   `;
 
-  const query = gql`
-    query researchCollectionQuery($preview: Boolean!) {
-      researchCollection(preview: $preview) {
-        items {
-          title
-          description
-          team: teamCollection(limit: 50) {
-            items {
-              fullName
-              profilePicture {
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  `;
+  const pageData = await contentfulApi(pageQuery, { preview });
+  const pageEntry = pageData.eventsPage;
 
-  const heroQuery = gql`
-    query peopleHero {
-      hero(id: "67tCgUxz2RwyyNrk06FmpM") {
-        headline
-        subheader
-        backgroundImage {
-          url
-          description
-        }
-      }
-    }
-  `;
-
-  const heroData = await contentfulApi(heroQuery, { preview });
-  const heroEntry = heroData;
   return {
     props: {
-      heroEntry,
+      pageEntry,
       preview,
     },
   };
