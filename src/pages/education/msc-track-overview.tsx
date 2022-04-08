@@ -8,7 +8,7 @@ import Sidebar from "../../components/Sidebar";
 import { contentfulApi } from "../../lib/contentful";
 import remarkGfm from "remark-gfm";
 
-export default function MScTrackOverview({ entry, content }) {
+export default function MScTrackOverview({ pageEntry, content }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
@@ -22,7 +22,7 @@ export default function MScTrackOverview({ entry, content }) {
             {content.text}
           </ReactMarkdown>
         </div>
-        <Sidebar contact={false} items={entry.sidebarCollection.items} />
+        <Sidebar contact={false} items={pageEntry.sidebarCollection.items} />
       </section>
     </Layout>
   );
@@ -55,24 +55,21 @@ export async function getStaticProps({ preview = false }) {
 
   const entry = sidebarData.educationMainPage;
 
-  const { data } = await client.query({
-    query: gql`
-      query MscTrackOverviewPage {
-        textBlock(id: "3NIrQbEeQQBiJS9arJBjoq") {
-          sys {
-            id
-          }
-          title
-          text
-        }
-      }
-    `,
-  });
+  const pageQuery = gql`
+  query mScThesisProjectsPageEntryQuery {
+  mScThesisProjectsPage(id: "51B9BIKNgrIzRqfhba3b2p") {
+    sys {
+      id
+    }`;
+
+  const pageData = await contentfulApi(pageQuery, { preview });
+
+  const pageEntry = pageData.mScThesisProjectsPage;
 
   return {
     props: {
       entry,
-      content: data.textBlock,
+      pageEntry,
       preview,
     },
   };
