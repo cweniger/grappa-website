@@ -54,6 +54,18 @@ $width--large-x: $space--x-large;
     @extend .container__main;
     @include container--width($width--medium);
   }
+  
+  &__research {
+    @extend .container__main;
+    margin-bottom: 0;
+    p {
+    margin-bottom: 0;
+    }
+    &:last-of-type {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    }
+  }
 }
 
 
@@ -88,6 +100,12 @@ $width--large-x: $space--x-large;
 .container__full {
   &__black {
     padding: 2rem 0;
+    background-color: $black;
+  }
+}
+.container__research {
+  &__black {
+    padding: 2rem 0 0;
     background-color: $black;
   }
 }

@@ -13,12 +13,25 @@
   margin-right: 2rem;
 }
 
+.wrapper {
+  background-image: linear-gradient($black 0%, $black 50%, #fff 50%, #fff 100%);
+  background-size: 100%;
+}
+
 .container {
-  margin: -10rem auto 0;
+  margin: $site-container--center;
+  max-width: calc($site-container - 4em);
+  width: calc(100% - 4em);
   padding: 0;
-  flex-direction: column;
+  padding-top: 2em;
+  display: grid;
 
   @media (min-width: 600px) {
-    flex-direction: row;
+  grid-template-columns: repeat(auto-fill, 250px);
+  justify-content: space-between;
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(auto-fill, 250px);
   }
 }
