@@ -47,7 +47,11 @@ export default function People({ persons, heroEntry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <SecondaryHero heroEntry={heroEntry.hero} />
+      <SecondaryHero
+        heroEntry={heroEntry.hero}
+        className=""
+        innerClassName=""
+      />
       <section className="container__main">
         {Object.keys(sortedCurrent).map((key) => {
           const boxCheck = sortedCurrent[key].length > 3;

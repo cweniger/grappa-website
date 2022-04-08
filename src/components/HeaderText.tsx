@@ -1,4 +1,6 @@
 import React from "react";
+import remarkGfm from "remark-gfm";
+import ReactMarkdown from "react-markdown";
 
 export default function HeaderText({ header, image, sideLayout }) {
   // Optional chaining isn't working so we have to do this ridiculous check.
@@ -11,6 +13,14 @@ export default function HeaderText({ header, image, sideLayout }) {
         )}
         {header.subheader && (
           <p className="text__subheader">{header.subheader}</p>
+        )}
+        {header.description && (
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            className="text__subheader"
+          >
+            {header.description}
+          </ReactMarkdown>
         )}
       </header>
       {imageVar && (

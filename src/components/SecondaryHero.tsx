@@ -1,10 +1,14 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 
-export default function SecondaryHero({ heroEntry }) {
+export default function SecondaryHero({
+  className,
+  innerClassName,
+  heroEntry,
+}) {
   return (
-    <section className="container__full__black">
-      <div className="container__main">
+    <section className={className ? className : "container__full__black"}>
+      <div className={innerClassName ? innerClassName : "container__main"}>
         {(heroEntry.headline || heroEntry.title) && (
           <h1 className="text__eyebrow">
             {heroEntry.headline || heroEntry.title}
