@@ -50,7 +50,7 @@ const NewsCard: React.FC<Props> = (props) => {
       <div>
         <Link href={props.slug}>
           <a className="link__none">
-            <p className="text__headline__5">{props.title}</p>
+            <h3 className="text__headline__5">{props.title}</h3>
           </a>
         </Link>
         <time className="text__detail">{formattedDate}</time>

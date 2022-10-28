@@ -4,15 +4,18 @@ import link from "../styles/components/Link.module.scss";
 import React from "react";
 
 interface Props {
+  ariaLabel?: string;
   href: string;
   children?: React.ReactNode;
   className?: string;
 }
 
-export default function Link({ href, children, className }: Props) {
+export default function Link({ ariaLabel, href, children, className }: Props) {
   return (
     <NextLink href={href}>
-      <a className={classname(className, link.standard)}>{children}</a>
+      <a aria-label={ariaLabel} className={classname(className, link.standard)}>
+        {children}
+      </a>
     </NextLink>
   );
 }

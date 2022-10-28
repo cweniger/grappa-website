@@ -27,6 +27,7 @@ export default function News({ newsEntry }) {
           <figure>
             {image ? (
               <img
+                alt={newsEntry?.caption ?? ""}
                 className="image"
                 src={newsEntry.image.url}
                 width="1024"

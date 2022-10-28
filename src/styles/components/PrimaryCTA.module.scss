@@ -3,6 +3,7 @@
 // TODO: Refactor
 
 .cta__primary {
+  color: $black;
   background: $chroma-yellow;
   border-radius: 99px;
   display: inline-block;
@@ -12,12 +13,11 @@
   text-decoration: none;
 
   &:hover {
-    background-image: $chroma-gradient;
+    transform: translateY(-0.1em);
   }
 
-  &:focus-within {
-    background-image: $chroma-gradient;
-    border: 0.125rem solid $chroma-purple;
+  &:focus-visible {
+    box-shadow: 0 0 0 0.2rem $chroma-purple;
     outline: none;
   }
 

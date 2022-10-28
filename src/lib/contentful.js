@@ -166,6 +166,7 @@ export async function fetchNewsEntry() {
             summary
             image {
               url
+              description
             }
           }
         }

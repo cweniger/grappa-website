@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 export function FeaturedTeasers({ homepageTeasers }) {
   return (
     <section className="container__main">
+      <h2 className="u__hide__visually">Themes</h2>
       {homepageTeasers.homepageTeasersCollection.items.map((teaser) => {
         return (
           <div className={zigzag.container__zigzag} key={teaser.sys.id}>
