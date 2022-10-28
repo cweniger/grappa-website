@@ -13,7 +13,7 @@ export default function Events({ pageEntry }) {
     <Layout>
       <BasicMeta url={"/"} />
       <div className="container__main">
-        <HeaderText header={pageEntry.hero} sideLayout image />
+        <HeaderText header={pageEntry.hero} sideLayout />
       </div>
       <div
         className="container__main text__headline_4"
