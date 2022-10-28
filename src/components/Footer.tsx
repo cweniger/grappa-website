@@ -79,7 +79,7 @@ export default function Footer() {
           <ul className={footer.list}>
             {FOOTER_EXPERIMENT_LINKS?.map((link) => (
               <li key={link.link}>
-                <Link href={`/research/${link.href}`} className={footer.link}>
+                <Link href={`/research${link.href}`} className={footer.link}>
                   {link.copy}
                 </Link>
               </li>
