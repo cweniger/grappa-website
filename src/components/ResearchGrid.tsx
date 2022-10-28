@@ -6,25 +6,55 @@ import ContentfulMarkdown from "../components/ContentfulMarkdown";
 import classnames from "classnames";
 import React from "react";
 
-export default function ResearchGrid({ area }) {
+interface Person {
+  fullName?: string;
+  slug?: string;
+  image?: {
+    title?: string;
+    url?: string;
+    description?: string;
+  };
+}
+
+interface Props {
+  area?: {
+    title?: string;
+    abstract?: string;
+    description?: string;
+    slug?: string;
+    team?: {
+      items?: Array<Person>;
+    };
+  };
+  nested?: boolean;
+}
+
+const ResearchGrid: React.FC<Props> = (props: Props) => {
+  const Component = props?.nested ? "h2" : "h1";
   return (
-    <section key={area.title} id={area.slug} className="container__main">
+    <section id={props.area.slug} className="container__main">
       <div className={classnames(research.container)}>
         <div className={research.summary}>
           <h2 className="text__eyebrow__grey">Team</h2>
           <ul className={people.miniPeopleGrid}>
-            {area.team.items.map((member) => (
+            {props.area.team.items.map((member) => (
               <Avatar small person={member} key={member.fullName} />
             ))}
           </ul>
         </div>
 
         <div className={classnames(research.main)}>
-          <h1 className="text--featured text__headline__2">{area.title}</h1>
-          {area.abstract && <p className={research.blurb}>{area.abstract}</p>}
-          <ContentfulMarkdown className="" content={area.description} />
+          <Component className="text--featured text__headline__2">
+            {props.area.title}
+          </Component>
+          {props.area.abstract && (
+            <p className={research.blurb}>{props.area.abstract}</p>
+          )}
+          <ContentfulMarkdown className="" content={props.area.description} />
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default ResearchGrid;

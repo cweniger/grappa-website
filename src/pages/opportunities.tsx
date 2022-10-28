@@ -81,17 +81,16 @@ export default function Opportunities({ entry }) {
         </div>
         {image && (
           <img
+            alt={
+              entry.hero.backgroundImage.description ??
+              entry.hero.backgroundImage.title
+            }
             className="image-secondary-hero"
             src={entry.hero.backgroundImage.url}
             width="500"
           />
         )}
       </section>
-      {/* <section className="container__main">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {entry.postdoctoralDescription}
-        </ReactMarkdown>
-      </section> */}
     </Layout>
   );
 }
@@ -109,6 +108,8 @@ export async function getStaticProps({ preview = false }) {
           headline
           subheader
           backgroundImage {
+            title
+            description
             url
           }
         }

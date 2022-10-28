@@ -19,8 +19,12 @@ export default function Index({
   return (
     <Layout>
       <BasicMeta url={url} />
-      <Hero hero={hero} />
+      <Hero
+        hero={hero}
+        style={{ "--bg-image": `url(${hero.hero.backgroundImage.url})` }}
+      />
       <FeaturedTeasers homepageTeasers={homepageTeasers} />
+      <h2 className="u__hide__visually">Testimonial</h2>
       <FeaturedTestimonial testimonials={testimonials} />
       <FeaturedNews newsEntry={newsEntry.newsPage.highlights.items} />
     </Layout>

@@ -18,14 +18,12 @@ export default function MScTrackOverview({
     <Layout>
       <BasicMeta url={"/"} />
       <section className="container__main container__sidebar">
-        <HeaderText header={pageEntry.hero} sideLayout={false} image={false} />
+        <HeaderText header={pageEntry.hero} sideLayout={false} />
         <Sidebar contact={false} items={sidebarEntry.sidebarCollection.items} />
       </section>
-      <section className="container__main">
-        {entry.mScThesisProjects.projects.items.map((project) => (
-          <ResearchGrid area={project} />
-        ))}
-      </section>
+      {entry.mScThesisProjects.projects.items.map((project) => (
+        <ResearchGrid nested={false} area={project} key={project?.sys?.id} />
+      ))}
     </Layout>
   );
 }
@@ -53,11 +51,17 @@ export async function getStaticProps({ preview = false }) {
   const query = gql`
     query mScThesisProjects($preview: Boolean!) {
       mScThesisProjects(preview: $preview, id: "144HbgnCQuU6XINC4aH2FW") {
+        sys {
+          id
+        }
         title
         description
         slug
         projects: thesisProjectsCollection(limit: 20) {
           items {
+            sys {
+              id
+            }
             title
             slug
             description

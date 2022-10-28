@@ -17,6 +17,10 @@ export default function NewsHero({ featuredNewsEntry }) {
         <Link href={`/news/${featuredNewsEntry.slug}`}>
           <a>
             <img
+              alt={
+                featuredNewsEntry.image.description ??
+                featuredNewsEntry.image.title
+              }
               className={news.image}
               src={featuredNewsEntry.image.url}
               width="965"
@@ -27,12 +31,12 @@ export default function NewsHero({ featuredNewsEntry }) {
       )}
       {featuredNewsEntry.headline && (
         <>
-          <p className="text__underscore__md">Featured</p>
+          <h2 className="text__underscore__md">Featured</h2>
           <Link href={`/news/${featuredNewsEntry.slug}`}>
             <a className="link__none">
-              <h2 className="text--featured text__headline__2">
+              <h3 className="text--featured text__headline__2">
                 {featuredNewsEntry.headline}
-              </h2>
+              </h3>
             </a>
           </Link>
         </>

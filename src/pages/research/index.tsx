@@ -79,6 +79,8 @@ export async function getStaticProps({ preview = false }) {
             abstract
             description
             image {
+              title
+              description
               url
             }
             researchType
@@ -106,6 +108,8 @@ export async function getStaticProps({ preview = false }) {
             abstract
             description
             image {
+              title
+              description
               url
             }
             researchType
@@ -135,6 +139,8 @@ export async function getStaticProps({ preview = false }) {
           abstract
           description
           image {
+            title
+            description
             url
           }
           researchType
