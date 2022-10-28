@@ -18,14 +18,12 @@ export default function MScTrackOverview({
     <Layout>
       <BasicMeta url={"/"} />
       <section className="container__main container__sidebar">
-        <HeaderText header={pageEntry.hero} sideLayout={false} image={false} />
+        <HeaderText header={pageEntry.hero} sideLayout={false} />
         <Sidebar contact={false} items={sidebarEntry.sidebarCollection.items} />
       </section>
-      <section className="container__main">
-        {entry.mScThesisProjects.projects.items.map((project) => (
-          <ResearchGrid area={project} />
-        ))}
-      </section>
+      {entry.mScThesisProjects.projects.items.map((project) => (
+        <ResearchGrid area={project} />
+      ))}
     </Layout>
   );
 }

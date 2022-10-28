@@ -111,6 +111,8 @@ export async function getStaticProps({ preview = false }) {
             title
             order
           }
+          contactTitle
+          showContactTitle
           omitProfile
           endDate
           fullName
