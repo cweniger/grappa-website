@@ -3,6 +3,7 @@ import {
   FOOTER_MAIN_LINKS,
   FOOTER_MSC_LINKS,
   FOOTER_CONTACT_LINKS,
+  FOOTER_EXPERIMENT_LINKS,
 } from "../lib/constants/links";
 
 import footer from "../styles/components/Footer.module.scss";
@@ -76,44 +77,13 @@ export default function Footer() {
           </ul>
           <h4 className="text__eyebrow__whiteSm">Experiments</h4>
           <ul className={footer.list}>
-            <li>
-              <Link href="/research/experimental-lhc" className={footer.link}>
-                Physics at the Large Hadron Collider
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/research/experimental-neutrino-physics"
-                className={footer.link}
-              >
-                Experimental neutrino physics: ANTARES, KM3NeT, DUNE
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/research/experiment-experimental-direct-dark-matter-detection-xenon"
-                className={footer.link}
-              >
-                Experimental direct dark matter detection: XENON
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/research/experiment-fast-timing-detectors-for-particle-physics-experiments"
-                className={footer.link}
-              >
-                Fast timing detectors for particle physics experiments
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/research/experiment-detector-r-and-d-for-gravitational-wave-instrumentation-at-nikhef"
-                className={footer.link}
-              >
-                Detector R&amp;D for gravitational wave instrumentation at
-                Nikhef
-              </Link>
-            </li>
+            {FOOTER_EXPERIMENT_LINKS?.map((link) => (
+              <li key={link.link}>
+                <Link href={`/research/${link.href}`} className={footer.link}>
+                  {link.copy}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div>
