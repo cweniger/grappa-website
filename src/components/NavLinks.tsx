@@ -1,7 +1,7 @@
 import styles from "../styles/components/Navigation.module.scss";
 import Link from "next/link";
 import React from "react";
-import { NAV_LINKS } from "../lib/constants/navLinks";
+import { NAV_LINKS } from "../lib/constants/links";
 export default function NavLinks({ toggle }) {
   return (
     <div className={toggle ? styles.mobileNavContainer : undefined}>

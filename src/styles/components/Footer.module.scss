@@ -10,6 +10,7 @@
 
 .link {
   color: $neutral-gray-07;
+  text-transform: capitalize;
   text-decoration: none;
   &:hover {
     color: $white;

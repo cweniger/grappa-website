@@ -7,9 +7,9 @@ import * as _ from "lodash";
 import { gql } from "graphql-request";
 import { contentfulApi } from "../lib/contentful";
 import SecondaryHero from "../components/SecondaryHero";
-import React from "react";
+import React, { Fragment } from "react";
 
-export default function People({ persons, heroEntry }) {
+export default function Members({ persons, heroEntry }) {
   // get alumni and visitors, has end date
   const grappaMembers = groupBy(persons.persons.items, (person) => {
     if (person.omitProfile === true) {
@@ -58,25 +58,27 @@ export default function People({ persons, heroEntry }) {
 
           if (boxCheck) {
             return (
-              <>
+              <Fragment key={key}>
                 <h2 className="text__underscore text__headline__4">{key}</h2>
                 <div
-                  className={boxCheck ? people.peopleGrid : people.smallDept}
+                  className={boxCheck ? people.peopleGrid : people?.smallDept}
                 >
-                  {sortedCurrent[key].map((fields) => {
-                    return <PeopleAvatar key={fields.sys.id} fields={fields} />;
+                  {sortedCurrent[key]?.map((fields) => {
+                    return (
+                      <PeopleAvatar key={fields?.sys?.id} fields={fields} />
+                    );
                   })}
                 </div>
-              </>
+              </Fragment>
             );
           }
           return (
-            <div className={people.peopleSection}>
+            <div key={key} className={people.peopleSection}>
               <h2 className="text__underscore text__headline__4">{key}</h2>
               <div className={boxCheck ? people.peopleGrid : people.smallDept}>
-                {sortedCurrent[key].map((fields) => (
-                  <PeopleAvatar fields={fields} />
-                ))}
+                {sortedCurrent[key].map((fields) => {
+                  return <PeopleAvatar fields={fields} key={fields?.sys?.id} />;
+                })}
               </div>
             </div>
           );
