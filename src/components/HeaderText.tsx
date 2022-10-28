@@ -2,7 +2,7 @@ import React from "react";
 import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
 
-export default function HeaderText({ header, image, sideLayout }) {
+export default function HeaderText({ header, sideLayout }) {
   // Optional chaining isn't working so we have to do this ridiculous check.
   const imageVar = header.backgroundImage ? header.backgroundImage.url : null;
   return (

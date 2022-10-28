@@ -12,7 +12,7 @@ export default function Education({ entry }) {
     <Layout>
       <BasicMeta url={"/"} />
       <section className="container__main container__sidebar">
-        <HeaderText header={entry.hero} sideLayout={false} image />
+        <HeaderText header={entry.hero} sideLayout={false} />
 
         <Sidebar contact={false} items={entry.sidebarCollection.items} />
       </section>

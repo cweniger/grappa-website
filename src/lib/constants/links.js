@@ -16,16 +16,20 @@ export const FOOTER_MAIN_LINKS = [
     copy: "opportunities",
     href: "/opportunities",
   },
+  {
+    copy: "Code of Conduct",
+    href: "/code-of-conduct",
+  },
 ];
 
 export const FOOTER_CONTACT_LINKS = [
   {
     copy: "Contact GRAPPA",
-    href: "/contact",
+    href: "/contact#contacts",
   },
   {
     copy: "Getting to Campus",
-    href: "/contact",
+    href: "/contact#directions",
   },
 
   {
