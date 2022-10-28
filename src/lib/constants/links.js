@@ -20,6 +20,10 @@ export const FOOTER_MAIN_LINKS = [
     copy: "Code of Conduct",
     href: "/code-of-conduct",
   },
+  {
+    copy: "Equity Diversity and Inclusion (EDI)",
+    href: "/edi",
+  },
 ];
 
 export const FOOTER_CONTACT_LINKS = [
