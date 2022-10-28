@@ -11,11 +11,13 @@
 
 .fc-daygrid-day-number {
   font-family: Termina W05;
+  color: #767676 !important;
 }
 
 .fc-daygrid-day-top {
   flex-direction: row !important;
   font-size: 1em;
+  opacity: 1 !important;
 }
 
 .fc-daygrid-day.fc-day-today {

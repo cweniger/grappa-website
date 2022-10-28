@@ -9,20 +9,20 @@ export default function Avatar({ person, small }) {
       alt={`Headshot of ${person.fullName}`}
     />
   ) : (
-    <figure className={people.planet} />
+    <div className={people.planet} />
   );
   return (
-    <figure className={small ? people.hBox : people.box} key={person.slug}>
+    <li className={small ? people.hBox : people.box} key={person.slug}>
       {person.slug && !person.omitProfile ? (
         <Link href={`/members/${person.slug}`}>
-          <>
+          <a>
             {image}
             <p>{person.fullName}</p>
-          </>
+          </a>
         </Link>
       ) : (
         <p>{person.fullName}</p>
       )}
-    </figure>
+    </li>
   );
 }

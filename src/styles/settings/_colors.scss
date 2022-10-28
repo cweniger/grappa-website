@@ -13,12 +13,28 @@ $white: #ffffff;
 // Chromatic colors
 $chroma-red: #dd5a53;
 $chroma-yellow: #f5bf10;
-$chroma-purple-light: #b374e5;
-$chroma-purple: #9E4FDE;
-$chroma-purple-10: #b374e510;
+$chroma-purple-mid: #b374e5;
+$chroma-purple: #8d31d8;
+$chroma-purple-light: #f0dffb;
 
 // Chromatic gradients
-$chroma-gradient: linear-gradient(270deg, $chroma-yellow 24%, $chroma-purple 61%);
-$chroma-gradient-py: linear-gradient(270deg, $chroma-yellow 24%, $chroma-purple 61%);
-$chroma-gradient-pr: linear-gradient(270deg, $chroma-red 24%, $chroma-purple 61%);
-$chroma-gradient-ang: linear-gradient(45deg, $chroma-red 0%, $chroma-purple 100%);
+$chroma-gradient: linear-gradient(
+  270deg,
+  $chroma-yellow 24%,
+  $chroma-purple 61%
+);
+$chroma-gradient-py: linear-gradient(
+  270deg,
+  $chroma-yellow 24%,
+  $chroma-purple 61%
+);
+$chroma-gradient-pr: linear-gradient(
+  270deg,
+  $chroma-red 24%,
+  $chroma-purple 61%
+);
+$chroma-gradient-ang: linear-gradient(
+  45deg,
+  $chroma-red 0%,
+  $chroma-purple 100%
+);
