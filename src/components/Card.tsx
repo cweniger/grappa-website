@@ -5,6 +5,7 @@ import React from "react";
 interface Props {
   title?: string;
   image?: {
+    title?: string;
     url?: string;
     description?: string;
   };
@@ -21,7 +22,10 @@ const Card: React.FC<Props> = (props: Props) => {
         key={props.title}
       >
         {props.image && (
-          <img src={props.image.url} alt={props.image.description} />
+          <img
+            src={props.image.url}
+            alt={props?.image?.description ?? props?.image?.title}
+          />
         )}
 
         <p className={card.link}>{props.title}</p>

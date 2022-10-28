@@ -4,7 +4,10 @@ import React from "react";
 
 export default function Avatar({ person, small }) {
   const image = person.profilePicture ? (
-    <img src={person.profilePicture.url} alt={person.fullName} />
+    <img
+      src={person?.profilePicture?.url}
+      alt={`Headshot of ${person.fullName}`}
+    />
   ) : (
     <figure className={people.planet} />
   );
