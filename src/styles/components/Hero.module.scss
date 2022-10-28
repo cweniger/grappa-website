@@ -1,12 +1,25 @@
 @import "../theme/theme";
 
 .container {
-  background-size: cover;
-  background-repeat: no-repeat;
   border-bottom: $space--medium solid;
   border-image: $chroma-gradient;
   border-image-slice: 1;
   text-align: center;
+  position: relative;
+  background: black;
+  z-index: 20;
+
+  &::after {
+    background: center / cover no-repeat var(--bg-image);  
+    content: '';
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.4;
+    position: absolute;
+    z-index: -1;
+  }
 }
 
 .header {

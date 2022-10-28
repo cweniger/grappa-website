@@ -30,7 +30,7 @@ export const TestimonialCard: React.FunctionComponent<CarouselProps> = ({
         <ReactMarkdown>{copy}</ReactMarkdown>
       </blockquote>
       <div className={classnames(featured.avatar)}>
-        <h4 className="text__eyebrow--sm text__eyebrow__greySm">{name}</h4>
+        <h3 className="text__eyebrow--sm text__eyebrow__greySm">{name}</h3>
         <span className={featured.name}>{title}</span>
       </div>
     </div>

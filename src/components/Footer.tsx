@@ -11,8 +11,12 @@ import classnames from "classnames";
 import Link from "../components/Link";
 export default function Footer() {
   return (
-    <footer className={classnames(footer.container)}>
-      <nav className="container__main container__grid__cols__3">
+    <footer role="contentinfo" className={classnames(footer.container)}>
+      <nav
+        aria-label="Site"
+        id="site-navigation"
+        className="container__main container__grid__cols__3"
+      >
         <div>
           <p className="text__headline__4">
             GRAPPA is a centre of excellence of the University of Amsterdam,
@@ -27,7 +31,7 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-          <h4 className="text__eyebrow__white">Contact</h4>
+          <h2 className="text__eyebrow__white">Contact</h2>
           <ul className={footer.list}>
             {FOOTER_CONTACT_LINKS?.map((link) => (
               <li key={link?.href}>
@@ -46,7 +50,7 @@ export default function Footer() {
         <div>
           <h3 className="text__eyebrow__white">Research</h3>
 
-          <h4 className="text__eyebrow__whiteSm">Themes</h4>
+          <h2 className="text__eyebrow__whiteSm">Themes</h2>
           <ul className={footer.list}>
             <li>
               <Link
@@ -75,7 +79,7 @@ export default function Footer() {
               </Link>
             </li>
           </ul>
-          <h4 className="text__eyebrow__whiteSm">Experiments</h4>
+          <h2 className="text__eyebrow__whiteSm">Experiments</h2>
           <ul className={footer.list}>
             {FOOTER_EXPERIMENT_LINKS?.map((link) => (
               <li key={link.link}>
@@ -88,8 +92,9 @@ export default function Footer() {
         </div>
         <div>
           <h3 className="text__eyebrow__white">Education</h3>
-          <h4 className="text__eyebrow__whiteSm">MSC</h4>
+          <h2 className="text__eyebrow__whiteSm">MSC</h2>
           <ul className={footer.list}>
+<<<<<<< HEAD
             {FOOTER_MSC_LINKS?.map((link) => (
               <li key={link?.href}>
                 <Link href={link?.href} className={footer.link}>
@@ -97,8 +102,32 @@ export default function Footer() {
                 </Link>
               </li>
             ))}
+=======
+            <li>
+              <Link
+                href="/education/msc-track-overview"
+                className={footer.link}
+                ariaLabel="Masters of Science Track Overview"
+              >
+                Track Overview
+              </Link>
+            </li>
+            <li>
+              <Link href="/education/msc-faq" className={footer.link}>
+                Frequently Asked Questions
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/education/msc-thesis-projects"
+                className={footer.link}
+              >
+                Thesis Projects
+              </Link>
+            </li>
+>>>>>>> main
           </ul>
-          <h4 className="text__eyebrow__whiteSm">PhD</h4>
+          <h2 className="text__eyebrow__whiteSm">PhD</h2>
           <ul className={footer.list}>
             <li>
               <Link

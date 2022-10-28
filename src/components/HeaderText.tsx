@@ -3,7 +3,6 @@ import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
 
 export default function HeaderText({ header, sideLayout }) {
-  // Optional chaining isn't working so we have to do this ridiculous check.
   const imageVar = header?.backgroundImage?.url;
   return (
     <div className={sideLayout ? "container__grid__cols__2" : undefined}>
@@ -25,6 +24,10 @@ export default function HeaderText({ header, sideLayout }) {
       </header>
       {imageVar ? (
         <img
+          alt={
+            header?.backgroundImage?.description ??
+            header?.backgroundImage?.title
+          }
           className="image-secondary-hero"
           src={header.backgroundImage.url}
           width="500"

@@ -57,6 +57,8 @@ export async function getStaticProps({ preview = false }) {
           subheader
           description
           backgroundImage {
+            title
+            description
             url
           }
         }

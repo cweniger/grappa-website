@@ -22,7 +22,7 @@ export default function MScTrackOverview({
         <Sidebar contact={false} items={sidebarEntry.sidebarCollection.items} />
       </section>
       {entry.mScThesisProjects.projects.items.map((project) => (
-        <ResearchGrid area={project} />
+        <ResearchGrid nested={false} area={project} key={project?.sys?.id} />
       ))}
     </Layout>
   );
@@ -51,11 +51,17 @@ export async function getStaticProps({ preview = false }) {
   const query = gql`
     query mScThesisProjects($preview: Boolean!) {
       mScThesisProjects(preview: $preview, id: "144HbgnCQuU6XINC4aH2FW") {
+        sys {
+          id
+        }
         title
         description
         slug
         projects: thesisProjectsCollection(limit: 20) {
           items {
+            sys {
+              id
+            }
             title
             slug
             description

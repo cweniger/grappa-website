@@ -10,10 +10,6 @@ import React from "react";
 import HeaderText from "../../components/HeaderText";
 import Sidebar from "../../components/Sidebar";
 export default function Contact({ entry }) {
-  const image = entry.hero.backgroundImage
-    ? entry.hero.backgroundImage.url
-    : null;
-
   return (
     <Layout>
       <BasicMeta url={"/"} />
@@ -54,6 +50,8 @@ export async function getStaticProps({ preview = false }) {
           headline
           subheader
           backgroundImage {
+            title
+            description
             url
           }
         }
