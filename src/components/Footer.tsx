@@ -94,7 +94,6 @@ export default function Footer() {
           <h3 className="text__eyebrow__white">Education</h3>
           <h2 className="text__eyebrow__whiteSm">MSC</h2>
           <ul className={footer.list}>
-<<<<<<< HEAD
             {FOOTER_MSC_LINKS?.map((link) => (
               <li key={link?.href}>
                 <Link href={link?.href} className={footer.link}>
@@ -102,30 +101,6 @@ export default function Footer() {
                 </Link>
               </li>
             ))}
-=======
-            <li>
-              <Link
-                href="/education/msc-track-overview"
-                className={footer.link}
-                ariaLabel="Masters of Science Track Overview"
-              >
-                Track Overview
-              </Link>
-            </li>
-            <li>
-              <Link href="/education/msc-faq" className={footer.link}>
-                Frequently Asked Questions
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/education/msc-thesis-projects"
-                className={footer.link}
-              >
-                Thesis Projects
-              </Link>
-            </li>
->>>>>>> main
           </ul>
           <h2 className="text__eyebrow__whiteSm">PhD</h2>
           <ul className={footer.list}>
