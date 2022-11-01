@@ -250,8 +250,8 @@
   }
 }
 
-.list__tight,
-.list__tight ul {
+.list,
+.list ul {
   @extend .link__none;
   list-style-type: none;
   margin: 0;
@@ -260,7 +260,20 @@
   li:first-of-type {
     margin-top: 1em;
   }
+
   li {
     margin-bottom: 2em;
+  }
+}
+
+.list__tight,
+.list__tight ul {
+  @extend .list;
+
+  li:first-of-type {
+    margin-top: 0.5em;
+  }
+  li {
+    margin-bottom: 0.5em;
   }
 }

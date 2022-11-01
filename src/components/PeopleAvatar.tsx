@@ -18,6 +18,7 @@ export default function PeopleAvatar({ fields }) {
           <span>{fields.fullName}</span>
         </a>
       </Link>
+      {fields.showContactTitle ? <span>{fields.contactTitle}</span> : undefined}
     </figure>
   );
 }

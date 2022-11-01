@@ -4,35 +4,25 @@ import { gql } from "graphql-request";
 import { contentfulApi } from "../../lib/contentful";
 import remarkGfm from "remark-gfm";
 
-import FAQ from "../../components/FAQ";
 import ReactMarkdown from "react-markdown";
 import React from "react";
 import HeaderText from "../../components/HeaderText";
 import Sidebar from "../../components/Sidebar";
-export default function Contact({ entry }) {
+export default function CodeOfConduct({ entry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
       <section className="container__main container__sidebar">
         <div className="container__flex container__flex--colstatic">
           <HeaderText header={entry.hero} sideLayout={false} />
-          {entry.directions.title && (
-            <h2 id="directions">{entry.directions.title}</h2>
-          )}
-          {entry.directions.text && (
-            <ReactMarkdown
-              className="text--research"
-              remarkPlugins={[remarkGfm]}
-            >
-              {entry.directions.text}
+          {entry.content && (
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {entry.content}
             </ReactMarkdown>
           )}
-
-          {entry.campusDirectionsCollection.items.map((card) => (
-            <FAQ key={card.title} summary={card.title} details={card.text} />
-          ))}
         </div>
-        <Sidebar contact={true} items={entry.sidebarCollection.items} />
+
+        <Sidebar contact={false} items={entry.sidebarCollection.items} />
       </section>
     </Layout>
   );
@@ -40,8 +30,8 @@ export default function Contact({ entry }) {
 
 export async function getStaticProps({ preview = false }) {
   const query = gql`
-    query contactPageEntryQuery {
-      contactPage(id: "35zoePxFOyuxRdUhdR52vw") {
+    query codeOfConductEntryQuery {
+      codeOfConduct(id: "5KwqzXjkSDo5wWJlTI4fkk") {
         metaData {
           title
           description
@@ -49,26 +39,10 @@ export async function getStaticProps({ preview = false }) {
         hero {
           headline
           subheader
-          backgroundImage {
-            title
-            description
-            url
-          }
+          description
         }
-        directions {
-          text
-          title
-        }
-        sidebarCollection(limit: 10) {
-          items {
-            ... on Person {
-              fullName
-              slug
-              contactTitle
-            }
-          }
-        }
-        campusDirectionsCollection {
+        content
+        sidebarCollection {
           items {
             ... on TextBlock {
               title
@@ -80,10 +54,11 @@ export async function getStaticProps({ preview = false }) {
     }
   `;
   const data = await contentfulApi(query, { preview });
-  const entry = data.contactPage;
+  const entry = data?.codeOfConduct;
   return {
     props: {
       entry,
+      preview,
     },
   };
 }

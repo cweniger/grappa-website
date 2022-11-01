@@ -45,6 +45,7 @@ export default function Member({ entry, preview }) {
               <div className={classnames(card.container, "container__flex")}>
                 {researchAreas.map((area) => (
                   <Card
+                    key={area.slug}
                     small
                     title={area.title}
                     image={area.image}

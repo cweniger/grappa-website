@@ -3,7 +3,7 @@ import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
 
 export default function HeaderText({ header, sideLayout }) {
-  const imageVar = header.backgroundImage ? header.backgroundImage.url : null;
+  const imageVar = header?.backgroundImage?.url;
   return (
     <div className={sideLayout ? "container__grid__cols__2" : undefined}>
       <header>
@@ -22,7 +22,7 @@ export default function HeaderText({ header, sideLayout }) {
           </ReactMarkdown>
         )}
       </header>
-      {imageVar && (
+      {imageVar ? (
         <img
           alt={
             header?.backgroundImage?.description ??
@@ -32,7 +32,7 @@ export default function HeaderText({ header, sideLayout }) {
           src={header.backgroundImage.url}
           width="500"
         />
-      )}
+      ) : undefined}
     </div>
   );
 }
