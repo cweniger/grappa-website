@@ -30,7 +30,7 @@
     "depcheck": "^1.4.2",
     "fullcalendar": "^5.10.1",
     "graphql": "^15.5.0",
-    "graphql-request": "^3.5.0",
+    "graphql-request": "^5.0.0",
     "gray-matter": "^4.0.2",
     "js-yaml": "^3.14.0",
     "lodash.groupby": "^4.6.0",

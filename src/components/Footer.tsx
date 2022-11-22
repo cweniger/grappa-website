@@ -20,7 +20,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/members" className={footer.link}>
+              <Link href="/people" className={footer.link}>
                 Members
               </Link>
             </li>
