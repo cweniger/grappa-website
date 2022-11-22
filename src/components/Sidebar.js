@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm";
 
 export default function Sidebar({ contact, items }) {
   return (
-    <aside className="container__aside">
+    <aside id="contacts" className="container__aside">
       {contact ? (
         <ul className="list__tight">
           {items.map((person) => (

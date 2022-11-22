@@ -1,18 +1,21 @@
-import Link from "next/link";
 import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
-
-import Sidebar from "../../components/Sidebar";
-import { gql } from "@apollo/client";
+import { gql } from "graphql-request";
 import { contentfulApi } from "../../lib/contentful";
+import remarkGfm from "remark-gfm";
+
+import ReactMarkdown from "react-markdown";
 import React from "react";
 import HeaderText from "../../components/HeaderText";
-export default function Education({ entry }) {
+import Sidebar from "../../components/Sidebar";
+export default function CodeOfConduct({ entry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
       <section className="container__main container__sidebar">
-        <HeaderText header={entry.hero} sideLayout={false} />
+        <div className="container__flex container__flex--colstatic">
+          <HeaderText header={entry.hero} sideLayout={false} />
+        </div>
 
         <Sidebar contact={false} items={entry.sidebarCollection.items} />
       </section>
@@ -22,15 +25,17 @@ export default function Education({ entry }) {
 
 export async function getStaticProps({ preview = false }) {
   const query = gql`
-    query educationMainPageEntryQuery {
-      educationMainPage(id: "7eIBFLa5SMxR8ZCKqIXNCd") {
-        title
+    query ediPageEntryQuery {
+      ediPage(id: "4YIOGrEr0UtN5W3BZIk9pq") {
+        metaData {
+          title
+          description
+        }
         hero {
           headline
           subheader
+          description
           backgroundImage {
-            title
-            description
             url
           }
         }
@@ -45,11 +50,8 @@ export async function getStaticProps({ preview = false }) {
       }
     }
   `;
-
   const data = await contentfulApi(query, { preview });
-
-  const entry = data.educationMainPage;
-
+  const entry = data?.ediPage;
   return {
     props: {
       entry,

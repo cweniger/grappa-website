@@ -92,58 +92,54 @@ export function FeaturedTestimonial({ testimonials }) {
   );
 
   return (
-    <>
-      <section className={featured.container}>
-        <div className={featured.wrapper}>
-          <button
-            className={featured.left}
-            onClick={prev}
-            type="button"
-            aria-label="Previous"
-          />
-          <div className={featured.inner}>
-            <div
-              className={featured.content}
-              onTransitionEnd={() => handleTransitionEnd()}
-              style={{
-                ["--transformValue" as any]: currentIndex,
-                ["--cardCount" as any]:
-                  testimonials.testimonialCollection.items.length,
-                transition: !transition ? "none" : undefined,
-              }}
-            >
-              {renderExtraLast}
+    <section className={featured.container}>
+      <div className={featured.wrapper}>
+        <button
+          className={featured.left}
+          onClick={prev}
+          type="button"
+          aria-label="Previous"
+        />
+        <div className={featured.inner}>
+          <div
+            className={featured.content}
+            onTransitionEnd={() => handleTransitionEnd()}
+            style={{
+              ["--transformValue" as any]: currentIndex,
+              ["--cardCount" as any]:
+                testimonials.testimonialCollection.items.length,
+              transition: !transition ? "none" : undefined,
+            }}
+          >
+            {renderExtraLast}
 
-              {testimonials.testimonialCollection.items.map(
-                (testimonial, i) => {
-                  return (
-                    <TestimonialCard
-                      copy={testimonial.testimonialCopy}
-                      key={testimonial.sys.id}
-                      name={testimonial.student.fullName}
-                      index={currentIndex === i + 1}
-                      title={testimonial.student.jobTitle.title}
-                      avatar={
-                        testimonial.student.profilePicture
-                          ? testimonial.student.profilePicture.url
-                          : undefined
-                      }
-                    />
-                  );
-                }
-              )}
+            {testimonials.testimonialCollection.items.map((testimonial, i) => {
+              return (
+                <TestimonialCard
+                  copy={testimonial.testimonialCopy}
+                  key={testimonial.sys.id}
+                  name={testimonial.student.fullName}
+                  index={currentIndex === i + 1}
+                  title={testimonial.student.jobTitle.title}
+                  avatar={
+                    testimonial.student.profilePicture
+                      ? testimonial.student.profilePicture.url
+                      : undefined
+                  }
+                />
+              );
+            })}
 
-              {renderExtraFirst}
-            </div>
+            {renderExtraFirst}
           </div>
-          <button
-            className={featured.right}
-            onClick={next}
-            type="button"
-            aria-label="right"
-          />
         </div>
-      </section>
-    </>
+        <button
+          className={featured.right}
+          onClick={next}
+          type="button"
+          aria-label="right"
+        />
+      </div>
+    </section>
   );
 }

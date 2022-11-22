@@ -1,61 +1,45 @@
 import React from "react";
+import {
+  FOOTER_MAIN_LINKS,
+  FOOTER_MSC_LINKS,
+  FOOTER_CONTACT_LINKS,
+  FOOTER_EXPERIMENT_LINKS,
+} from "../lib/constants/links";
 
 import footer from "../styles/components/Footer.module.scss";
-import nav from "../styles/components/Navigation.module.scss";
 import classnames from "classnames";
 import Link from "../components/Link";
 export default function Footer() {
   return (
-    <footer className={classnames(footer.container)}>
-      <nav className="container__main container__grid__cols__3">
+    <footer role="contentinfo" className={classnames(footer.container)}>
+      <nav
+        aria-label="Site"
+        id="site-navigation"
+        className="container__main container__grid__cols__3"
+      >
         <div>
           <p className="text__headline__4">
             GRAPPA is a centre of excellence of the University of Amsterdam,
             focussing on Gravitation and Astroparticle Physics.
           </p>
           <ul className={footer.list}>
-            <li>
-              <Link href="/news" className={footer.link}>
-                News
-              </Link>
-            </li>
-            <li>
-              <Link href="/people" className={footer.link}>
-                Members
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/events" className={footer.link}>
-                Events
-              </Link>
-            </li>
-            <li>
-              <Link href="/opportunities" className={footer.link}>
-                Opportunities
-              </Link>
-            </li>
+            {FOOTER_MAIN_LINKS?.map((link) => (
+              <li key={link?.href}>
+                <Link href={link?.href} className={footer?.link}>
+                  {link?.copy}
+                </Link>
+              </li>
+            ))}
           </ul>
-          <h4 className="text__eyebrow__white">Contact</h4>
+          <h2 className="text__eyebrow__white">Contact</h2>
           <ul className={footer.list}>
-            <li>
-              <Link href="/contact" className={footer.link}>
-                Contact GRAPPA
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className={footer.link}>
-                Getting to Campus
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="https://www.twitter.com/grappainstitute"
-                className={footer.link}
-              >
-                Follow us on Twitter
-              </Link>
-            </li>
+            {FOOTER_CONTACT_LINKS?.map((link) => (
+              <li key={link?.href}>
+                <Link href={link?.href} className={footer.link}>
+                  {link?.copy}
+                </Link>
+              </li>
+            ))}
           </ul>
           <img
             src="/images/uva-logotype.svg"
@@ -66,7 +50,7 @@ export default function Footer() {
         <div>
           <h3 className="text__eyebrow__white">Research</h3>
 
-          <h4 className="text__eyebrow__whiteSm">Themes</h4>
+          <h2 className="text__eyebrow__whiteSm">Themes</h2>
           <ul className={footer.list}>
             <li>
               <Link
@@ -95,75 +79,30 @@ export default function Footer() {
               </Link>
             </li>
           </ul>
-          <h4 className="text__eyebrow__whiteSm">Experiments</h4>
+          <h2 className="text__eyebrow__whiteSm">Experiments</h2>
           <ul className={footer.list}>
-            <li>
-              <Link href="/research/experimental-lhc" className={footer.link}>
-                Physics at the Large Hadron Collider
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/research/experimental-neutrino-physics"
-                className={footer.link}
-              >
-                Experimental neutrino physics: ANTARES, KM3NeT, DUNE
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/research/experiment-experimental-direct-dark-matter-detection-xenon"
-                className={footer.link}
-              >
-                Experimental direct dark matter detection: XENON
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/research/experiment-fast-timing-detectors-for-particle-physics-experiments"
-                className={footer.link}
-              >
-                Fast timing detectors for particle physics experiments
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/research/experiment-detector-r-and-d-for-gravitational-wave-instrumentation-at-nikhef"
-                className={footer.link}
-              >
-                Detector R&amp;D for gravitational wave instrumentation at
-                Nikhef
-              </Link>
-            </li>
+            {FOOTER_EXPERIMENT_LINKS?.map((link) => (
+              <li key={link.link}>
+                <Link href={`/research${link.href}`} className={footer.link}>
+                  {link.copy}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div>
           <h3 className="text__eyebrow__white">Education</h3>
-          <h4 className="text__eyebrow__whiteSm">MSC</h4>
+          <h2 className="text__eyebrow__whiteSm">MSC</h2>
           <ul className={footer.list}>
-            <li>
-              <Link
-                href="/education/msc-track-overview"
-                className={footer.link}
-              >
-                Track Overview
-              </Link>
-            </li>
-            <li>
-              <Link href="/education/msc-faq" className={footer.link}>
-                Frequently Asked Questions
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/education/msc-thesis-projects"
-                className={footer.link}
-              >
-                Thesis Projects
-              </Link>
-            </li>
+            {FOOTER_MSC_LINKS?.map((link) => (
+              <li key={link?.href}>
+                <Link href={link?.href} className={footer.link}>
+                  {link?.copy}
+                </Link>
+              </li>
+            ))}
           </ul>
-          <h4 className="text__eyebrow__whiteSm">PhD</h4>
+          <h2 className="text__eyebrow__whiteSm">PhD</h2>
           <ul className={footer.list}>
             <li>
               <Link

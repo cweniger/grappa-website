@@ -10,7 +10,7 @@ export default function Navigation() {
   const size = useWindowSize();
   const fullMenu = size.width > 1200;
   return (
-    <nav className={nav.navigation}>
+    <nav aria-label="Primary" className={nav.navigation}>
       <div className={classNames(nav.uva__bar, nav.buttons)}>
         <div className="container__nav container__nav__sm">
           <a className="container__line" href="https://www.uva.nl">

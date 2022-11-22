@@ -21,7 +21,7 @@ export default function Index({ news, newsEntry }) {
           <NewsGrid news={news.newsCollection.items} />
         </div>
         <aside>
-          <p className="text__underscore__sm">Highlights</p>
+          <h2 className="text__underscore__sm">Highlights</h2>
           <NewsRail news={newsEntry.newsPage.highlights.items} />
         </aside>
       </section>

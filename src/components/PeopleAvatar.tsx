@@ -8,13 +8,17 @@ export default function PeopleAvatar({ fields }) {
       <Link href={`/members/${fields.slug}`}>
         <a>
           {fields.profilePicture ? (
-            <img src={fields.profilePicture.url} alt={fields.fullName} />
+            <img
+              src={fields.profilePicture.url}
+              alt={`Headshot of ${fields.fullName}`}
+            />
           ) : (
             <div className={people.planet} />
           )}
           <span>{fields.fullName}</span>
         </a>
       </Link>
+      {fields.showContactTitle ? <span>{fields.contactTitle}</span> : undefined}
     </figure>
   );
 }

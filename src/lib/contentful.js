@@ -70,6 +70,8 @@ export async function fetchNews() {
           summary
           date
           image {
+            title
+            description
             url
           }
         }
@@ -94,6 +96,8 @@ export async function fetchArticle({ params }) {
           summary
           date
           image {
+            title
+            description
             url
           }
           caption
@@ -123,6 +127,8 @@ export async function getArticleData({ params }) {
             summary
             date
             image {
+              title
+              description
               url
             }
           }
@@ -153,6 +159,8 @@ export async function fetchNewsEntry() {
           slug
           summary
           image {
+            title
+            description
             url
           }
         }
@@ -166,6 +174,8 @@ export async function fetchNewsEntry() {
             slug
             summary
             image {
+              title
+              description
               url
             }
           }

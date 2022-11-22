@@ -1,3 +1,15 @@
+.u__hide__visually {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
 .text__headline {
   text-transform: uppercase;
 
@@ -55,7 +67,7 @@
 .text__heavy {
   font-weight: 600;
   font-family: $font-family__heading;
-  padding-left: .5em;
+  padding-left: 0.5em;
 }
 
 .text__eyebrow {
@@ -89,7 +101,7 @@
   font-family: $font-family--accent;
   color: $neutral-gray-04;
   font-size: 0.8rem;
-  margin: .5em auto 2em;
+  margin: 0.5em auto 2em;
 }
 
 .text__detail {
@@ -166,7 +178,7 @@
 .text__title {
   font-family: $font-family--accent;
   font-weight: bold;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   margin-top: 0;
 }
 
@@ -217,6 +229,7 @@
     color: $chroma-purple;
     font-size: 0.75rem;
     text-transform: uppercase;
+    font-weight: $font-weight--base;
     letter-spacing: 0.4em;
     box-shadow: 1px 1px 0 0 $chroma-purple;
     margin: 1em 0 2em;
@@ -227,7 +240,6 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-
 }
 
 .link__none {
@@ -238,7 +250,8 @@
   }
 }
 
-.list__tight, .list__tight ul {
+.list,
+.list ul {
   @extend .link__none;
   list-style-type: none;
   margin: 0;
@@ -247,7 +260,20 @@
   li:first-of-type {
     margin-top: 1em;
   }
+
   li {
     margin-bottom: 2em;
+  }
+}
+
+.list__tight,
+.list__tight ul {
+  @extend .list;
+
+  li:first-of-type {
+    margin-top: 0.5em;
+  }
+  li {
+    margin-bottom: 0.5em;
   }
 }

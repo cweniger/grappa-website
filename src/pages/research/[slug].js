@@ -10,7 +10,7 @@ export default function ResearchTemplate({ entry }) {
   return (
     <Layout>
       <BasicMeta url={"/"} />
-      <ResearchGrid area={entry.researchCollection.items[0]} />
+      <ResearchGrid area={entry.researchCollection.items[0]} nested={false} />
     </Layout>
   );
 }
