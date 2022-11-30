@@ -30,8 +30,9 @@ $width--large-x: $space--x-large;
   margin: 0 auto;
 }
 
-.container--width-260 {
-  max-width: 260px;
+.container__accent {
+  // background-color: $chroma-purple-light;
+  margin-bottom: 6em;
 }
 
 .container__main {
@@ -220,7 +221,7 @@ $width--large-x: $space--x-large;
 
 .card__container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
+  grid-auto-rows: auto;
   margin: 0;
   padding: 0;
   gap: 2em;

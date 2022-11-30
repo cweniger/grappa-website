@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
+    "lint": "next lint",
     "start": "next start",
     "test": "jest"
   },
@@ -37,7 +38,7 @@
     "lodash.orderby": "^4.6.0",
     "lodash.sortby": "^4.7.0",
     "moment": "^2.29.1",
-    "next": "12",
+    "next": "^12.3.1",
     "next-transpile-modules": "^9.0.0",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
