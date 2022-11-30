@@ -1,12 +1,13 @@
 import React from "react";
 import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
+import cx from "classnames";
 
-export default function HeaderText({ header, sideLayout }) {
+export default function HeaderText({ header, sideLayout, noImage = false }) {
   const imageVar = header?.backgroundImage?.url;
   return (
-    <div className={sideLayout ? "container__grid__cols__2" : undefined}>
-      <header>
+    <div className={cx(sideLayout ? "container__grid__cols__2" : undefined)}>
+      <header className={noImage ? "space--mv--large" : undefined}>
         {header.headline && (
           <h1 className="text__eyebrow__grey">{header.headline}</h1>
         )}
@@ -22,7 +23,7 @@ export default function HeaderText({ header, sideLayout }) {
           </ReactMarkdown>
         )}
       </header>
-      {imageVar ? (
+      {!noImage && imageVar ? (
         <img
           alt={
             header?.backgroundImage?.description ??

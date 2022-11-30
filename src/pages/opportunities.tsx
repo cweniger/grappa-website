@@ -1,16 +1,14 @@
 import Layout from "../components/Layout";
 import Link from "next/link";
 import BasicMeta from "../components/meta/BasicMeta";
-import layout from "../styles/components/Layout.module.scss";
-import remarkGfm from "remark-gfm";
-import ReactMarkdown from "react-markdown";
-import HeaderText from "../components/HeaderText";
 import * as _ from "lodash";
-
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import groupBy from "lodash.groupby";
 import React from "react";
 import { gql } from "graphql-request";
 import { contentfulApi } from "../lib/contentful";
+import HeaderText from "../components/HeaderText";
 
 export default function Opportunities({ entry }) {
   const jobsByExpiration = groupBy(entry.jobs.items, (job) => {
@@ -32,64 +30,87 @@ export default function Opportunities({ entry }) {
   return (
     <Layout>
       <BasicMeta url={"/opportunities"} />
-      <section className="container__main container__grid__cols__2">
-        <div>
-          <header>
-            {entry.hero.headline && (
-              <h1 className="text__eyebrow__grey">{entry.hero.headline}</h1>
-            )}
-            {entry.hero.subheader && (
-              <p className="text__subheader">{entry.hero.subheader}</p>
-            )}
-          </header>
-          {jobsByExpiration.current ? (
-            <ul className="card__container">
-              {jobsByExpiration.current.map((job) => {
-                const formattedDate = new Date(
-                  job.closingDate
-                ).toLocaleDateString("en-GB", {
-                  year: "numeric",
-                  month: "numeric",
-                  day: "numeric",
-                });
+      <section className="container__main">
+        <div className="container__grid__cols__2">
+          <div>
+            <HeaderText header={entry.hero} sideLayout={false} noImage />
+            {/* <header className="">
+              {entry.hero.headline && (
+                <h1 className="text__eyebrow__grey">{entry.hero.headline}</h1>
+              )}
+              {entry.hero.subheader && (
+                <p className="text__subheader">{entry.hero.subheader}</p>
+              )}
+            </header> */}
+            {jobsByExpiration.current ? (
+              <ul className="card__container">
+                {jobsByExpiration.current.map((job) => {
+                  const formattedDate = new Date(
+                    job.closingDate
+                  ).toLocaleDateString("en-GB", {
+                    year: "numeric",
+                    month: "numeric",
+                    day: "numeric",
+                  });
 
-                return (
-                  <li key={job.sys.id} className="list__none link__none">
-                    <Link href={job.listingUrl}>
-                      <a>
-                        <p className="text__accent__sm card__job__banner">
-                          {job.position}
-                        </p>
-                        <div className="card__job">
-                          <span className="text__news">{job.subject}</span>
-                          <p className="text__detail__job">
-                            Apply by
-                            <span className="text__heavy">{formattedDate}</span>
+                  return (
+                    <li key={job.sys.id} className="list__none link__none">
+                      <Link href={job.listingUrl}>
+                        <a>
+                          <p className="text__accent__sm card__job__banner">
+                            {job.position}
                           </p>
-                        </div>
-                      </a>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            <p className="text__subheader">
-              {entry.noOpportunitiesDescription}
-            </p>
-          )}
+                          <div className="card__job">
+                            <span className="text__news">{job.subject}</span>
+                            <p className="text__detail__job">
+                              Apply by
+                              <span className="text__heavy">
+                                {formattedDate}
+                              </span>
+                            </p>
+                          </div>
+                        </a>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="text__subheader">
+                {entry?.noOpportunitiesDescription}
+              </p>
+            )}
+          </div>
+          <div>
+            {image ? (
+              <img
+                alt={
+                  entry.hero.backgroundImage.description ??
+                  entry.hero.backgroundImage.title
+                }
+                className="image-secondary-hero"
+                src={entry.hero.backgroundImage.url}
+                width="500"
+              />
+            ) : undefined}
+          </div>
         </div>
-        {image && (
-          <img
-            alt={
-              entry.hero.backgroundImage.description ??
-              entry.hero.backgroundImage.title
-            }
-            className="image-secondary-hero"
-            src={entry.hero.backgroundImage.url}
-            width="500"
-          />
-        )}
+
+        <div className="container__small container__accent">
+          {entry.postdoctoralHeadline ? (
+            <h2 className="text__headline__4 space--mt--large-x">
+              {entry.postdoctoralHeadline}
+            </h2>
+          ) : undefined}
+          {entry?.postdoctoralDescription ? (
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              className="text--teasers"
+            >
+              {entry.postdoctoralDescription}
+            </ReactMarkdown>
+          ) : null}
+        </div>
       </section>
     </Layout>
   );
@@ -113,6 +134,7 @@ export async function getStaticProps({ preview = false }) {
             url
           }
         }
+        postdoctoralHeadline
         postdoctoralDescription
         noOpportunitiesDescription
         jobs: jobsCollection {
